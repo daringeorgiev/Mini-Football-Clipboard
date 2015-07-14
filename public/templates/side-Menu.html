@@ -1,0 +1,48 @@
+<div class="col-lg-4 col-md-12 col-sm-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Team</h3>
+        </div>
+        <div class="panel-body">
+            <label for="selectedTeam">Select Team:</label>
+            <select class="form-control" id="selectedTeam" ng-model="ctrl.team"
+                    ng-options="team.teamName for team in ctrl.allTeams"></select>
+            <!--{{ctrl.allTeams}}-->
+            <label for="teamName" class="col-lg-2 control-label">Team Name:</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" id="teamName" placeholder="Team Name" type="text"
+                       ng-model="ctrl.team.teamName">
+            </div>
+            <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.updateTeam()">Save</button>
+            <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.createTeam()">Create New</button>
+            <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.deleteTeam()">Delete Team
+            </button>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Players</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group input-group" ng-repeat="player in ctrl.team.players track by $index">
+                <span class="input-group-addon">{{ctrl.team.players[$index].playerNumber}}</span>
+                <input class="form-control" id="playerName" placeholder="Player {{$index + 1}}" type="text"
+                       ng-model="ctrl.team.players[$index].playerName">
+                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Move</button>
+                    </span>
+            </div>
+            <div class="form-group">
+                <div class=" ">
+                    <!--<button type="reset" class="btn btn-default btn-xs">Cancel</button>-->
+                    <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.addPlayer()">Add player</button>
+                    <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.removePlayer()">Remove player
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
