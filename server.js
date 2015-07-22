@@ -18,13 +18,80 @@ module.exports = Team;
 
 // configuration =================
 app.use(express.static(__dirname + '/public'));
-mongoose.connect('mongodb://localhost/da22');
+mongoose.connect('mongodb://localhost/da2234');
 
 app.use(bodyParser.urlencoded({'extended': 'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(methodOverride());
 
+//Create default team
+Team.find({}, function (err, teams) {
+    if (err) {
+        throw err;
+    }
+    if(teams.length === 0){
+        Team.create({
+            teamName: "Default team",
+            playersCount: 6,
+            players: [
+                {
+                    "left": 49,
+                    "top": 93,
+                    "playerNumber": 49,
+                    "playerName": "Player 1"
+                },
+                {
+                    "playerNumber": 51,
+                    "playerName": "Player 2",
+                    "top": 67,
+                    "left": 51
+                },
+                {
+                    "left": 84,
+                    "top": 50,
+                    "playerNumber": 84,
+                    "playerName": "Player 3"
+                },
+                {
+                    "left": 16,
+                    "top": 53,
+                    "playerNumber": 16,
+                    "playerName": "Player 4"
+                },
+                {
+                    "left": 61,
+                    "top": 30,
+                    "playerNumber": 61,
+                    "playerName": "Player 5"
+                },
+                {
+                    "playerNumber": 35,
+                    "playerName": "Player 6",
+                    "top": 23,
+                    "left": 35
+                },
+                {
+                    "playerNumber": 7,
+                    "playerName": "Player 7"
+                },
+                {
+                    "playerNumber": 8,
+                    "playerName": "Player 8"
+                },
+                {
+                    "playerNumber": 9,
+                    "playerName": "Player 9"
+                }
+            ]
+        }, function (err, team) {
+            if (err) {
+                throw err;
+            }
+            console.log("Default team created")
+        })
+    }
+});
 
 app.get('/api/teams', function (req, res) {
     Team.find({}, function (err, teams) {
