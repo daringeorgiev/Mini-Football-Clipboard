@@ -6,8 +6,9 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
         teamService.getAllTeams()
             .success(function (data) {
                 console.log("Contr: " + data);
+                //notify({message: 'Update successful', classes: 'alert-danger'});
                 self.allTeams = data;
-                self.team = self.allTeams[0];
+                self.selectedTeam = self.allTeams[0];
             })
             .error(function (data) {
                 console.log('Error: ' + data);
@@ -15,9 +16,9 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
     }
 
     self.createTeam = function () {
-        teamService.createTeam(self.team)
+        teamService.createTeam(self.selectedTeam)
             .success(function (data) {
-                self.team = data
+                self.selectedTeam = data
             })
             .error(function (data) {
                 console.log("Error: " + data)
@@ -25,26 +26,26 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
     };
 
     self.addPlayer = function () {
-        var count = self.team.players.length;
-        self.team.players.push({
+        var count = self.selectedTeam.players.length;
+        self.selectedTeam.players.push({
             playerName: 'PlayerRRR' + (count + 1),
             playerNumber: count + 1
         });
-        self.team.playersCount++;
+        self.selectedTeam.playersCount++;
     };
 
     self.removePlayer = function () {
-        self.team.players.splice(self.team.players.length - 1, 1);
-        self.team.playersCount--;
+        self.selectedTeam.players.splice(self.selectedTeam.players.length - 1, 1);
+        self.selectedTeam.playersCount--;
     };
 
     self.deleteTeam = function () {
-        teamService.deleteTeam(self.team._id)
+        teamService.deleteTeam(self.selectedTeam._id)
             .success(function (data) {
                 console.log("Delete: " + data);
                 self.allTeams = data;
                 if (self.allTeams) {
-                    self.team = self.allTeams[0];
+                    self.selectedTeam = self.allTeams[0];
                 }
             })
             .error(function (data) {
@@ -53,11 +54,12 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
     };
 
     self.updateTeam = function () {
-        teamService.updateTeam(self.team)
+        teamService.updateTeam(self.selectedTeam)
             .success(function (data) {
-                self.team = data;
-                console.log(data.teamName);
-                notify({message: 'Update successful', classes: 'alert-danger'});
+                self.selectedTeam = data;
+                //$scope.$apply();
+                //console.log(data.teamName);
+                notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'alert-danger', position: 'left'});
             })
             .error(function (data) {
                 console.log('Error: ' + data);

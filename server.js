@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(methodOverride());
 
+
 app.get('/api/teams', function (req, res) {
     Team.find({}, function (err, teams) {
         if (err) {
@@ -85,7 +86,11 @@ app.put('/api/team', function (req, res) {
     });
 });
 
-app.get('*', function (req, res) {
+app.get('/angular-notify.html', function (req, res) {
+    res.sendFile(__dirname + '/public/libs/angular-notify/angular-notify.html');
+});
+
+app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 

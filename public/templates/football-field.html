@@ -1,7 +1,7 @@
 <div>
-    <div class="allField col-lg-8 col-md-12 col-sm-12" ng-init="ctrl.getAllTeams()">
+    <div class="allField col-lg-8 col-md-12 col-sm-12" >
         <div class="dragableArea">
-            <div ng-repeat="player in ctrl.team.players" class="player" my-draggable>{{player.playerNumber}}</div>
+            <div ng-repeat="player in ctrl.selectedTeam.players | limitTo: 6" class="player" my-draggable>{{player.playerNumber}}</div>
         </div>
 
 

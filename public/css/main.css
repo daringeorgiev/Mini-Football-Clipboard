@@ -83,3 +83,12 @@
     height: calc(100% - 7rem);
     width: calc(100% - 7rem);
 }
+
+#playersList {
+    margin: 0;
+    padding: 0;
+}
+
+#playersList li {
+    border: 0;
+}

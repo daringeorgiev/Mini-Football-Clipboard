@@ -1,18 +1,20 @@
-<div class="col-lg-4 col-md-12 col-sm-12">
+<div class="col-lg-4 col-md-12 col-sm-12" ng-init="ctrl.getAllTeams()">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">Team</h3>
         </div>
         <div class="panel-body">
             <label for="selectedTeam">Select Team:</label>
-            <select class="form-control" id="selectedTeam" ng-model="ctrl.team"
-                    ng-options="team.teamName for team in ctrl.allTeams"></select>
+            <select class="form-control" id="selectedTeam" ng-model="ctrl.selectedTeam"
+                    ng-options="team.teamName for team in ctrl.allTeams">
+                <!--<option ng-selected="ctrl.selectedTeam"></option>-->
+            </select>
             <!--{{ctrl.allTeams}}-->
             <label for="teamName" class="col-lg-2 control-label">Team Name:</label>
 
             <div class="col-lg-10">
                 <input class="form-control" id="teamName" placeholder="Team Name" type="text"
-                       ng-model="ctrl.team.teamName">
+                       ng-model="ctrl.selectedTeam.teamName">
             </div>
             <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.updateTeam()">Save</button>
             <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.createTeam()">Create New</button>
@@ -25,14 +27,20 @@
             <h3 class="panel-title">Players</h3>
         </div>
         <div class="panel-body">
-            <div class="form-group input-group" ng-repeat="player in ctrl.team.players track by $index">
-                <span class="input-group-addon">{{ctrl.team.players[$index].playerNumber}}</span>
-                <input class="form-control" id="playerName" placeholder="Player {{$index + 1}}" type="text"
-                       ng-model="ctrl.team.players[$index].playerName">
-                <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Move</button>
-                    </span>
-            </div>
+            <!--ng-sortable-->
+            <ul id="playersList" data-as-sortable ui-sortable="{ 'ui-floating': true }" data-ng-model="ctrl.selectedTeam.players">
+                <li ng-repeat="player in ctrl.selectedTeam.players" data-as-sortable-item>
+                    <div data-as-sortable-item-handle class="form-group input-group"
+                         ng-class="{'has-warning': $index >5, 'has-error': $index === 0 }">
+                        <span class="input-group-addon">{{ctrl.selectedTeam.players[$index].playerNumber}} {{$index}}</span>
+                        <input class="form-control" id="playerName" placeholder="Player {{$index + 1}}" type="text"
+                               ng-model="ctrl.selectedTeam.players[$index].playerName">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Move</button>
+                        </span>
+                    </div>
+                </li>
+            </ul>
             <div class="form-group">
                 <div class=" ">
                     <!--<button type="reset" class="btn btn-default btn-xs">Cancel</button>-->
