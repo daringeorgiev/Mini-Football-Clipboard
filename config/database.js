@@ -1,8 +1,9 @@
 /**
  * Created by darin on 23/7/2015.
  */
+'use strict';
 module.exports = {
-    url : 'mongodb://localhost/da2234'
+    url: 'mongodb://localhost/da2234'
 };
 
 var Team = require('../app/models/team');
@@ -12,7 +13,7 @@ Team.find({}, function (err, teams) {
     if (err) {
         throw err;
     }
-    if(teams.length === 0){
+    if (teams.length === 0) {
         Team.create({
             teamName: "Default team",
             playersCount: 6,

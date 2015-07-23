@@ -57,7 +57,7 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
         teamService.updateTeam(self.selectedTeam)
             .success(function (data) {
                 self.selectedTeam = data;
-                notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'alert-danger', position: 'left'});
+                //notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'alert-danger', position: 'left'});
             })
             .error(function (data) {
                 console.log('Error: ' + data);
