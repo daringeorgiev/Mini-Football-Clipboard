@@ -2,7 +2,7 @@
     position: relative;
     margin: 0;
     padding: 0;
-    background-color: forestgreen;
+    background-color: #40b95a;
     height: 50vw;
     /*width:  auto;*/
     border-radius: 1%;
@@ -21,7 +21,7 @@
     margin: 1.5%;
     height: 97%;
     width: 97%;
-    background-color: forestgreen;
+    background-color: #40b95a;
 }
 
 .fieldCenter {
@@ -54,7 +54,7 @@
     height: 29%;
     width: 29%;
     border-radius: 50%;
-    background-color: forestgreen;
+    background-color: #40b95a;
 }
 
 .fieldBoxLine {
@@ -63,7 +63,7 @@
     border-radius: 90px 90px 0 0;
     -moz-border-radius: 90px 90px 0 0;
     -webkit-border-radius: 90px 90px 0 0;
-    background: green;
+    background: #40b95a;
 }
 
 .player {

@@ -13,7 +13,7 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
             .error(function (data) {
                 console.log('Error: ' + data);
             });
-    }
+    };
 
     self.createTeam = function () {
         teamService.createTeam(self.selectedTeam)
@@ -57,8 +57,6 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
         teamService.updateTeam(self.selectedTeam)
             .success(function (data) {
                 self.selectedTeam = data;
-                //$scope.$apply();
-                //console.log(data.teamName);
                 notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'alert-danger', position: 'left'});
             })
             .error(function (data) {

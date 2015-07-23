@@ -4,7 +4,7 @@
 'use strict';
 app.factory('teamService', ['$http', '$q', function ($http, $q) {
     function getAllTeams() {
-        return $http.get('/api/teams')
+        return $http.get('/api/all-teams')
     }
 
     function createTeam(team) {
