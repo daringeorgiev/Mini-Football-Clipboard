@@ -1,11 +1,11 @@
 /**
- * Created by darin on 5/16/2015.
+ * Created by darin on 25/7/2015.
  */
 'use strict';
-app.directive('appHeader',function(){
+app.directive('registerForm', function(){
     return{
         restrict: 'E',
-        templateUrl: '../../templates/app-header.html',
+        templateUrl: '../../templates/register-form.html',
         controller: 'UserController as userCtrl',
         replace: true
     }

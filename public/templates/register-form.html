@@ -1,0 +1,56 @@
+<div ng-if="userCtrl.isRegisterFormVisible">
+    <div style="display: block; padding-right: 17px;" class="modal fade in">
+    <!--<div class="modal fade">-->
+        <!--<div class="modal-dialog modal-lg">-->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="userCtrl.onCloseRegisterClick()">×</button>
+                        <h4 class="modal-title">Register Form</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal ">
+                            <fieldset>
+                                <!--<legend>Register</legend>-->
+                                <div class="form-group">
+                                    <label for="username" class="col-lg-2 control-label">Username</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" id="username" placeholder="Username" type="text" ng-model="userCtrl.user.username">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" id="inputPassword" placeholder="Password" type="password" ng-model="userCtrl.user.password">
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error' : userCtrl.user.confirmPassword!=userCtrl.user.password}">
+                                    <label for="confirmPassword" class="col-lg-2 control-label">Confirm password</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" id="confirmPassword" placeholder="Confirm password" type="password" ng-model="userCtrl.user.confirmPassword">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-lg-2 control-label">Name</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" id="name" placeholder="Name" type="text" ng-model="userCtrl.user.name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" id="inputEmail" placeholder="Email" type="text"  ng-model="userCtrl.user.email">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="userCtrl.onCloseRegisterClick()">Close</button>
+                        <button type="button" class="btn btn-primary">Register</button>
+                    </div>
+                </div>
+            </div>
+        <!--</div>-->
+    </div>
+</div>

@@ -11,13 +11,15 @@
     <link rel="stylesheet" href="libs/ng-sortable/dist/ng-sortable.style.css">
 </head>
 <body ng-app="app">
-    <!--<app-header></app-header>-->
+    <app-header></app-header>
 
     <div class="jumbotron row col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
         <football-field></football-field>
         <!--<new-team></new-team>-->
         <side-menu></side-menu>
     </div>
+
+    <register-form></register-form>
 
     <!--Scripts-->
     <script src="libs/jquery/dist/jquery.min.js"></script>
@@ -30,13 +32,16 @@
     <script src="js/app.js"></script>
     <!--Services-->
     <script src="js/services/teamService.js"></script>
+    <script src="js/services/userService.js"></script>
     <!--Controllers-->
     <script src="js/controllers/MainController.js"></script>
+    <script src="js/controllers/UserController.js"></script>
     <!--Directives-->
     <script src="js/directives/appHeader.js"></script>
     <script src="js/directives/footballField.js"></script>
     <script src="js/directives/sideMenu.js"></script>
     <script src="js/directives/newTeam.js"></script>
     <script src="js/directives/ngDragable.js"></script>
+    <script src="js/directives/registerForm.js"></script>
 </body>
 </html>
