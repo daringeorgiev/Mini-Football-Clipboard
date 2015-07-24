@@ -3,7 +3,7 @@
  */
 'use strict';
 module.exports = {
-    url: 'mongodb://localhost/da2234'
+    url: 'mongodb://localhost/da4'
 };
 
 var Team = require('../app/models/team');
@@ -21,11 +21,11 @@ Team.find({}, function (err, teams) {
                 {
                     "left": 49,
                     "top": 93,
-                    "playerNumber": 49,
+                    "playerNumber": 1,
                     "playerName": "Player 1"
                 },
                 {
-                    "playerNumber": 51,
+                    "playerNumber": 2,
                     "playerName": "Player 2",
                     "top": 67,
                     "left": 51
@@ -33,23 +33,23 @@ Team.find({}, function (err, teams) {
                 {
                     "left": 84,
                     "top": 50,
-                    "playerNumber": 84,
+                    "playerNumber": 3,
                     "playerName": "Player 3"
                 },
                 {
                     "left": 16,
                     "top": 53,
-                    "playerNumber": 16,
+                    "playerNumber": 4,
                     "playerName": "Player 4"
                 },
                 {
                     "left": 61,
                     "top": 30,
-                    "playerNumber": 61,
+                    "playerNumber": 5,
                     "playerName": "Player 5"
                 },
                 {
-                    "playerNumber": 35,
+                    "playerNumber": 6,
                     "playerName": "Player 6",
                     "top": 23,
                     "left": 35

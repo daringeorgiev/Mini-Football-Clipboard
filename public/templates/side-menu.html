@@ -33,11 +33,11 @@
                 <li ng-repeat="player in ctrl.selectedTeam.players" data-as-sortable-item>
                     <div data-as-sortable-item-handle class="form-group input-group"
                          ng-class="{'has-warning': $index >5, 'has-error': $index === 0 }">
-                        <span class="input-group-addon">{{ctrl.selectedTeam.players[$index].playerNumber}} {{$index}}</span>
+                        <span class="input-group-addon">{{ctrl.selectedTeam.players[$index].playerNumber}}</span>
                         <input class="form-control" id="playerName" placeholder="Player {{$index + 1}}" type="text"
                                ng-model="ctrl.selectedTeam.players[$index].playerName">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Move</button>
+                            <button class="btn btn-default" type="button">&#8593;&#8595;</button>
                         </span>
                     </div>
                 </li>

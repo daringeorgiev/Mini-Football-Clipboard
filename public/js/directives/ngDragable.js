@@ -59,7 +59,7 @@ app.directive('myDraggable', ['$document', function ($document) {
 
                 scope.player.top = yPer;
                 scope.player.left = xPer;
-                scope.player.playerNumber = xPer;
+                //scope.player.playerNumber = xPer;
                 scope.$apply();
 
                 $document.off('mousemove', mousemove);
