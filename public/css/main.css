@@ -1,7 +1,7 @@
 .allField {
     position: relative;
     margin: 0;
-    padding: 0;
+    padding: 10% 5%;
     background-color: #40b95a;
     height: 50vw;
     /*width:  auto;*/
@@ -91,4 +91,17 @@
 
 #playersList li {
     border: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+#playerNumberInput {
+    width: 5rem;
+}
+
+#playerNameInput {
+    width: calc(100% - 5rem);
 }
