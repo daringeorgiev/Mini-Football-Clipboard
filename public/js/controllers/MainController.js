@@ -64,4 +64,12 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
             });
     };
 
+    //Hack
+    self.setDragableAreaWidth = function () {
+        setTimeout(function () {
+            $('.draggableArea').width($('.imgField').width());
+            $('.draggableArea').css({left: $('.imgField').position().left});
+        }, 1000)
+        //$('.draggableArea').width($('.imgField').width());
+    }
 }]);

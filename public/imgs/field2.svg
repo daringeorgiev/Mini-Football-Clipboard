@@ -1,0 +1,25 @@
+<svg height="4000" width="2500">
+	<!--Field borders-->
+	<rect height="4000" width="2500" stroke="white" stroke-width="60" fill-opacity="0.0"/>
+
+	<!--Central circle-->
+	<circle cx="1250" cy="2000" r="300" stroke="white" stroke-width="30" fill-opacity="0.0"/>
+
+	<!--boxes-->
+	<circle cx="1250" cy="0" r="600" stroke="white" stroke-width="30" fill-opacity="0.0"/>
+	<circle cx="1250" cy="4000" r="600" stroke="white" stroke-width="30" fill-opacity="0.0"/>
+
+	<!--Central line-->
+	<line x1="0" y1="2000" x2="2500" y2="2000" stroke="white" stroke-width="3" fill="green" />
+
+	<!--Dots-->
+	<circle cx="1250" cy="1000" r="10" stroke="white" stroke-width="30" fill="white"  />
+	<circle cx="1250" cy="2000" r="10" stroke="white" stroke-width="30" fill="white" />
+	<circle cx="1250" cy="3000" r="10" stroke="white" stroke-width="30" fill="white"  />
+
+	<!--Corners-->
+	<circle cx="0" cy="0" r="150" stroke="white" stroke-width="30" fill-opacity="0.0"/>
+	<circle cx="0" cy="4000" r="105" stroke="white" stroke-width="30" fill-opacity="0.0"/>
+	<circle cx="2500" cy="0" r="15" stroke="white" stroke-width="30" fill-opacity="0.0"/>
+	<circle cx="2500" cy="4000" r="150" stroke="white" stroke-width="30" fill-opacity="0.0"/>
+</svg>

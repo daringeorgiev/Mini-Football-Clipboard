@@ -1,19 +1,30 @@
+.jumbotron {
+    padding: 0;
+}
+
 .field {
     position: relative;
     margin: 0;
     padding: 0;
-    background-color: #40b95a;
-    height: 50vw;
-    /*width:  auto;*/
+    background-color: #ecf0f1;
+    text-align: center;
+    height: calc(100vh - 100px);
     border-radius: 1%;
+    background-repeat: no-repeat;
+
 }
 
 .fieldOutside {
-    padding: 1% 3%;
+    background-color: #004276;
 }
 
-.fieldLines {
-    position: absolute;
+.imgField {
+    background-color: #40b95a;
+    /*display: block;*/
+    /*position: absolute;*/
+    width: auto;
+    height: 100%;
+    margin: 1%;
 }
 
 .player {
@@ -29,8 +40,11 @@
 }
 
 .draggableArea {
-    position: relative;
+    position: absolute;
+    top: 1%;
+    /*background-color: #915608;*/
     height: calc(100% - 7rem);
+
     width: calc(100% - 7rem);
 }
 

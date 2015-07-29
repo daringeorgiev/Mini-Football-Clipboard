@@ -43,5 +43,14 @@
     <script src="js/directives/newTeam.js"></script>
     <script src="js/directives/ngDragable.js"></script>
     <script src="js/directives/registerForm.js"></script>
+
+    <!--Hack for resizing-->
+    <script>
+        $(window).on('resize', function (){
+            var newWidth = $('.imgField').width();
+            $('.draggableArea').width(newWidth - 25 );
+            $('.draggableArea').css({left: $('.imgField').position().left});
+        });
+    </script>
 </body>
 </html>
