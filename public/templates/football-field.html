@@ -1,9 +1,9 @@
 <div>
-    <div class="fieldOutside">
+    <div class="fieldOutside" >
         <div class="field col-lg-8 col-md-12 col-sm-12">
             <img class="imgField" src="imgs/field.svg"/>
 
-            <div class="draggableArea" ng-init="ctrl.setDragableAreaWidth()">
+            <div class="draggableArea" >
                 <div ng-repeat="player in ctrl.selectedTeam.players | limitTo: 6" class="player" my-draggable>
                     {{player.playerNumber}}
                 </div>

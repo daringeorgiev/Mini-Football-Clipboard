@@ -64,12 +64,14 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
             });
     };
 
-    //Hack
+    //Hack for resizing
     self.setDragableAreaWidth = function () {
-        setTimeout(function () {
-            $('.draggableArea').width($('.imgField').width());
+        $('.draggableArea').width($('.imgField').width() - $('.player').width());
+        $('.draggableArea').css({left: $('.imgField').position().left});
+        $(window).on('resize', function (){
+            $('.draggableArea').width($('.imgField').width() - $('.player').width());
             $('.draggableArea').css({left: $('.imgField').position().left});
-        }, 1000)
-        //$('.draggableArea').width($('.imgField').width());
-    }
+        });
+    }();
+
 }]);
