@@ -8,14 +8,14 @@
             <select class="form-control" id="selectedTeam" ng-model="ctrl.selectedTeam"
                     ng-options="team.teamName for team in ctrl.allTeams">
             </select>
-
+            <!--{{ctrl.selectedTeam}}-->
             <div class="form-group">
                 <div class=" ">
-                    <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.updateTeam()">Save</button>
-                    <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.onCreateNewTeamClick()">Create
+                    <button type="submit" class="btn btn-warning btn-xs" ng-click="ctrl.updateTeam()">Save</button>
+                    <button type="submit" class="btn btn-info btn-xs" ng-click="ctrl.onCreateNewTeamClick()">Create
                         New
                     </button>
-                    <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.deleteTeam()">Delete Team
+                    <button type="submit" class="btn btn-danger btn-xs" ng-click="ctrl.deleteTeam()">Delete Team
                     </button>
                 </div>
             </div>

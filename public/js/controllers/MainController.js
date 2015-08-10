@@ -77,15 +77,15 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
         self.isCreateNewTeamVisible = false;
     };
 
-    //Hack for resizing
-    self.setDragableAreaWidth = function () {
-        $('.draggableArea').width($('.imgField').width() - $('.player').width());
-        $('.draggableArea').css({left: $('.imgField').position().left});
-        $(window).on('resize', function () {
-            $('.draggableArea').width($('.imgField').width() - $('.player').width());
-            $('.draggableArea').css({left: $('.imgField').position().left});
-        });
-    }();
+    ////Hack for resizing
+    //self.setDragableAreaWidth = function () {
+    //    $('.draggableArea').width($('.imgField').width() - $('.player').width());
+    //    $('.draggableArea').css({left: $('.imgField').position().left});
+    //    $(window).on('resize', function () {
+    //        $('.draggableArea').width($('.imgField').width() - $('.player').width());
+    //        $('.draggableArea').css({left: $('.imgField').position().left});
+    //    });
+    //}();
 
     //ng-sortable
     //$scope.dragControlListeners = {

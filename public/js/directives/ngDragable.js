@@ -4,7 +4,7 @@
 'use strict';
 app.directive('myDraggable', ['$document', function ($document) {
     return {
-        controller: 'MainController as ctrl',
+        //controller: 'MainController as ctrl',
         link: function (scope, element, attr) {
             var xPer = scope.player.left ? scope.player.left : 0,
                 yPer = scope.player.top ? scope.player.top : 0,

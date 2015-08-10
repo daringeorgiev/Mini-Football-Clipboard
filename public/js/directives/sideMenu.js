@@ -6,7 +6,7 @@ app.directive('sideMenu',function(){
     return{
         restrict: 'E',
         templateUrl: '../../templates/side-menu.html',
-        controller: 'MainController as ctrl',
+        //controller: 'MainController as ctrl',
         replace: true
     }
 });
