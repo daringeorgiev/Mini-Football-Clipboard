@@ -7,20 +7,14 @@
             <label for="selectedTeam">Select Team:</label>
             <select class="form-control" id="selectedTeam" ng-model="ctrl.selectedTeam"
                     ng-options="team.teamName for team in ctrl.allTeams">
-                <!--<option></option>-->
-                <!--<option ng-selected="ctrl.selectedTeam"></option>-->
             </select>
-            <!--{{ctrl.selectedTeam.teamName}}-->
-            <!--<label for="teamName" class="col-lg-2 control-label">Team Name:</label>-->
 
-            <!--<div class="col-lg-10">-->
-            <!--<input class="form-control" id="teamName" placeholder="Team Name" type="text"-->
-            <!--ng-model="ctrl.selectedTeam.teamName">-->
-            <!--</div>-->
             <div class="form-group">
                 <div class=" ">
                     <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.updateTeam()">Save</button>
-                    <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.onCreateNewTeamOkClick()">Create New</button>
+                    <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.onCreateNewTeamClick()">Create
+                        New
+                    </button>
                     <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.deleteTeam()">Delete Team
                     </button>
                 </div>
@@ -51,11 +45,12 @@
             </ul>
             <div class="form-group">
                 <div class=" ">
-                    <!--<button type="reset" class="btn btn-default btn-xs">Cancel</button>-->
-                    <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.addPlayer()">Add player</button>
-                    <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.removePlayer()">Remove player
+                    <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.addPlayer(ctrl.selectedTeam)">
+                        Add player
                     </button>
-
+                    <button type="submit" class="btn btn-primary btn-xs"
+                            ng-click="ctrl.removePlayer(ctrl.selectedTeam)">Remove player
+                    </button>
                 </div>
             </div>
         </div>

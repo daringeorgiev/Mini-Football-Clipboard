@@ -34,47 +34,46 @@
                                         <br>
                                     </div>
                                 </div>
+                                <div id="playersWrapper">
+                                    <ul id="playersList" data-as-sortable ui-sortable="{ 'ui-floating': true }"
+                                        data-ng-model="ctrl.newTeam.players">
+                                        <li ng-repeat="player in ctrl.newTeam.players" data-as-sortable-item>
+                                            <div class="form-group input-group"
+                                                 ng-class="{'has-warning': $index >5, 'has-error': $index === 0 }">
+                                                <input class="form-control" id="playerNumberInput" placeholder="#"
+                                                       ng-model="ctrl.newTeam.players[$index].playerNumber"
+                                                       type="number" min="0" max="99">
+                                                <input class="form-control" id="playerNameInput"
+                                                       placeholder="Player {{$index + 1}}" type="text"
+                                                       ng-model="ctrl.newTeam.players[$index].playerName">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button" data-as-sortable-item-handle>
+                                                        &#8593;&#8595;</button>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="form-group">
+                                    <div class=" ">
+                                        <!--<button type="reset" class="btn btn-default btn-xs">Cancel</button>-->
+                                        <button type="submit" class="btn btn-primary btn-xs"
+                                                ng-click="ctrl.addPlayer(ctrl.newTeam)">Add player
+                                        </button>
+                                        <button type="submit" class="btn btn-primary btn-xs"
+                                                ng-click="ctrl.removePlayer(ctrl.newTeam)">Remove player
+                                        </button>
 
-                                <ul id="playersList" data-as-sortable ui-sortable="{ 'ui-floating': true }"
-                                    data-ng-model="ctrl.newTeam.players">
-                                    <li ng-repeat="player in ctrl.newTeam.players" data-as-sortable-item>
-                                        <div class="form-group input-group"
-                                             ng-class="{'has-warning': $index >5, 'has-error': $index === 0 }">
-                                            <input class="form-control" id="playerNumberInput" placeholder="#"
-                                                   ng-model="ctrl.newTeam.players[$index].playerNumber"
-                                                   type="number" min="0" max="99">
-                                            <input class="form-control" id="playerNameInput"
-                                                   placeholder="Player {{$index + 1}}" type="text"
-                                                   ng-model="ctrl.newTeam.players[$index].playerName">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" data-as-sortable-item-handle>
-                                &#8593;&#8595;</button>
-                        </span>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <!--<div class="form-group">-->
-                                    <!--<div class=" ">-->
-                                        <!--&lt;!&ndash;<button type="reset" class="btn btn-default btn-xs">Cancel</button>&ndash;&gt;-->
-                                        <!--<button type="submit" class="btn btn-primary btn-xs"-->
-                                                <!--ng-click="ctrl.addPlayer()">Add player-->
-                                        <!--</button>-->
-                                        <!--<button type="submit" class="btn btn-primary btn-xs"-->
-                                                <!--ng-click="ctrl.removePlayer()">Remove player-->
-                                        <!--</button>-->
-
-                                    <!--</div>-->
-                                <!--</div>-->
-
-
+                                    </div>
+                                </div>
                             </fieldset>
                         </form>
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.createNewTeam()">Create</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal"
                                 ng-click="ctrl.onCreateNewTeamCancelClick()">Close
                         </button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.createNewTeam()">Create</button>
                     </div>
                 </div>
             </div>

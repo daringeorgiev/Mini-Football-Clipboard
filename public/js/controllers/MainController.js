@@ -19,25 +19,27 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
     self.createNewTeam = function () {
         teamService.createTeam(self.newTeam)
             .success(function (data) {
-                self.selectedTeam = data
+                self.selectedTeam = data;
+                self.isCreateNewTeamVisible = false;
+                self.allTeams.push(data);
             })
             .error(function (data) {
                 console.log("Error: " + data)
             });
     };
 
-    self.addPlayer = function () {
-        var count = self.selectedTeam.players.length;
-        self.selectedTeam.players.push({
-            playerName: 'PlayerRRR' + (count + 1),
+    self.addPlayer = function (team) {
+        var count = team.players.length;
+        team.players.push({
+            playerName: 'Player' + (count + 1),
             playerNumber: count + 1
         });
-        self.selectedTeam.playersCount++;
+        team.playersCount++;
     };
 
-    self.removePlayer = function () {
-        self.selectedTeam.players.splice(self.selectedTeam.players.length - 1, 1);
-        self.selectedTeam.playersCount--;
+    self.removePlayer = function (team) {
+        team.players.splice(team.players.length - 1, 1);
+        team.playersCount--;
     };
 
     self.deleteTeam = function () {
@@ -65,18 +67,14 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
             });
     };
 
-    self.onCreateNewTeamOkClick = function () {
+    self.onCreateNewTeamClick = function () {
         self.isCreateNewTeamVisible = true;
-        self.newTeam = self.allTeams[0];
+        self.newTeam = JSON.parse(JSON.stringify(self.allTeams[0]));
         self.newTeam.teamName = 'New Team';
-        //self.oldSelectedTeam = self.selectedTeam
-        //self.selectedTeam = self.allTeams[0];
-
     };
 
     self.onCreateNewTeamCancelClick = function () {
         self.isCreateNewTeamVisible = false;
-
     };
 
     //Hack for resizing

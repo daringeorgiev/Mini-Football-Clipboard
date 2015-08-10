@@ -63,6 +63,13 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
 }
 
+#playersWrapper {
+    max-height: 50vh;
+    padding: 0% 5%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 #playerNumberInput {
     width: 5rem;
 }
