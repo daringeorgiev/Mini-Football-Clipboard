@@ -6,7 +6,7 @@ app.controller('UserController', ['$scope', 'userService', function($scope, user
     var self = this;
     self.username = '';
     self.password = '';
-    self.isRegisterFormVisible = false
+    self.isRegisterFormVisible = false;
 
     self.onLoginClick = function(){
         console.log("Login");

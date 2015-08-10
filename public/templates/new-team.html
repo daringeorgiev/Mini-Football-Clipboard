@@ -1,59 +1,83 @@
-<div class="col-lg-6 col-md-12 col-sm-12 col-lg-offset-1">
-    <div class="container">
-        <form class="form-horizontal">
-            <fieldset>
-                <legend>New Team: {{ctrl.selectedTeam.teamName}} {{ctrl.selectedTeam.playersCount}}</legend>
-                <div class="form-group">
-                    <label for="teamName" class="col-lg-2 control-label">Team Name:</label>
-
-                    <div class="col-lg-10">
-                        <input class="form-control" id="teamName" placeholder="Team Name" type="text"
-                               ng-model="ctrl.selectedTeam.teamName">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="playersCount" class="col-lg-2 control-label">Players:</label>
-
-                    <div class="col-lg-10">
-                        <select class="form-control" id="playersCount" ng-model="ctrl.selectedTeam.playersCount ">
-                            <option>5</option>
-                            <option>6</option>
-                        </select>
-                        <br>
-                    </div>
-                </div>
-                <div class="form-group" ng-repeat="player in ctrl.selectedTeam.players track by $index">
-                    <label for="playerName" class="col-lg-2 control-label">Player {{$index + 1}}:</label>
-
-                    <div class="col-lg-10">
-                        <input class="form-control" id="playerName" placeholder="Player {{$index + 1}}" type="text"
-                               ng-model="ctrl.selectedTeam.players[$index].playerName">
-                    </div>
-                    <label for="playerNumber" class="col-lg-2 control-label">Number:</label>
-
-                    <div class="col-lg-10">
-                        <input class="form-control" id="playerNumber" placeholder="{{$index + 1}}" type="number"
-                               ng-model="ctrl.selectedTeam.players[$index].playerNumber">
-                    </div>
-                </div>
-                <!--<div>-->
-                <!--{{ctrl.selectedTeam.players}}-->
-                <!--{{ctrl.allTeams}}-->
-                <!--{{ctrl.selectedTeam.playersCount}}-->
-                <!--</div>-->
-                <div class="form-group">
-                    <div class="col-lg-10 col-lg-offset-2">
-                        <button type="reset" class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-primary" ng-click="ctrl.addPlayer()">Add player</button>
-                        <button type="submit" class="btn btn-primary" ng-click="ctrl.removePlayer()">Remove player
+<div>
+    <div ng-if="ctrl.isCreateNewTeamVisible">
+        <div class="modal in" style="display: block">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="ctrl.onCreateNewTeamCancelClick()">×
                         </button>
-                        <button type="submit" class="btn btn-primary" ng-click="ctrl.deleteTeam()">Delete Team</button>
-                        <button type="submit" class="btn btn-primary" ng-click="ctrl.createTeam()">Create</button>
-                        <button type="submit" class="btn btn-primary" ng-click="ctrl.updateTeam()">Update</button>
+                        <h4 class="modal-title">Create New Team</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <legend>New Team: {{ctrl.newTeam.teamName}} {{ctrl.newTeam.playersCount}}
+                                </legend>
+                                <div class="form-group">
+                                    <label for="teamName" class="col-lg-2 control-label">Team Name:</label>
+
+                                    <div class="col-lg-10">
+                                        <input class="form-control" id="teamName" placeholder="Team Name" type="text"
+                                               ng-model="ctrl.newTeam.teamName">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="playersCount" class="col-lg-2 control-label">Players:</label>
+
+                                    <div class="col-lg-10">
+                                        <select class="form-control" id="playersCount"
+                                                ng-model="ctrl.newTeam.playersCount ">
+                                            <option>5</option>
+                                            <option>6</option>
+                                        </select>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <ul id="playersList" data-as-sortable ui-sortable="{ 'ui-floating': true }"
+                                    data-ng-model="ctrl.newTeam.players">
+                                    <li ng-repeat="player in ctrl.newTeam.players" data-as-sortable-item>
+                                        <div class="form-group input-group"
+                                             ng-class="{'has-warning': $index >5, 'has-error': $index === 0 }">
+                                            <input class="form-control" id="playerNumberInput" placeholder="#"
+                                                   ng-model="ctrl.newTeam.players[$index].playerNumber"
+                                                   type="number" min="0" max="99">
+                                            <input class="form-control" id="playerNameInput"
+                                                   placeholder="Player {{$index + 1}}" type="text"
+                                                   ng-model="ctrl.newTeam.players[$index].playerName">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" data-as-sortable-item-handle>
+                                &#8593;&#8595;</button>
+                        </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!--<div class="form-group">-->
+                                    <!--<div class=" ">-->
+                                        <!--&lt;!&ndash;<button type="reset" class="btn btn-default btn-xs">Cancel</button>&ndash;&gt;-->
+                                        <!--<button type="submit" class="btn btn-primary btn-xs"-->
+                                                <!--ng-click="ctrl.addPlayer()">Add player-->
+                                        <!--</button>-->
+                                        <!--<button type="submit" class="btn btn-primary btn-xs"-->
+                                                <!--ng-click="ctrl.removePlayer()">Remove player-->
+                                        <!--</button>-->
+
+                                    <!--</div>-->
+                                <!--</div>-->
+
+
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"
+                                ng-click="ctrl.onCreateNewTeamCancelClick()">Close
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.createNewTeam()">Create</button>
                     </div>
                 </div>
-
-            </fieldset>
-        </form>
+            </div>
+        </div>
     </div>
 </div>
