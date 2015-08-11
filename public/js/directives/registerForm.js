@@ -6,7 +6,7 @@ app.directive('registerForm', function(){
     return{
         restrict: 'E',
         templateUrl: '../../templates/register-form.html',
-        //controller: 'UserController as userCtrl',
+        controller: 'UserController as userCtrl',
         replace: true
     }
 });

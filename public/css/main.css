@@ -40,6 +40,10 @@
     line-height: 6rem;
 }
 
+.goalKeeper {
+    background-color: #d43f3a;
+}
+
 .draggableArea {
     position: absolute;
     top: 1%;

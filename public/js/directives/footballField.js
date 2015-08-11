@@ -7,7 +7,7 @@ app.directive('footballField',function(){
         restrict: 'E',
         templateUrl: '../../templates/football-field.html',
         replace: true,
-        //compile: function (scope, element, attr) {
+        //link: function (scope, element, attr) {
         //    $('.draggableArea').width($('.imgField').width() - $('.player').width());
         //    $('.draggableArea').css({left: $('.imgField').position().left});
         //    $(window).on('resize', function () {

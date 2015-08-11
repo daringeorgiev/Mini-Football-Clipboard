@@ -4,7 +4,7 @@
             <img class="imgField" src="imgs/field.svg"/>
 
             <div class="draggableArea" >
-                <div ng-repeat="player in ctrl.selectedTeam.players | limitTo: 6" class="player" my-draggable>
+                <div ng-repeat="player in ctrl.selectedTeam.players | limitTo: 6" class="player" ng-class="{'goalKeeper' : $index === 0}" my-draggable>
                     {{player.playerNumber}}
                 </div>
             </div>

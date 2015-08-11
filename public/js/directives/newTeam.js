@@ -6,7 +6,6 @@ app.directive('newTeam',function(){
     return{
         restrict: 'E',
         templateUrl: '../../templates/new-team.html',
-        //controller: 'MainController as ctrl',
         replace: true
     }
 });
