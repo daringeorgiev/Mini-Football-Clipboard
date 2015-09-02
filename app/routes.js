@@ -3,6 +3,7 @@
  */
 'use strict';
 var Team = require('./models/team');
+var path = require("path");
 
 module.exports = function (app) {
     app.get('/api/all-teams', function (req, res) {
@@ -75,8 +76,8 @@ module.exports = function (app) {
     });
 
     app.get('/angular-notify.html', function (req, res) {
-        console.log(__dirname + '/../public/libs/angular-notify/angular-notify.html');
-        res.sendFile(__dirname + '/../public/libs/angular-notify/angular-notify.html');
+        console.log(path.join(__dirname, '../public/libs/angular-notify/angular-notify.html'));
+        res.sendFile(path.join(__dirname, '../public/libs/angular-notify/angular-notify.html'));
     });
 
     app.get('/', function (req, res) {
