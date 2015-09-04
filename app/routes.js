@@ -41,7 +41,7 @@ module.exports = function (app) {
             });
         } else {
             res.status(501)
-                .send('You can not save default team')
+                .send('You can not save Default team')
         }
     });
 

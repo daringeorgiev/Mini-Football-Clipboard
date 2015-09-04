@@ -38,17 +38,22 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
 
     self.addPlayer = function (team) {
         var count = team.players.length;
-        team.players.push({
+        self.selectedTeam.players.push({
             playerName: 'Player' + (count + 1),
             playerNumber: count + 1
         });
-        team.playersCount++;
+        self.selectedTeam.playersCount++;
     };
 
     self.removePlayer = function (team) {
-        team.players.splice(team.players.length - 1, 1);
-        team.playersCount--;
+        self.selectedTeam.players.splice(team.players.length - 1, 1);
+        self.selectedTeam.playersCount--;
     };
+
+    self.removePlayerByIndex = function (index){
+        self.selectedTeam.players.splice(index, 1);
+        self.selectedTeam.playersCount--;
+    },
 
     self.deleteTeam = function () {
         teamService.deleteTeam(self.selectedTeam._id)
