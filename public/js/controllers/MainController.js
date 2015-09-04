@@ -4,6 +4,9 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
     self.isCreateNewTeamVisible = false;
     self.isEditTeamVisible = false;
     self.isSaveAsTeamVisible = false;
+    //Edit parameters
+    self.editTeamName = "";
+    self.editPlayersCount = "";
 
     self.getAllTeams = function () {
         teamService.getAllTeams()
@@ -23,10 +26,12 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
             .success(function (data) {
                 self.selectedTeam = data;
                 self.isCreateNewTeamVisible = false;
-                self.isEditTeamVisible = false;
+                self.isSaveAsTeamVisible = false;
                 self.allTeams.push(data);
+                notify({message: 'Team: ' + data.teamName + '\n created successful'});
             })
             .error(function (data) {
+                notify({message: 'Error: ' + data});
                 console.log("Error: " + data)
             });
     };
@@ -53,8 +58,10 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
                 if (self.allTeams) {
                     self.selectedTeam = self.allTeams[0];
                 }
+                notify({message: 'Team deleted successful'});
             })
             .error(function (data) {
+                notify({message: 'Error: ' + data});
                 console.log('Error: ' + data);
             });
     };
@@ -67,6 +74,7 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
                 self.isEditTeamVisible = false;
             })
             .error(function (data) {
+                notify({message: 'Error: ' + data});
                 console.log('Error: ' + data);
             });
     };
@@ -85,31 +93,50 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
     //Edit Team
     self.onEditTeamClick = function () {
         self.isEditTeamVisible = true;
+        self.editTeamName = self.selectedTeam.teamName;
+        self.editPlayersCount = self.selectedTeam.playersCount;
+    };
+
+    self.onEditTeamUpdateClick = function () {
+        self.selectedTeam.teamName = self.editTeamName;
+        self.selectedTeam.playersCount = self.editPlayersCount;
+        self.updateTeam();
     };
 
     //Save As Tea,
     self.onSaveAsTeamClick = function () {
         self.isSaveAsTeamVisible = true;
+        self.editTeamName = self.selectedTeam.teamName;
+        self.editPlayersCount = self.selectedTeam.playersCount;
+    };
+
+    self.onSaveAsTeamSaveClick = function () {
+        self.newTeam = JSON.parse(JSON.stringify(self.allTeams[0]));
+        self.newTeam.teamName = self.editTeamName;
+        self.newTeam.playersCount = self.editPlayersCount;
+        self.createNewTeam();
     };
 
     self.onEditTeamCancelClick = function () {
+        self.editTeamName = "";
+        self.editPlayersCount = "";
         self.isEditTeamVisible = false;
         self.isSaveAsTeamVisible = false;
     };
 
-    $scope.demoMessageTemplate = function(){
-
-        var messageTemplate = '<div class="alert alert-dismissible alert-danger"><button type="button" class="close" data-dismiss="alert">×</button><strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.</div>';
-
-        notify({
-            messageTemplate: messageTemplate,
-            classes: 'alert-danger',
-            scope:$scope,
-            //\templateUrl: $scope.template,
-            position: 'left'
-        });
-
-    };
+    //$scope.demoMessageTemplate = function(){
+    //
+    //    var messageTemplate = '<div class="alert alert-dismissible alert-danger"><button type="button" class="close" data-dismiss="alert">×</button><strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.</div>';
+    //
+    //    notify({
+    //        messageTemplate: messageTemplate,
+    //        classes: 'alert-danger',
+    //        scope:$scope,
+    //        //\templateUrl: $scope.template,
+    //        position: 'left'
+    //    });
+    //
+    //};
     ////Hack for resizing
     //self.setDragableAreaWidth = function () {
     //    $('.draggableArea').width($('.imgField').width() - $('.player').width());
