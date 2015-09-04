@@ -17,17 +17,28 @@ module.exports = function (app) {
 
     app.post('/api/team', function (req, res) {
         if (req.body.teamName != "Default team") {
-            Team.create({
-                teamName: req.body.teamName,
-                playersCount: req.body.playersCount,
-                players: req.body.players
-            }, function (err, team) {
+            Team.find({teamName: req.body.teamName}, function(err, data){
                 if (err) {
                     res.send(err);
                     throw err;
                 }
-                res.send(team);
-            })
+                if (data.length) {
+                    res.status(409)
+                        .send('The team already exist. You must change the name.')
+                } else {
+                    Team.create({
+                        teamName: req.body.teamName,
+                        playersCount: req.body.playersCount,
+                        players: req.body.players
+                    }, function (err, team) {
+                        if (err) {
+                            res.send(err);
+                            throw err;
+                        }
+                        res.send(team);
+                    })
+                }
+            });
         } else {
             res.status(501)
                 .send('You can not save default team')

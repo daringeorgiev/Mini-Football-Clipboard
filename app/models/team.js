@@ -6,7 +6,11 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 var teamSchema = Schema({
-    teamName: String,
+    teamName: {
+        type: 'String',
+        unique: true,
+        index: true
+    },
     playersCount: Number,
     players: Array
 });
