@@ -28,6 +28,7 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
                 self.isCreateNewTeamVisible = false;
                 self.isSaveAsTeamVisible = false;
                 self.allTeams.push(data);
+                self.changeTeamColors();
                 notify({message: 'Team: ' + data.teamName + '\n created successful'});
             })
             .error(function (data) {
@@ -76,6 +77,7 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
             .success(function (data) {
                 //self.selectedTeam = data;
                 notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'noty', position: 'center'});
+                self.changeTeamColors();
                 self.isEditTeamVisible = false;
             })
             .error(function (data) {
@@ -128,6 +130,20 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
         self.isEditTeamVisible = false;
         self.isSaveAsTeamVisible = false;
     };
+
+    self.changeTeamColors = function () {
+        jQuery('.player').css({
+            'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.mainColor : 'blue',
+            'color' : self.selectedTeam.colors? self.selectedTeam.colors.secondColor : 'yellow'
+        });
+
+        jQuery('.goalKeeper').css({
+            'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.gkMainColor : 'red',
+            'color' : self.selectedTeam.colors ? self.selectedTeam.colors.gkSecondColor : 'white'
+        })
+    };
+
+
 
     //$scope.demoMessageTemplate = function(){
     //
