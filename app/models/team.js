@@ -12,7 +12,13 @@ var teamSchema = Schema({
         index: true
     },
     playersCount: Number,
-    players: Array
+    players: Array,
+    colors: {
+        mainColor: String,
+        secondColor: String,
+        gkMainColor: String,
+        gkSecondColor: String
+    }
 });
 
 module.exports = mongoose.model('Team', teamSchema);
