@@ -44,7 +44,7 @@
 .draggableArea {
     position: absolute;
     top: 1%;
-    height: calc(100% - 7rem);
+    height: calc(98% - 7rem);
     width: calc(100% - 7rem);
 }
 

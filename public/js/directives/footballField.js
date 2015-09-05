@@ -7,13 +7,15 @@ app.directive('footballField',function(){
         restrict: 'E',
         templateUrl: '../../templates/football-field.html',
         replace: true,
-        //link: function (scope, element, attr) {
-        //    $('.draggableArea').width($('.imgField').width() - $('.player').width());
-        //    $('.draggableArea').css({left: $('.imgField').position().left});
-        //    $(window).on('resize', function () {
-        //        $('.draggableArea').width($('.imgField').width() - $('.player').width());
-        //        $('.draggableArea').css({left: $('.imgField').position().left});
-        //    });
-        //}
+        link: function (scope, element, attr) {
+            setTimeout(function(){
+                $('.draggableArea').width($('.imgField').width() - $('.player').width());
+                $('.draggableArea').css({left: $('.imgField').position().left});
+                $(window).on('resize', function () {
+                    $('.draggableArea').width($('.imgField').width() - $('.player').width());
+                    $('.draggableArea').css({left: $('.imgField').position().left});
+                });
+            },100)
+        }
     }
 });
