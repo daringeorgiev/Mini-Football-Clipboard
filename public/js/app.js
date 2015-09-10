@@ -1,10 +1,14 @@
 'use strict';
 var app = angular.module('app', ['cgNotify', 'ui.sortable', 'ngRoute'])
 
-.config(['$routeProvider',
-    function($routeProvider) {
+.config(['$routeProvider', '$locationProvider',
+    function($routeProvider, $locationProvider) {
         $routeProvider.
-            when('/team', {
+            when('/', {
                 reloadOnSearch:false
             });
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
     }]);
