@@ -1,7 +1,8 @@
 'use strict';
-app.controller('MainController', ['$scope', 'teamService', 'notify', function ($scope, teamService, notify) {
+app.controller('MainController', ['$scope', '$route','$routeParams', '$location', 'teamService', 'notify', function ($scope, $route, $routeParams, $location, teamService, notify) {
     var self = this;
-    var id;
+    var id = $routeParams.id ? $routeParams.id : "";
+
     self.isCreateNewTeamVisible = false;
     self.isEditTeamVisible = false;
     self.isSaveAsTeamVisible = false;
@@ -80,6 +81,11 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
                 notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'noty', position: 'center'});
                 self.changeTeamColors();
                 self.isEditTeamVisible = false;
+                $location.search('id', self.selectedTeam._id);
+
+                //console.log('rp' + JSON.stringify($routeParams));
+                //console.log('r' + JSON.stringify($route));
+                //console.log('id -> ' + $route.current.params.id);
             })
             .error(function (data) {
                 notify({message: 'Error: ' + data});

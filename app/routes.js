@@ -82,7 +82,7 @@ module.exports = function (app) {
                 team.teamName = req.body.teamName;
                 team.playersCount = req.body.playersCount;
                 team.players = req.body.players;
-                team.colors = req.body.colors
+                team.colors = req.body.colors;
 
                 team.save(function (err, team) {
                     if (err) {
