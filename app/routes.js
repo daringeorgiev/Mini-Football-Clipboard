@@ -15,6 +15,16 @@ module.exports = function (app) {
         });
     });
 
+    app.get('/api/team', function (req, res) {
+        Team.find({_id: req.query.id}, function (err, team) {
+            if (err) {
+                res.status(404)
+                    .json(err.message);
+            }
+            res.json(team);
+        });
+    });
+
     app.post('/api/team', function (req, res) {
         if (req.body.teamName != "Default team") {
             Team.find({teamName: req.body.teamName}, function(err, data){

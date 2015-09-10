@@ -1,5 +1,6 @@
 .jumbotron {
     padding: 0;
+    margin-bottom: 0;
 }
 
 .field {
@@ -35,6 +36,9 @@
     font-size: 3rem;
     text-align: center;
     line-height: 6rem;
+    /*border-style: solid;*/
+    /*border-color: #d43f3a;*/
+    /*border: 5px;*/
 }
 
 .goalKeeper {

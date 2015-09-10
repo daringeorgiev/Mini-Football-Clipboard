@@ -6,7 +6,7 @@
         <div class="panel-body">
             <label for="selectedTeam">Select Team:</label>
             <select class="form-control" id="selectedTeam" ng-model="ctrl.selectedTeam"
-                    ng-options="team.teamName for team in ctrl.allTeams">
+                    ng-options="team.teamName for team in ctrl.allTeams" ng-change="ctrl.changeTeamColors()">
             </select>
             <!--{{ctrl.selectedTeam}}-->
             <div class="form-group">

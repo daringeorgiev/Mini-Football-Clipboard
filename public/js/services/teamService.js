@@ -7,6 +7,10 @@ app.factory('teamService', ['$http', '$q', function ($http, $q) {
         return $http.get('/api/all-teams')
     }
 
+    function getTeamById(id) {
+        return $http.get('/api/team', id)
+    }
+
     function createTeam(team) {
         return $http.post('/api/team', team)
     }
@@ -21,6 +25,7 @@ app.factory('teamService', ['$http', '$q', function ($http, $q) {
 
     return {
         getAllTeams: getAllTeams,
+        getTeamById: getTeamById,
         createTeam: createTeam,
         deleteTeam: deleteTeam,
         updateTeam: updateTeam

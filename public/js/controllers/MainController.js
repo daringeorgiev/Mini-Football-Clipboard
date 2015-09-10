@@ -1,6 +1,7 @@
 'use strict';
 app.controller('MainController', ['$scope', 'teamService', 'notify', function ($scope, teamService, notify) {
     var self = this;
+    var id;
     self.isCreateNewTeamVisible = false;
     self.isEditTeamVisible = false;
     self.isSaveAsTeamVisible = false;
@@ -54,7 +55,7 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
     self.removePlayerByIndex = function (index){
         self.selectedTeam.players.splice(index, 1);
         self.selectedTeam.playersCount--;
-    },
+    };
 
     self.deleteTeam = function () {
         teamService.deleteTeam(self.selectedTeam._id)
@@ -84,6 +85,16 @@ app.controller('MainController', ['$scope', 'teamService', 'notify', function ($
                 notify({message: 'Error: ' + data});
                 console.log('Error: ' + data);
             });
+    };
+
+    self.getTeamById = function () {
+        teamService.getTeamById(id)
+            .success(function (data) {
+                console.log("get by id " + data);
+            })
+            .error(function (data) {
+                console.log("get by id " + data);
+            })
     };
 
     //Create New Team
