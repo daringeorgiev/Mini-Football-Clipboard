@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('app', ['cgNotify', 'ui.sortable', 'ngRoute'])
+var app = angular.module('app', ['cgNotify', 'ui.sortable', 'ngRoute', 'ngMaterial'])
 
 .config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
