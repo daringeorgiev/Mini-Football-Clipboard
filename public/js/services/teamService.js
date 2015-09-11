@@ -8,7 +8,7 @@ app.factory('teamService', ['$http', '$q', function ($http, $q) {
     }
 
     function getTeamById(id) {
-        return $http.get('/api/team', id)
+        return $http.get('/api/team' + '?id=' + id)
     }
 
     function createTeam(team) {

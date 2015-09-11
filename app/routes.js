@@ -16,7 +16,7 @@ module.exports = function (app) {
     });
 
     app.get('/api/team', function (req, res) {
-        Team.find({_id: req.query.id}, function (err, team) {
+        Team.findOne({_id: req.query.id}, function (err, team) {
             if (err) {
                 res.status(404)
                     .json(err.message);

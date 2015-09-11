@@ -1,7 +1,6 @@
 'use strict';
 app.controller('MainController', ['$scope', '$route','$routeParams', '$location', 'teamService', 'notify', function ($scope, $route, $routeParams, $location, teamService, notify) {
     var self = this;
-    var id = $routeParams.id ? $routeParams.id : "";
 
     self.isCreateNewTeamVisible = false;
     self.isEditTeamVisible = false;
@@ -82,10 +81,6 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
                 self.changeTeamColors();
                 self.isEditTeamVisible = false;
                 $location.search('id', self.selectedTeam._id);
-
-                //console.log('rp' + JSON.stringify($routeParams));
-                //console.log('r' + JSON.stringify($route));
-                //console.log('id -> ' + $route.current.params.id);
             })
             .error(function (data) {
                 notify({message: 'Error: ' + data});
@@ -93,15 +88,25 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
             });
     };
 
-    self.getTeamById = function () {
+    self.getTeamById = function (id) {
         teamService.getTeamById(id)
             .success(function (data) {
-                console.log("get by id " + data);
+                self.selectedTeam = data;
+                notify({message: 'Team: ' + data.teamName + '\n loaded successful', classes: 'noty', position: 'center'});
+                self.changeTeamColors();
             })
             .error(function (data) {
-                console.log("get by id " + data);
+                notify({message: 'Error: ' + data});
+                console.log('Error: ' + data);
             })
     };
+
+    self.getUrlParams = function (){
+        var id = $location.search().id ? $location.search().id : "";
+        if (id) {
+            self.getTeamById(id);
+        }
+    }();
 
     //Create New Team
     self.onCreateNewTeamClick = function () {
