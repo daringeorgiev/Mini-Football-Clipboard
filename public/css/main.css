@@ -25,20 +25,30 @@
     height: 100%;
 }
 
-.player {
-    height: 7rem;
-    width: 7rem;
-    position: absolute;
-    border-radius: 50%;
-    background-color: #0073ea;
-    cursor: move;
-    color: #f5f5f5;
-    font-size: 3rem;
-    text-align: center;
-    line-height: 6rem;
+/*.player {*/
+    /*height: 7rem;*/
+    /*width: 7rem;*/
+    /*position: absolute;*/
+    /*border-radius: 50%;*/
+    /*background-color: #0073ea;*/
+    /*cursor: move;*/
+    /*color: #f5f5f5;*/
+    /*font-size: 3rem;*/
+    /*text-align: center;*/
+    /*line-height: 6rem;*/
     /*border-style: solid;*/
     /*border-color: #d43f3a;*/
     /*border: 5px;*/
+/*}*/
+
+.playerWrapper {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+
+.player {
+    font-size: x-large;
 }
 
 .goalKeeper {

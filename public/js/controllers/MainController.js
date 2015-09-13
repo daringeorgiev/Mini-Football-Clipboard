@@ -101,12 +101,17 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
             })
     };
 
-    self.getUrlParams = function (){
+    self.getUrlParams = function () {
         var id = $location.search().id ? $location.search().id : "";
         if (id) {
             self.getTeamById(id);
         }
     }();
+
+    self.setSelectedTeam = function (team) {
+        self.selectedTeam = team;
+        self.changeTeamColors();
+    };
 
     //Create New Team
     self.onCreateNewTeamClick = function () {

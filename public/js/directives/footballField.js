@@ -9,10 +9,10 @@ app.directive('footballField',function(){
         replace: true,
         link: function (scope, element, attr) {
             setTimeout(function(){
-                $('.draggableArea').width($('.imgField').width() - $('.player').width());
+                $('.draggableArea').width($('.imgField').width() - $('.playerWrapper').width());
                 $('.draggableArea').css({left: $('.imgField').position().left});
                 $(window).on('resize', function () {
-                    $('.draggableArea').width($('.imgField').width() - $('.player').width());
+                    $('.draggableArea').width($('.imgField').width() - $('.playerWrapper').width());
                     $('.draggableArea').css({left: $('.imgField').position().left});
                 });
             },100)

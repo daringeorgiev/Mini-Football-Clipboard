@@ -1,0 +1,68 @@
+<div>
+    <div ng-if="ctrl.isEditTeamVisible || ctrl.isSaveAsTeamVisible">
+        <div class="modal in" style="display: block">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="ctrl.onEditTeamCancelClick()">×
+                        </button>
+                        <h4 class="modal-title" ng-if="ctrl.isEditTeamVisible">Edit Team</h4>
+                        <h4 class="modal-title" ng-if="ctrl.isSaveAsTeamVisible">Save As Team</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="teamName" class="col-lg-2 control-label">Team Name:</label>
+
+                                    <div class="col-lg-10">
+                                        <input class="form-control" id="teamName" placeholder="Team Name" type="text"
+                                               ng-model="ctrl.editTeamName">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="playersCount" class="col-lg-2 control-label">Players:</label>
+
+                                    <div class="col-lg-10">
+                                        <select class="form-control" id="playersCount"
+                                                ng-model="ctrl.editPlayersCount ">
+                                            <option>5</option>
+                                            <option>6</option>
+                                        </select>
+                                        <br>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="playersCount" class="col-lg-2 control-label">Team Colors:</label>
+                                    <div class="col-lg-10">
+                                        <label for="mainColor">Main color:</label>
+                                        <input type="color" id = "mainColor" value="#ff0000" ng-model="ctrl.selectedTeam.colors.mainColor">
+                                        <label for="secondColor">Second color:</label>
+                                        <input type="color" id = "secondColor" value="#ff0000" ng-model="ctrl.selectedTeam.colors.secondColor">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="playersCount" class="col-lg-2 control-label">Goalkeeper Colors:</label>
+                                    <div class="col-lg-10">
+                                        <label for="gkMainColor">Main color:</label>
+                                        <input type="color" id = "gkMainColor" value="#ff0000" ng-model="ctrl.selectedTeam.colors.gkMainColor">
+                                        <label for="gkSecondColor">Second color:</label>
+                                        <input type="color" id = "gkSecondColor" value="#ff0000" ng-model="ctrl.selectedTeam.colors.gkSecondColor">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-if="ctrl.isEditTeamVisible" ng-click="ctrl.onEditTeamUpdateClick()">Update</button>
+                        <button type="button" class="btn btn-primary" ng-if="ctrl.isSaveAsTeamVisible" ng-click="ctrl.onSaveAsTeamSaveClick()">Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"
+                                ng-click="ctrl.onEditTeamCancelClick()">Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

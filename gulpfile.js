@@ -1,9 +1,10 @@
 /**
  * Created by darin on 12/9/2015.
  */
+'use strict';
+
 var gulp = require('gulp');
 var exec = require('child_process').exec;
-
 
 function runCommand(command) {
     return function (cb) {
