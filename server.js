@@ -3,10 +3,11 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
+var jwt = require('jsonwebtoken');
 var database = require('./config/database');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var configPort = 22222;
+var configPort = 8080;
 
 // configuration =================
 mongoose.connect(database.url);

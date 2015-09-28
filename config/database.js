@@ -3,7 +3,8 @@
  */
 'use strict';
 module.exports = {
-    url: 'mongodb://localhost/da4'
+    'secret': 'blablabla',
+    'url': 'mongodb://localhost/da4'
 };
 
 var Team = require('../app/models/team');

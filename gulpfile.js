@@ -25,3 +25,4 @@ gulp.task('start-mongo', runCommand('mongod --dbpath C:/Program Files/MongoDB/Se
 gulp.task('stop-mongo', runCommand('mongo --eval "use admin; db.shutdownServer();"'));
 gulp.task('start-app', runCommand('node server.js'));
 gulp.task('nodemon', runCommand('nodemon server.js'));
+gulp.task('node-debug', runCommand('node-debug server.js'));

@@ -3,9 +3,36 @@
  */
 'use strict';
 var Team = require('./models/team');
+var User = require('./models/user');
 var path = require("path");
 
 module.exports = function (app) {
+    //Users
+    app.get('/api/users', function (req, res) {
+        User.find({}, function (err, users) {
+            if (err) {
+                throw err;
+            }
+            res.json(users);
+        });
+    });
+
+    app.post('/api/user', function (req, res) {
+        var darin = new User({
+            name: 'darin',
+            password: 'password',
+            admin: true
+        });
+
+        darin.save(function(err) {
+            if (err) throw err;
+
+            console.log('User saved successfully');
+            res.json({ success: true });
+        });
+    });
+
+    //Teams
     app.get('/api/all-teams', function (req, res) {
         Team.find({}, function (err, teams) {
             if (err) {
