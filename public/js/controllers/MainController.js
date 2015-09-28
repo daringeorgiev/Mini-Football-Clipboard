@@ -6,8 +6,9 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     self.isEditTeamVisible = false;
     self.isSaveAsTeamVisible = false;
     //Edit parameters
-    self.editTeamName = "";
-    self.editPlayersCount = "";
+    self.searchText = '';
+    self.editTeamName = '';
+    self.editPlayersCount = '';
 
     self.getAllTeams = function () {
         teamService.getAllTeams()
@@ -110,8 +111,12 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
 
     self.setSelectedTeam = function (team) {
         self.selectedTeam = team;
-        self.changeTeamColors();
+        //self.changeTeamColors();
     };
+
+    self.searchTextChange = function (text) {
+        console.log(text);
+    },
 
     //Create New Team
     self.onCreateNewTeamClick = function () {

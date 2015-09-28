@@ -1,8 +1,8 @@
 'use strict';
 var app = angular.module('app', ['cgNotify', 'ui.sortable', 'ngRoute', 'ngMaterial'])
 
-.config(['$routeProvider', '$locationProvider',
-    function($routeProvider, $locationProvider) {
+.config(['$routeProvider', '$locationProvider', '$mdThemingProvider',
+    function($routeProvider, $locationProvider, $mdThemingProvider) {
         $routeProvider.
             when('/', {
                 reloadOnSearch:false
@@ -11,4 +11,8 @@ var app = angular.module('app', ['cgNotify', 'ui.sortable', 'ngRoute', 'ngMateri
             enabled: true,
             requireBase: false
         });
+
+        $mdThemingProvider.theme('default')
+            .primaryPalette('green')
+            .accentPalette('blue');
     }]);
