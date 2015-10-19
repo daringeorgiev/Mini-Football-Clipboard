@@ -1,5 +1,5 @@
 {
-  "name": "Mini-Football-Clipboard",
+  "name": "mini_football_clipboard",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -17,6 +17,7 @@
     "morgan": "^1.5.3"
   },
   "dependencies": {
+    "ejs": "^2.3.4",
     "jsonwebtoken": "^5.0.5"
   }
 }

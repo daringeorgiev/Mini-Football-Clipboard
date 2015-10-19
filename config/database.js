@@ -3,7 +3,6 @@
  */
 'use strict';
 module.exports = {
-    'secret': 'blablabla',
     'url': 'mongodb://localhost/da4'
 };
 

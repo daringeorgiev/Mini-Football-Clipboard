@@ -4,10 +4,49 @@
 'use strict';
 var Team = require('./models/team');
 var User = require('./models/user');
-var path = require("path");
+var path = require('path');
+var jwt = require('jsonwebtoken');
+var authentication = require('../config/authentication');
 
 module.exports = function (app) {
     //Users
+    app.post('/api/authenticate', function(req, res) {
+        // find the user
+        User.findOne({
+            name: req.body.name
+        }, function(err, user) {
+
+            if (err) {
+                res.json({ success: false, message: err });
+                throw err;
+            }
+
+            if (!user) {
+                res.json({ success: false, message: 'Authentication failed. User not found.' });
+            } else if (user) {
+
+                // check if password matches
+                if (user.password !== req.body.password) {
+                    res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+                } else {
+
+                    // if user is found and password is right
+                    // create a token
+                    var token = jwt.sign(user, authentication.secretPhrase, {
+                        expiresInMinutes: '1440' // expires in 24 hours
+                    });
+
+                    // return the information including token as JSON
+                    res.json({
+                        success: true,
+                        message: 'Enjoy your token!',
+                        token: token
+                    });
+                }
+            }
+        });
+    });
+
     app.get('/api/users', function (req, res) {
         User.find({}, function (err, users) {
             if (err) {
@@ -18,18 +57,37 @@ module.exports = function (app) {
     });
 
     app.post('/api/user', function (req, res) {
-        var darin = new User({
-            name: 'darin',
-            password: 'password',
-            admin: true
-        });
+        User.find({name: req.body.name}, function(err, data){
+            if (err) {
+                res.send(err);
+                throw err;
+            }
+            if (data.length) {
+                res.status(409)
+                    .send('The user already exist. You must change the user name.')
+            } else {
+                var user = new User({
+                    name: req.body.name,
+                    password: req.body.password,
+                    admin: false
+                });
 
-        darin.save(function(err) {
-            if (err) throw err;
+                user.save(function(err) {
+                    if (err) throw err;
 
-            console.log('User saved successfully');
-            res.json({ success: true });
-        });
+                    // create a token
+                    var token = jwt.sign(user, authentication.secretPhrase, {
+                        expiresInMinutes: '1440' // expires in 24 hours
+                    });
+
+                    res.json({
+                        success: true,
+                        message: 'User created successfully',
+                        token: token
+                    });
+                });
+            }
+        })
     });
 
     //Teams
