@@ -9,8 +9,8 @@ var jwt = require('jsonwebtoken');
 var authentication = require('../config/authentication');
 
 module.exports = function (app) {
-    //Users
-    app.post('/api/authenticate', function(req, res) {
+    //Users Login
+    app.post('/api/login', function(req, res) {
         // find the user
         User.findOne({
             name: req.body.name
@@ -22,12 +22,14 @@ module.exports = function (app) {
             }
 
             if (!user) {
-                res.json({ success: false, message: 'Authentication failed. User not found.' });
+                res.status(401)
+                    .json({ success: false, message: 'Authentication failed. User not found.' });
             } else if (user) {
 
                 // check if password matches
                 if (user.password !== req.body.password) {
-                    res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+                    res.status(401)
+                        .json({ success: false, message: 'Authentication failed. Wrong password.' });
                 } else {
 
                     // if user is found and password is right
@@ -37,16 +39,18 @@ module.exports = function (app) {
                     });
 
                     // return the information including token as JSON
-                    res.json({
-                        success: true,
-                        message: 'Enjoy your token!',
-                        token: token
-                    });
+                    res.status(200)
+                        .json({
+                            success: true,
+                            message: 'Enjoy your token!',
+                            token: token
+                        });
                 }
             }
         });
     });
 
+    //User get all
     app.get('/api/users', function (req, res) {
         User.find({}, function (err, users) {
             if (err) {
@@ -56,7 +60,8 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/api/user', function (req, res) {
+    //User Register
+    app.post('/api/register', function (req, res) {
         User.find({name: req.body.name}, function(err, data){
             if (err) {
                 res.send(err);
@@ -80,11 +85,12 @@ module.exports = function (app) {
                         expiresInMinutes: '1440' // expires in 24 hours
                     });
 
-                    res.json({
-                        success: true,
-                        message: 'User created successfully',
-                        token: token
-                    });
+                    res.status(200)
+                        .json({
+                            success: true,
+                            message: 'User created successfully',
+                            token: token
+                        });
                 });
             }
         })

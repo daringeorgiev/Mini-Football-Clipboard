@@ -2,12 +2,17 @@
  * Created by darin on 25/7/2015.
  */
 'use strict';
-app.factory('userService', ['$http', function($http){
-    function loginUser(){
-        return "Go"
-    }
-    return {
-        loginUser: loginUser
+app.factory('userService', ['$http', function ($http) {
+    function loginUser(userName, password) {
+        return $http.post('api/login', {'name':userName, 'password' : password});
     }
 
+    function registerUser(userName, password) {
+        return $http.post('api/register', {'name':userName, 'password' : password});
+    }
+
+    return {
+        loginUser: loginUser,
+        registerUser: registerUser
+    }
 }]);

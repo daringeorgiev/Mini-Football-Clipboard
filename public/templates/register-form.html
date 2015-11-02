@@ -15,7 +15,7 @@
                                 <div class="form-group">
                                     <label for="username" class="col-lg-2 control-label">Username</label>
                                     <div class="col-lg-10">
-                                        <input class="form-control" id="username" placeholder="Username" type="text" ng-model="userCtrl.user.username">
+                                        <input class="form-control" id="username" placeholder="Username" type="text" ng-model="userCtrl.user.userName">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="userCtrl.onCloseRegisterClick()">Close</button>
-                        <button type="button" class="btn btn-primary">Register</button>
+                        <button type="button" class="btn btn-primary" ng-click="userCtrl.sendRegisterForm()">Register</button>
                     </div>
                 </div>
             </div>
