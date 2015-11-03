@@ -4,11 +4,11 @@
 'use strict';
 app.factory('userService', ['$http', function ($http) {
     function loginUser(userName, password) {
-        return $http.post('api/login', {'name':userName, 'password' : password});
+        return $http.post('api/login', {'name': userName, 'password': password});
     }
 
     function registerUser(userName, password) {
-        return $http.post('api/register', {'name':userName, 'password' : password});
+        return $http.post('api/register', {'name': userName, 'password': password});
     }
 
     return {
