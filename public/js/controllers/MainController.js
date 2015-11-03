@@ -13,7 +13,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     self.getAllTeams = function () {
         teamService.getAllTeams()
             .success(function (data) {
-                console.log("Contr: " + data);
+                //console.log("Contr: " + data);
                 //notify({message: 'Update successful', classes: 'alert-danger'});
                 self.allTeams = data;
                 self.selectedTeam = self.allTeams[0];

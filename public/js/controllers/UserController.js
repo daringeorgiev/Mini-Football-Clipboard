@@ -16,7 +16,7 @@ app.controller('UserController', ['$scope', 'userService', 'notify', function ($
         if (self.user.userName.length >= minUserNameLength && self.user.password.length >= minPasswordLength) {
             userService.loginUser(self.user.userName, self.user.password)
                 .success(function (data) {
-                    console.log("Token: " + data.token);
+                    //console.log("Token: " + data.token);
                     notify({message: 'Login successful'});
                     self.isLoggedIn = true;
                 })
@@ -36,9 +36,10 @@ app.controller('UserController', ['$scope', 'userService', 'notify', function ($
         if (self.user.userName.length >= minUserNameLength && self.user.password.length >= minPasswordLength) {
             userService.registerUser(self.user.userName, self.user.password)
                 .success(function (data) {
-                    console.log("Token: " + data.token);
+                    //console.log("Token: " + data.token);
                     notify({message: 'Registration successful'});
                     self.isLoggedIn = true;
+                    self.onCloseRegisterClick();
                 })
                 .error(function (data) {
                     notify({message: 'Error: ' + data.message});

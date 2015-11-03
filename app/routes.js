@@ -7,6 +7,7 @@ var User = require('./models/user');
 var path = require('path');
 var jwt = require('jsonwebtoken');
 var authentication = require('../config/authentication');
+var passport = require('passport');
 
 module.exports = function (app) {
     //Users Login
@@ -27,7 +28,7 @@ module.exports = function (app) {
             } else if (user) {
 
                 // check if password matches
-                if (user.password !== req.body.password) {
+                if (!user.validPassword(req.body.password)) {
                     res.status(401)
                         .json({ success: false, message: 'Authentication failed. Wrong password.' });
                 } else {
@@ -71,11 +72,11 @@ module.exports = function (app) {
                 res.status(409)
                     .send('The user already exist. You must change the user name.')
             } else {
-                var user = new User({
-                    name: req.body.name,
-                    password: req.body.password,
-                    admin: false
-                });
+                var user = new User();
+                user.name = req.body.name;
+                user.password = user.generateHash(req.body.password);
+                user.admin = false;
+
 
                 user.save(function(err) {
                     if (err) throw err;
