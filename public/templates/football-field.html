@@ -6,7 +6,10 @@
             <div class="draggableArea">
                 <div ng-repeat="player in ctrl.selectedTeam.players | limitTo: 6" class="playerWrapper" my-draggable>
                     <md-button class="md-fab player" ng-class="{'goalKeeper' : $index === 0}">
-                        {{player.playerNumber + $index}}
+                        {{player.playerNumber}}
+                        <md-tooltip md-direction="top">
+                            {{player.playerName}}
+                        </md-tooltip>
                     </md-button>
                 </div>
             </div>

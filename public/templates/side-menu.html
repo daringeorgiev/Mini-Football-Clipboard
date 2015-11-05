@@ -1,34 +1,67 @@
 <div class="col-lg-4 col-md-12 col-sm-12" ng-init="ctrl.getAllTeams()">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Team</h3>
-        </div>
-        <div class="panel-body">
-            <label for="selectedTeam">Select Team:</label>
-            <select class="form-control" id="selectedTeam" ng-model="ctrl.selectedTeam"
-                    ng-options="team.teamName for team in ctrl.allTeams" ng-change="ctrl.changeTeamColors()">
-            </select>
-            <!--{{ctrl.selectedTeam}}-->
-            <div class="form-group">
-                <div class=" ">
-                    <button type="submit" class="btn btn-warning btn-xs" ng-click="ctrl.updateTeam()">Update</button>
-                    <button type="submit" class="btn btn-success btn-xs" ng-click="ctrl.onEditTeamClick()">Edit</button>
-                    <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.onSaveAsTeamClick()">Save As</button>
-                    <button type="submit" class="btn btn-info btn-xs" ng-click="ctrl.onCreateNewTeamClick()">Create
-                        New
-                    </button>
-                    <button type="submit" class="btn btn-danger btn-xs" ng-click="ctrl.deleteTeam()">Delete Team
-                    </button>
+    <!--<div class="panel panel-primary">-->
+    <!--<div class="panel-heading">-->
+    <!--<h3 class="panel-title">Team</h3>-->
+    <!--</div>-->
+    <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">Team</div>
+    </md-toolbar>
+    <section>
+        <md-whiteframe class="md-whiteframe-z3" layout layout-align="center center">
+            <div class="panel-body">
+                <label for="selectedTeam">Select Team:</label>
+                <!--<md-select class="form-control" id="selectedTeam" ng-model="ctrl.selectedTeam">-->
+                <!--<md-option value = "team" ng-repeat="team in ctrl.allTeams" ng-change="ctrl.changeTeamColors()" >{{team.teamName}}</md-option>-->
+                <!--</md-select>-->
+                <select class="form-control" id="selectedTeam" ng-model="ctrl.selectedTeam"
+                        ng-options="team.teamName for team in ctrl.allTeams" ng-change="ctrl.changeTeamColors()">
+                </select>
+                <!--{{ctrl.selectedTeam}}-->
+                <div class="form-group">
+                    <!--<div class=" ">-->
+                    <!--<button type="submit" class="btn btn-warning btn-xs" ng-click="ctrl.updateTeam()">Update</button>-->
+                    <!--<button type="submit" class="btn btn-success btn-xs" ng-click="ctrl.onEditTeamClick()">Edit</button>-->
+                    <!--<button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.onSaveAsTeamClick()">Save As</button>-->
+                    <!--<button type="submit" class="btn btn-info btn-xs" ng-click="ctrl.onCreateNewTeamClick()">Create-->
+                    <!--New-->
+                    <!--</button>-->
+                    <!--<button type="submit" class="btn btn-danger btn-xs" ng-click="ctrl.deleteTeam()">Delete Team-->
+                    <!--</button>-->
+                    <!--</div>-->
+                    <div>
+                        <md-button class="md-raised " ng-click="ctrl.updateTeam()">
+                            <md-tooltip md-direction="bottom">Update Team</md-tooltip>
+                            Update
+                        </md-button>
+                        <md-button class="md-raised " ng-click="ctrl.onEditTeamClick()">
+                            <md-tooltip md-direction="bottom">Edit Team</md-tooltip>
+                            Edit
+                        </md-button>
+                        <md-button class="md-raised " ng-click="ctrl.onSaveAsTeamClick()">
+                            <md-tooltip md-direction="bottom">Save As</md-tooltip>
+                            Save As
+                        </md-button>
+                        <md-button class="md-raised " ng-click="ctrl.onCreateNewTeamClick()">
+                            <md-tooltip md-direction="bottom">Create New Team</md-tooltip>
+                            Create New
+                        </md-button>
+                        <!--<md-button class="md-raised " ng-click="ctrl.deleteTeam()">-->
+                            <!--<md-tooltip md-direction="bottom">Delete Team</md-tooltip>-->
+                            <!--Delete-->
+                        <!--</md-button>-->
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </div>
-        <md-toolbar md-scroll-shrink>
-            <div class="md-toolbar-tools">Players</div>
-        </md-toolbar>
-        <section>
-            <md-whiteframe class="md-whiteframe-z3" layout layout-align="center center">
-                <players-list></players-list>
-            </md-whiteframe>
-        </section>
+        </md-whiteframe>
+    </section>
+    <!--</div>-->
+    <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">Players</div>
+    </md-toolbar>
+    <section>
+        <md-whiteframe class="md-whiteframe-z3" layout layout-align="center center">
+            <players-list></players-list>
+        </md-whiteframe>
+    </section>
 </div>

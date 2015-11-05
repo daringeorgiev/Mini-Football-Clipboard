@@ -40,12 +40,10 @@
     </ul>
     <div class="form-group">
         <div class=" ">
-            <button type="submit" class="btn btn-primary btn-xs" ng-click="ctrl.addPlayer(ctrl.selectedTeam)">
-                Add player
-            </button>
-            <!--<button type="submit" class="btn btn-primary btn-xs"-->
-                    <!--ng-click="ctrl.removePlayer(ctrl.selectedTeam)">Remove player-->
-            <!--</button>-->
+            <md-button class="md-fab md-mini md-primary" ng-click="ctrl.addPlayer(ctrl.selectedTeam)">
+                +1
+                <md-tooltip md-direction="bottom">Add Player</md-tooltip>
+            </md-button>
         </div>
     </div>
 </div>
