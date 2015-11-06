@@ -7,7 +7,6 @@ var User = require('./models/user');
 var path = require('path');
 var jwt = require('jsonwebtoken');
 var authentication = require('../config/authentication');
-var passport = require('passport');
 
 module.exports = function (app) {
     //Users Login
@@ -107,6 +106,15 @@ module.exports = function (app) {
         });
     });
 
+    app.get('/api/my-teams', isLoggedIn, function (req, res) {
+        Team.find({ownerId: res.req.decoded._id}, function (err, teams) {
+            if (err) {
+                throw err;
+            }
+            res.json(teams);
+        });
+    });
+
     app.get('/api/team', function (req, res) {
         Team.findOne({_id: req.query.id}, function (err, team) {
             if (err) {
@@ -147,7 +155,7 @@ module.exports = function (app) {
         }
     });
 
-    app.delete('/api/teams:id', function (req, res) {
+    app.delete('/api/team:id', function (req, res) {
         Team.remove({
             _id: req.params.id
         }, function (err, team) {
@@ -198,3 +206,35 @@ module.exports = function (app) {
         res.sendFile(__dirname + '/public/index.html');
     });
 };
+
+//
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+    // check header or url parameters or post parameters for token
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+    // decode token
+    if (token) {
+
+        // verifies secret and checks exp
+        jwt.verify(token, authentication.secretPhrase, function (err, decoded) {
+            if (err) {
+                return res.json({success: false, message: 'Failed to authenticate token.'});
+            } else {
+                // if everything is good, save to request for use in other routes
+                req.decoded = decoded;
+                next();
+            }
+        });
+
+    } else {
+
+        // if there is no token
+        // return an error
+        return res.status(403).send({
+            success: false,
+            message: 'No token provided.'
+        });
+
+    }
+}

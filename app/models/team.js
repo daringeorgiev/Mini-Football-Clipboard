@@ -11,6 +11,7 @@ var teamSchema = Schema({
         unique: true,
         index: true
     },
+    ownerId: String,
     playersCount: Number,
     players: Array,
     colors: {

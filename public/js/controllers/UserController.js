@@ -2,7 +2,7 @@
  * Created by darin on 25/7/2015.
  */
 'use strict';
-app.controller('UserController', ['$scope', 'userService', 'notify', function ($scope, userService, notify) {
+app.controller('UserController', ['$scope', '$window', 'userService', 'notify', function ($scope, $window, userService, notify) {
     var self = this;
     var minUserNameLength = 1,
         minPasswordLength = 1;
@@ -19,9 +19,11 @@ app.controller('UserController', ['$scope', 'userService', 'notify', function ($
                     //console.log("Token: " + data.token);
                     notify({message: 'Login successful'});
                     self.isLoggedIn = true;
+                    $window.localStorage .token = data.token;
                 })
                 .error(function (data) {
                     notify({message: 'Error: ' + data.message});
+                    delete $window.localStorage .token;
                 });
         } else {
             notify({message: 'Error: Please check your user name and password'});
@@ -36,8 +38,8 @@ app.controller('UserController', ['$scope', 'userService', 'notify', function ($
         if (self.user.userName.length >= minUserNameLength && self.user.password.length >= minPasswordLength) {
             userService.registerUser(self.user.userName, self.user.password)
                 .success(function (data) {
-                    //console.log("Token: " + data.token);
                     notify({message: 'Registration successful'});
+                    $window.localStorage .token = data.token;
                     self.isLoggedIn = true;
                     self.onCloseRegisterClick();
                 })
@@ -55,6 +57,9 @@ app.controller('UserController', ['$scope', 'userService', 'notify', function ($
 
     self.onLogoutClick = function () {
         self.isLoggedIn = false;
+        delete $window.localStorage .token;
+        self.user.userName = '';
+        self.user.password = '';
         notify({message: 'Logout successful'});
     };
 }]);

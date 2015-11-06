@@ -11,8 +11,13 @@ app.factory('userService', ['$http', function ($http) {
         return $http.post('api/register', {'name': userName, 'password': password});
     }
 
+    function logoutUser(userNama) {
+
+    }
+
     return {
         loginUser: loginUser,
-        registerUser: registerUser
+        registerUser: registerUser,
+        logoutUser: logoutUser
     }
 }]);
