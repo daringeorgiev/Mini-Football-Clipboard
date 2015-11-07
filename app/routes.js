@@ -10,26 +10,26 @@ var authentication = require('../config/authentication');
 
 module.exports = function (app) {
     //Users Login
-    app.post('/api/login', function(req, res) {
+    app.post('/api/login', function (req, res) {
         // find the user
         User.findOne({
             name: req.body.name
-        }, function(err, user) {
+        }, function (err, user) {
 
             if (err) {
-                res.json({ success: false, message: err });
+                res.json({success: false, message: err});
                 throw err;
             }
 
             if (!user) {
                 res.status(401)
-                    .json({ success: false, message: 'Authentication failed. User not found.' });
+                    .json({success: false, message: 'Authentication failed. User not found.'});
             } else if (user) {
 
                 // check if password matches
                 if (!user.validPassword(req.body.password)) {
                     res.status(401)
-                        .json({ success: false, message: 'Authentication failed. Wrong password.' });
+                        .json({success: false, message: 'Authentication failed. Wrong password.'});
                 } else {
 
                     // if user is found and password is right
@@ -62,13 +62,13 @@ module.exports = function (app) {
 
     //User Register
     app.post('/api/register', function (req, res) {
-        User.find({name: req.body.name}, function(err, data){
+        User.find({name: req.body.name}, function (err, data) {
             if (err) {
                 res.send(err);
                 throw err;
             }
             if (data.length) {
-                res.status(409)
+                return res.status(409)
                     .send('The user already exist. You must change the user name.')
             } else {
                 var user = new User();
@@ -77,7 +77,7 @@ module.exports = function (app) {
                 user.admin = false;
 
 
-                user.save(function(err) {
+                user.save(function (err) {
                     if (err) throw err;
 
                     // create a token
@@ -107,12 +107,19 @@ module.exports = function (app) {
     });
 
     app.get('/api/my-teams', isLoggedIn, function (req, res) {
-        Team.find({ownerId: res.req.decoded._id}, function (err, teams) {
-            if (err) {
-                throw err;
-            }
-            res.json(teams);
-        });
+        if (res.req.decoded) {
+            Team.find({ownerId: res.req.decoded._id}, function (err, teams) {
+                if (err) {
+                    throw err;
+                }
+                res.json(teams);
+            });
+        } else {
+            res.status(403).send({
+                success: false,
+                message: 'No token provided.'
+            });
+        }
     });
 
     app.get('/api/team', function (req, res) {
@@ -125,19 +132,21 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/api/team', function (req, res) {
+    app.post('/api/team', isLoggedIn, function (req, res) {
         if (req.body.teamName != "Default team") {
-            Team.find({teamName: req.body.teamName}, function(err, data){
+            Team.find({teamName: req.body.teamName}, function (err, data) {
                 if (err) {
                     res.send(err);
                     throw err;
                 }
                 if (data.length) {
-                    res.status(409)
+                    return res.status(409)
                         .send('The team already exist. You must change the name.')
                 } else {
                     Team.create({
                         teamName: req.body.teamName,
+                        ownerId: res.req.decoded ? res.req.decoded._id : '',
+                        isPrivate: req.body.isPrivate ? req.body.isPrivate : false,
                         playersCount: req.body.playersCount,
                         players: req.body.players
                     }, function (err, team) {
@@ -172,14 +181,20 @@ module.exports = function (app) {
         });
     });
 
-    app.put('/api/team', function (req, res) {
+    app.put('/api/team', isLoggedIn, function (req, res) {
         if (req.body.teamName != "Default team") {
             Team.findById(req.body._id, function (err, team) {
                 if (err) {
                     throw err;
                 }
 
+                if (team.ownerId && (res.req.decoded && team.ownerId !== res.req.decoded._id || !res.req.decoded)) {
+                    return res.status(403)
+                        .send('You are not authorization to update this team');
+                }
+
                 team.teamName = req.body.teamName;
+                team.isPrivate = req.body.isPrivate ? req.body.isPrivate : false;
                 team.playersCount = req.body.playersCount;
                 team.players = req.body.players;
                 team.colors = req.body.colors;
@@ -193,7 +208,7 @@ module.exports = function (app) {
             });
         } else {
             res.status(501)
-                .send('You can not update default team')
+                .send('You can not update default team');
         }
     });
 
@@ -228,13 +243,6 @@ function isLoggedIn(req, res, next) {
         });
 
     } else {
-
-        // if there is no token
-        // return an error
-        return res.status(403).send({
-            success: false,
-            message: 'No token provided.'
-        });
-
+        next();
     }
 }

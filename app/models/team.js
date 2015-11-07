@@ -12,6 +12,7 @@ var teamSchema = Schema({
         index: true
     },
     ownerId: String,
+    isPrivate: Boolean,
     playersCount: Number,
     players: Array,
     colors: {

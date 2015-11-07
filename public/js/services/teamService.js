@@ -4,11 +4,11 @@
 'use strict';
 app.factory('teamService', ['$http', '$q', '$window', function ($http, $q, $window) {
     function getAllTeams() {
-        return $http.get('/api/all-teams'  + '?token=' + $window.localStorage .token);
+        return $http.get('/api/all-teams');
     }
 
     function getMyTeams() {
-        return $http.get('/api/my-teams' + '?token' + $window.localStorage .token);
+        return $http.get('/api/my-teams' + '?token' + $window.localStorage.token);
     }
 
     function getTeamById(id) {
@@ -16,7 +16,9 @@ app.factory('teamService', ['$http', '$q', '$window', function ($http, $q, $wind
     }
 
     function createTeam(team) {
-        return $http.post('/api/team', team);
+        var req = team;
+        req.token = $window.localStorage.token;
+        return $http.post('/api/team', req);
     }
 
     function deleteTeam(id) {
@@ -24,7 +26,9 @@ app.factory('teamService', ['$http', '$q', '$window', function ($http, $q, $wind
     }
 
     function updateTeam(team) {
-        return $http.put('/api/team', team);
+        var req = team;
+        req.token = $window.localStorage.token;
+        return $http.put('/api/team', req);
     }
 
     return {
