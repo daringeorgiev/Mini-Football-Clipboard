@@ -2,10 +2,9 @@
  * Created by darin on 7/11/2015.
  */
 'use strict';
-var User = require('../models/user');
-var path = require('path');
-var jwt = require('jsonwebtoken');
-var authentication = require('../../config/authentication');
+var User = require('../models/user'),
+    jwt = require('jsonwebtoken'),
+    authentication = require('../../config/authentication');
 
 module.exports = {
     userLogin: function (req, res) {

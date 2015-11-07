@@ -3,7 +3,6 @@
  */
 'use strict';
 var Team = require('../models/team');
-var path = require('path');
 
 module.exports = {
     getAllTeams: function (req, res) {
@@ -82,7 +81,7 @@ module.exports = {
 
                 if (team.ownerId && (res.req.decoded && team.ownerId !== res.req.decoded._id || !res.req.decoded)) {
                     return res.status(403)
-                        .send('You are not authorization to update this team');
+                        .send('You are not authorized to update this team');
                 }
 
                 team.teamName = req.body.teamName;
