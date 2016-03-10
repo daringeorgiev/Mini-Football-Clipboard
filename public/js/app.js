@@ -1,8 +1,9 @@
-'use strict';
+
 var app = angular.module('app', ['cgNotify', 'ui.sortable', 'ngRoute', 'ngMaterial'])
 
 .config(['$routeProvider', '$locationProvider', '$mdThemingProvider',
     function($routeProvider, $locationProvider, $mdThemingProvider) {
+        'use strict';
         $routeProvider.
             when('/', {
                 reloadOnSearch:false

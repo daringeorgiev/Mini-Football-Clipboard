@@ -1,8 +1,8 @@
 /**
  * Created by darin on 5/16/2015.
  */
-'use strict';
 app.factory('teamService', ['$http', '$q', '$window', function ($http, $q, $window) {
+    'use strict';
     function getAllTeams() {
         return $http.get('/api/all-teams');
     }
@@ -38,5 +38,5 @@ app.factory('teamService', ['$http', '$q', '$window', function ($http, $q, $wind
         createTeam: createTeam,
         deleteTeam: deleteTeam,
         updateTeam: updateTeam
-    }
+    };
 }]);

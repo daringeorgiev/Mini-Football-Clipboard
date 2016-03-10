@@ -1,5 +1,6 @@
-'use strict';
+
 app.controller('MainController', ['$scope', '$route','$routeParams', '$location', 'teamService', 'notify', function ($scope, $route, $routeParams, $location, teamService, notify) {
+    'use strict';
     var self = this;
 
     self.isCreateNewTeamVisible = false;
@@ -35,7 +36,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
             })
             .error(function (data) {
                 notify({message: 'Error: ' + data});
-                console.log("Error: " + data)
+                console.log("Error: " + data);
             });
     };
 
@@ -99,7 +100,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
             .error(function (data) {
                 notify({message: 'Error: ' + data});
                 console.log('Error: ' + data);
-            })
+            });
     };
 
     self.getUrlParams = function () {
@@ -172,7 +173,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
         jQuery('.goalKeeper').css({
             'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.gkMainColor : 'red',
             'color' : self.selectedTeam.colors ? self.selectedTeam.colors.gkSecondColor : 'white'
-        })
+        });
     };
 
 
@@ -205,7 +206,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     $scope.dragControlListeners = {
         accept: function (sourceItemHandleScope, destSortableScope) {
             console.log("accept");
-            return boolean
+            return boolean;
         },
         //override to determine drag is allowed or not. default is true.
         itemMoved: function (event) {
@@ -225,7 +226,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     $scope.dropControlListeners = {
         accept: function (sourceItemHandleScope, destSortableScope) {
             console.log("accept");
-            return boolean
+            return boolean;
         },
         //override to determine drag is allowed or not. default is true.
         itemMoved: function (event) {
@@ -237,6 +238,6 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
         },
         //Do what you want},
         containment: '#board'//optional param.
-    }
+    };
 
 }]);

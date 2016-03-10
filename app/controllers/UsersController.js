@@ -1,7 +1,6 @@
 /**
  * Created by darin on 7/11/2015.
  */
-'use strict';
 var User = require('../models/user'),
     jwt = require('jsonwebtoken'),
     authentication = require('../../config/authentication');
@@ -55,7 +54,7 @@ module.exports = {
             }
             if (data.length) {
                 return res.status(409)
-                    .send('The user already exist. You must change the user name.')
+                    .send('The user already exist. You must change the user name.');
             } else {
                 var user = new User();
                 user.name = req.body.name;
@@ -79,7 +78,7 @@ module.exports = {
                         });
                 });
             }
-        })
+        });
     },
 
     getAllUsers: function (req, res) {

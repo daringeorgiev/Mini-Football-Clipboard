@@ -1,7 +1,6 @@
 /**
  * Created by darin on 7/11/2015.
  */
-'use strict';
 var Team = require('../models/team');
 
 module.exports = {
@@ -49,7 +48,7 @@ module.exports = {
                 }
                 if (data.length) {
                     return res.status(409)
-                        .send('The team already exist. You must change the name.')
+                        .send('The team already exist. You must change the name.');
                 } else {
                     Team.create({
                         teamName: req.body.teamName,
@@ -63,12 +62,12 @@ module.exports = {
                             throw err;
                         }
                         res.send(team);
-                    })
+                    });
                 }
             });
         } else {
             res.status(501)
-                .send('You can not save Default team')
+                .send('You can not save Default team');
         }
     },
 

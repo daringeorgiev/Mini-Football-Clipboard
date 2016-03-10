@@ -1,7 +1,6 @@
 /**
  * Created by darin on 24/7/2015.
  */
-'use strict';
 var usersCtrl = require('./controllers/UsersController'),
     teamsCtrl = require('./controllers/TeamsController'),
     auth = require('./auth');
@@ -9,6 +8,7 @@ var usersCtrl = require('./controllers/UsersController'),
 var path = require('path');
 
 module.exports = function (app) {
+    'use strict';
     //Users =================================================
     app.post('/api/login', usersCtrl.userLogin);
     app.post('/api/register', usersCtrl.userRegister);

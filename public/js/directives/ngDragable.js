@@ -1,11 +1,11 @@
 /**
  * Created by darin on 6/17/2015.
  */
-'use strict';
 app.directive('myDraggable', ['$document', function ($document) {
     return {
         //controller: 'MainController as ctrl',
         link: function (scope, element, attr) {
+            'use strict';
             var xPer = scope.player.left ? scope.player.left : 0,
                 yPer = scope.player.top ? scope.player.top : 0,
                 fieldWidth = element.parent()[0].offsetWidth,

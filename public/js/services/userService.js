@@ -1,8 +1,9 @@
 /**
  * Created by darin on 25/7/2015.
  */
-'use strict';
+
 app.factory('userService', ['$http', function ($http) {
+    'use strict';
     function loginUser(userName, password) {
         return $http.post('api/login', {'name': userName, 'password': password});
     }
@@ -12,12 +13,12 @@ app.factory('userService', ['$http', function ($http) {
     }
 
     function logoutUser(userNama) {
-
+        // ToDo
     }
 
     return {
         loginUser: loginUser,
         registerUser: registerUser,
         logoutUser: logoutUser
-    }
+    };
 }]);
