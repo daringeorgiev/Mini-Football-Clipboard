@@ -1,8 +1,8 @@
 
-var app = angular.module('app', ['cgNotify', 'ui.sortable', 'ngRoute', 'ngMaterial'])
+var app = angular.module('app', ['cgNotify', 'ui.sortable', 'ngRoute'])
 
-.config(['$routeProvider', '$locationProvider', '$mdThemingProvider',
-    function($routeProvider, $locationProvider, $mdThemingProvider) {
+.config(['$routeProvider', '$locationProvider',
+    function($routeProvider, $locationProvider) {
         'use strict';
         $routeProvider.
             when('/', {
@@ -12,8 +12,4 @@ var app = angular.module('app', ['cgNotify', 'ui.sortable', 'ngRoute', 'ngMateri
             enabled: true,
             requireBase: false
         });
-
-        $mdThemingProvider.theme('default')
-            .primaryPalette('green')
-            .accentPalette('blue');
     }]);

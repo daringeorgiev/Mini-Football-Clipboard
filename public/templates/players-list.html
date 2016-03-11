@@ -4,46 +4,23 @@
         <li ng-repeat="player in ctrl.selectedTeam.players" data-as-sortable-item>
             <div class="form-group input-group " layout layout-sm="column"
                  ng-class="{'has-warning': $index >5, 'has-error': $index === 0 }">
-                <!--<div class="form-group input-group "-->
-                     <!--ng-class="{'has-warning': $index >5, 'has-error': $index === 0 }">-->
-                    <!--<input class="form-control" id="playerNumberInput" placeholder="#"-->
-                           <!--ng-model="ctrl.selectedTeam.players[$index].playerNumber" type="text">-->
-                    <!--<input class="form-control" id="playerNameInput" placeholder="Player {{$index + 1}}" type="text"-->
-                           <!--ng-model="ctrl.selectedTeam.players[$index].playerName">-->
-                <!--<span class="input-group-btn">-->
-                    <!--<button class="btn btn-default " type="button" ng-click="ctrl.removePlayerByIndex($index)">x</button>-->
-                    <!--<button class="btn btn-default" type="button" data-as-sortable-item-handle>&#8593;&#8595;</button>-->
-                <!--</span>-->
-                <!--</div>-->
-
-                <!--Angular Material Style-->
-                <md-input-container >
-                    <label>&#35;</label>
-                    <input id="playerNumberInput" ng-model="ctrl.selectedTeam.players[$index].playerNumber">
-                </md-input-container>
-                <md-input-container flex>
-                    <label>Player {{$index + 1}}</label>
-                    <input id="playerNameInput" ng-model="ctrl.selectedTeam.players[$index].playerName">
-                </md-input-container>
-                <md-input-container >
-                    <md-button class="md-icon-button" ng-click="ctrl.removePlayerByIndex($index)" tabindex="-1">
-                        x
-                    </md-button>
-                </md-input-container>
-                <md-input-container >
-                    <md-button class="md-fab md-mini md-primary" data-as-sortable-item-handle tabindex="-1">
-                        &#8593;&#8595;
-                    </md-button>
-                </md-input-container>
+                <div class="form-group input-group "
+                     ng-class="{'has-warning': $index >5, 'has-error': $index === 0 }">
+                    <input class="form-control" id="playerNumberInput" placeholder="#"
+                           ng-model="ctrl.selectedTeam.players[$index].playerNumber" type="text">
+                    <input class="form-control" id="playerNameInput" placeholder="Player {{$index + 1}}" type="text"
+                           ng-model="ctrl.selectedTeam.players[$index].playerName">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default " type="button" ng-click="ctrl.removePlayerByIndex($index)">x</button>
+                        <button class="btn btn-default" type="button" data-as-sortable-item-handle>&#8593;&#8595;</button>
+                    </span>
+                </div>
             </div>
         </li>
     </ul>
     <div class="form-group">
         <div class=" ">
-            <md-button class="md-fab md-mini md-primary" ng-click="ctrl.addPlayer(ctrl.selectedTeam)">
-                +1
-                <md-tooltip md-direction="bottom">Add Player</md-tooltip>
-            </md-button>
+            <button type="submit" class="btn btn-default" ng-click="ctrl.addPlayer(ctrl.selectedTeam)">+1</button>
         </div>
     </div>
 </div>
