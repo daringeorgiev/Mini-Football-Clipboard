@@ -22,7 +22,8 @@
     "bootstrap": "~3.3.4",
     "jquery": "~2.1.4",
     "jquery-ui": "latest",
-    "ng-sortable": "~1.2.2"
+    "ng-sortable": "~1.2.2",
+    "bootstrap-sass": "~3.3.6"
   },
   "devDependencies": {}
 }

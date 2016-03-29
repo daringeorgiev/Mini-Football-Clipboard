@@ -1,11 +1,10 @@
-<div>
+<div class="col-lg-8 col-md-12 col-sm-12">
     <div class="fieldOutside">
-        <div class="field col-lg-8 col-md-12 col-sm-12">
+        <div class="field">
             <img class="imgField" src="imgs/field.svg"/>
-
             <div class="draggableArea">
                 <div ng-repeat="player in ctrl.selectedTeam.players | limitTo: 6" class="btn btn-defaul player"
-                     ng-class="{'goalKeeper' : $index === 0}" my-draggable>
+                    ng-class="{'goalKeeper' : $index === 0}" my-draggable>
                     {{player.playerNumber}}
                 </div>
             </div>
