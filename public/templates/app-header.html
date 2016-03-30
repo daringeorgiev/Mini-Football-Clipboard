@@ -19,8 +19,10 @@
                     <input class="form-control input-sm" placeholder="Password" type="password"
                            ng-model="userCtrl.user.password">
                 </div>
-                <button type="submit" class="btn btn-default btn-sm" ng-click="userCtrl.onLoginClick()">Login</button>
-                <button type="submit" class="btn btn-default btn-sm" ng-click="userCtrl.onRegisterClick()">Register</button>
+                <a href="/" class="btn btn-default btn-sm" role="button" ng-click="userCtrl.onLoginClick()">Login</a>
+                <a href="/register" class="btn btn-default btn-sm" role="button" ng-click="userCtrl.onRegisterClick()">
+                    Register
+                </a>
             </form>
             <form ng-if="userCtrl.isLoggedIn" class="navbar-form navbar-right" role="logoutForm">
                 <a href="#">{{userCtrl.user.userName }}</a>

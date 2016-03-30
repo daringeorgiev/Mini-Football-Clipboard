@@ -1,11 +1,14 @@
-<div ng-if="userCtrl.isRegisterFormVisible">
+<!-- <div ng-if="userCtrl.isRegisterFormVisible"> -->
+<div>
     <!--<div style="display: block; padding-right: 17px;" class="modal fade in">-->
     <div class="modal in" style="display: block">
         <!--<div class="modal-dialog modal-lg">-->
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="userCtrl.onCloseRegisterClick()">×</button>
+                        <a href="/" class="close" role="button" data-dismiss="modal" aria-hidden="true" ng-click="userCtrl.onCloseRegisterClick()">
+                            x
+                        </a>
                         <h4 class="modal-title">Register Form</h4>
                     </div>
                     <div class="modal-body">
@@ -46,8 +49,8 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="userCtrl.onCloseRegisterClick()">Close</button>
-                        <button type="button" class="btn btn-primary" ng-click="userCtrl.sendRegisterForm()">Register</button>
+                        <a href="/" class="btn btn-default" role="button" data-dismiss="modal" ng-click="userCtrl.onCloseRegisterClick()">Close</a>
+                        <a class="btn btn-primary" role="button" ng-click="userCtrl.sendRegisterForm()">Register</a>
                     </div>
                 </div>
             </div>

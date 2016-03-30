@@ -1,12 +1,13 @@
 <div>
-    <div ng-if="ctrl.isCreateNewTeamVisible">
+    <!-- <div ng-if="ctrl.isCreateNewTeamVisible"> -->
+    <div>
         <div class="modal in" style="display: block">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                ng-click="ctrl.onCreateNewTeamCancelClick()">×
-                        </button>
+                        <a href="/" class="close" role="button" data-dismiss="modal" aria-hidden="true"
+                            ng-click="ctrl.onCreateNewTeamCancelClick()">×
+                        </a>
                         <h4 class="modal-title">Create New Team</h4>
                     </div>
                     <div class="modal-body">
@@ -70,10 +71,10 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.createNewTeam()">Create</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"
-                                ng-click="ctrl.onCreateNewTeamCancelClick()">Close
-                        </button>
+                        <a class="btn btn-primary" role="button" ng-click="ctrl.createNewTeam()">Create</a>
+                        <a href="/" class="btn btn-default" role="button" data-dismiss="modal"
+                            ng-click="ctrl.onCreateNewTeamCancelClick()">Close
+                        </a>
                     </div>
                 </div>
             </div>
