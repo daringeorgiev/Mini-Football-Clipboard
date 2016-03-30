@@ -8715,3 +8715,12 @@ input[type="checkbox"]:disabled:checked:after,
   margin-right: 1rem;
   padding-left: 1rem;
 }
+
+.addPlayer {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  float: right;
+  line-height: 4rem;
+  font-size: 1.5rem;
+}
