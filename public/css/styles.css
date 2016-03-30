@@ -8639,6 +8639,11 @@ input[type="checkbox"]:disabled:checked:after,
   color: inherit;
 }
 
+.panel {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
 .fieldOutside {
   position: relative;
   width: 80%;
@@ -8657,8 +8662,8 @@ input[type="checkbox"]:disabled:checked:after,
   left: 19%;
   right: 19%;
   bottom: 0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 .imgField {

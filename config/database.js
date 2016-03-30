@@ -1,7 +1,6 @@
 /**
  * Created by darin on 23/7/2015.
  */
-'use strict';
 module.exports = {
     'url': 'mongodb://localhost/da4'
 };
@@ -71,7 +70,7 @@ Team.find({}, function (err, teams) {
             if (err) {
                 throw err;
             }
-            console.log("Default team created")
-        })
+            console.log("Default team created");
+        });
     }
 });

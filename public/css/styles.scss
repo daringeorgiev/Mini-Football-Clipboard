@@ -3,6 +3,13 @@
 @import "bootswatch";
 
 $player-size: 7rem;
+$panel-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+// $panel-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+
+.panel {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: $panel-shadow;
+}
 
 .fieldOutside {
     position: relative;
@@ -22,8 +29,8 @@ $player-size: 7rem;
   left: 19%;
   right: 19%;
   bottom: 0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: $panel-shadow;
+  -webkit-box-shadow: $panel-shadow;
 }
 
 .imgField {
