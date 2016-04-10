@@ -1,7 +1,9 @@
 
-app.controller('MainController', ['$scope', '$route','$routeParams', '$location', 'teamService', 'notify', function ($scope, $route, $routeParams, $location, teamService, notify) {
+app.controller('MainController', ['$scope', '$route','$routeParams', '$location', 'teamService', 'notify',
+    function ($scope, $route, $routeParams, $location, teamService, notify) {
     'use strict';
-    var self = this;
+    var self = this,
+        _selectTeamInputValue = '';
 
     self.isCreateNewTeamVisible = false;
     self.isEditTeamVisible = false;
@@ -23,6 +25,19 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
                 console.log('Error: ' + data);
             });
     }();
+
+    self.changeSelectedTeam = function (team) {
+        self.selectedTeam = team;
+        self.changeTeamColors();
+        $location.search('id', self.selectedTeam._id);
+    };
+
+    self.selectedTeamGetterSetter = function (newInputValue) {
+        if (arguments.length) {
+          _selectTeamInputValue = newInputValue || '';
+        }
+        return _selectTeamInputValue;
+    };
 
     self.createNewTeam = function () {
         teamService.createTeam(self.newTeam)
@@ -165,15 +180,17 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     };
 
     self.changeTeamColors = function () {
-        jQuery('.player').css({
-            'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.mainColor : 'blue',
-            'color' : self.selectedTeam.colors? self.selectedTeam.colors.secondColor : 'yellow'
-        });
+        setTimeout(function () {
+            jQuery('.player').css({
+                'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.mainColor : 'blue',
+                'color' : self.selectedTeam.colors? self.selectedTeam.colors.secondColor : 'yellow'
+            });
 
-        jQuery('.goalKeeper').css({
-            'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.gkMainColor : 'red',
-            'color' : self.selectedTeam.colors ? self.selectedTeam.colors.gkSecondColor : 'white'
-        });
+            jQuery('.goalKeeper').css({
+                'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.gkMainColor : 'red',
+                'color' : self.selectedTeam.colors ? self.selectedTeam.colors.gkSecondColor : 'white'
+            });
+        }, 1);
     };
 
 
