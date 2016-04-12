@@ -1,31 +1,37 @@
 <div class="col-lg-4 col-md-12 col-sm-12" ng-init="ctrl.getAllTeams()">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Team: {{ctrl.selectedTeam.teamName}}</h3>
-        </div>
-        <div class="panel-body">
-            <label for="selectedTeam">Select Team:</label>
-            <input type="search" id="selectedTeam" placeholder="Select team" autocomplete="off"
-                ng-model="ctrl.selectedTeamGetterSetter"
-                ng-model-options="{ getterSetter: true }"
-                typeahead-on-select="ctrl.changeSelectedTeam($item)"
-                uib-typeahead="team as team.teamName for team in ctrl.allTeams | filter:$viewValue | limitTo:8"
-                typeahead-min-length="0" class="form-control">
-                <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-                <div ng-show="noResults">
-                    <i class="glyphicon glyphicon-remove"></i>
-                    No Results Found
-                </div>
-            <div class="form-group">
-                <div class=" ">
-                    <a class="btn btn-default" tooltip-placement="bottom" uib-tooltip="Update team" role="button" ng-click="ctrl.updateTeam()">Update</a>
-                    <a href="/edit-team" tooltip-placement="bottom" uib-tooltip="Edit team" class="btn btn-default" role="button" ng-click="ctrl.onEditTeamClick()">Edit</a>
-                    <a href="/save-as-team" tooltip-placement="bottom" uib-tooltip="Save team as" class="btn btn-default" role="button" ng-click="ctrl.onSaveAsTeamClick()">Save As</a>
-                    <a href="/create-new-team" tooltip-placement="bottom" uib-tooltip="Create new team" class="btn btn-default" role="button" ng-click="ctrl.onCreateNewTeamClick()">Create New</a>
+    <uib-accordion>
+        <uib-accordion-group is-open="status.open" panel-class="panel-primary">
+            <uib-accordion-heading>
+                <i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                <span>  Team: {{ctrl.selectedTeam.teamName}}</span>
+            </uib-accordion-heading>
+
+            <div class="panel-body">
+                <label for="selectedTeam">Select Team:</label>
+                <input type="search" id="selectedTeam" placeholder="Select team" autocomplete="off"
+                    ng-model="ctrl.selectedTeamGetterSetter"
+                    ng-model-options="{ getterSetter: true }"
+                    typeahead-on-select="ctrl.changeSelectedTeam($item)"
+                    uib-typeahead="team as team.teamName for team in ctrl.allTeams | filter:$viewValue | limitTo:8"
+                    typeahead-min-length="0" class="form-control">
+                    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                    <div ng-show="noResults">
+                        <i class="glyphicon glyphicon-remove"></i>
+                        No Results Found
+                    </div>
+                <div class="select-team-buttons">
+                    <a class="btn btn-default glyphicon glyphicon-floppy-disk" role="button"
+                        tooltip-placement="bottom" uib-tooltip="Update team" ng-click="ctrl.updateTeam()"></a>
+                    <a href="/edit-team" class="btn btn-default glyphicon glyphicon-edit" role="button"
+                        tooltip-placement="bottom" uib-tooltip="Edit team" ng-click="ctrl.onEditTeamClick()"></a>
+                    <a href="/save-as-team" class="btn btn-default glyphicon glyphicon-copy" role="button"
+                        tooltip-placement="bottom" uib-tooltip="Save team as" ng-click="ctrl.onSaveAsTeamClick()"></a>
+                    <a href="/create-new-team" class="btn btn-default glyphicon glyphicon-new-window" role="button"
+                        tooltip-placement="bottom" uib-tooltip="Create new team" ng-click="ctrl.onCreateNewTeamClick()"></a>
                 </div>
             </div>
-        </div>
-    </div>
+        </uib-accordion-group>
+    </uib-accordion>
 
     <div class="panel panel-primary">
         <div class="panel-heading">

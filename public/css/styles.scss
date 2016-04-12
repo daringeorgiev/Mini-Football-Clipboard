@@ -4,6 +4,7 @@ $icon-font-path: "../libs/bootstrap/fonts/";
 @import "bootswatch";
 
 $player-size: 7rem;
+$button-size: 6rem;
 $panel-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 // $panel-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 
@@ -107,4 +108,23 @@ footer {
     left: 0;
     right: 0;
     background-color:rgba(0,0,0,0.5);
+}
+
+.select-team-buttons {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;;
+    align-content: center;
+    a {
+        width: $button-size;
+        height: $button-size;
+        line-height: $button-size;
+        border-radius: 50%;
+        font-size: $button-size / 2;
+        padding:0;
+        &:hover {
+            @extend .btn-primary;
+        }
+    }
 }
