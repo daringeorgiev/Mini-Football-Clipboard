@@ -4,7 +4,11 @@
 app.directive('playersList',function(){
     return{
         restrict: 'E',
+        scope: {
+            team: '=team'
+        },
+        controller: 'MainController as ctrl',
         templateUrl: '../../templates/players-list.html',
         replace: true
-    }
+    };
 });

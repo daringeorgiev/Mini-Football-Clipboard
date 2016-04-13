@@ -57,11 +57,11 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
 
     self.addPlayer = function (team) {
         var count = team.players.length;
-        self.selectedTeam.players.push({
+        team.players.push({
             playerName: 'Player' + (count + 1),
             playerNumber: count + 1
         });
-        self.selectedTeam.playersCount++;
+        team.playersCount++;
     };
 
     self.removePlayer = function (team) {
@@ -69,9 +69,9 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
         self.selectedTeam.playersCount--;
     };
 
-    self.removePlayerByIndex = function (index){
-        self.selectedTeam.players.splice(index, 1);
-        self.selectedTeam.playersCount--;
+    self.removePlayerByIndex = function (team, index){
+        team.players.splice(index, 1);
+        team.playersCount--;
     };
 
     self.deleteTeam = function () {
@@ -132,17 +132,16 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
 
     self.searchTextChange = function (text) {
         console.log(text);
-    },
+    };
 
     //Create New Team
     self.onCreateNewTeamClick = function () {
-        self.isCreateNewTeamVisible = true;
         self.newTeam = JSON.parse(JSON.stringify(self.allTeams[0]));
         self.newTeam.teamName = 'New Team';
     };
 
     self.onCreateNewTeamCancelClick = function () {
-        self.isCreateNewTeamVisible = false;
+        self.newTeam = null;
     };
 
     //Edit Team
