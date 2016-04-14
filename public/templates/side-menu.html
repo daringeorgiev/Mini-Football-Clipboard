@@ -1,4 +1,16 @@
 <div class="col-lg-4 col-md-12 col-sm-12" ng-init="ctrl.getAllTeams()">
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="btn-group btn-group-justified">
+                <a href="/create-new-team" class="btn btn-primary" title="Create new team" ng-click="ctrl.onCreateNewTeamClick()">New</a>
+                <a href="#" class="btn btn-default" title="Save team" ng-click="ctrl.updateTeam()">Save</a>
+                <a href="/edit-team" class="btn btn-default" title="Edit team" ng-click="ctrl.onEditTeamClick()">Edit</a>
+                <a href="/save-as-team" class="btn btn-default" title="Copy team" ng-click="ctrl.onSaveAsTeamClick()">Copy</a>
+            </div>
+        </div>
+    </div>
+
     <uib-accordion>
         <uib-accordion-group is-open="status.open" panel-class="panel-primary">
             <uib-accordion-heading>
@@ -19,7 +31,7 @@
                         <i class="glyphicon glyphicon-remove"></i>
                         No Results Found
                     </div>
-                <div class="select-team-buttons">
+                <!-- <div class="select-team-buttons">
                     <a class="btn btn-default glyphicon glyphicon-floppy-disk" role="button"
                         tooltip-placement="bottom" uib-tooltip="Update team" ng-click="ctrl.updateTeam()"></a>
                     <a href="/edit-team" class="btn btn-default glyphicon glyphicon-edit" role="button"
@@ -28,7 +40,7 @@
                         tooltip-placement="bottom" uib-tooltip="Save team as" ng-click="ctrl.onSaveAsTeamClick()"></a>
                     <a href="/create-new-team" class="btn btn-default glyphicon glyphicon-new-window" role="button"
                         tooltip-placement="bottom" uib-tooltip="Create new team" ng-click="ctrl.onCreateNewTeamClick()"></a>
-                </div>
+                </div> -->
             </div>
         </uib-accordion-group>
     </uib-accordion>
