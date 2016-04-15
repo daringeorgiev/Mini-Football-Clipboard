@@ -8,7 +8,15 @@ app.factory('teamService', ['$http', '$q', '$window', function ($http, $q, $wind
     }
 
     function getMyTeams() {
-        return $http.get('/api/my-teams' + '?token' + $window.localStorage.token);
+        var req = {
+            method: 'GET',
+            url: '/api/my-teams',
+            headers: {
+                'x-access-token': $window.localStorage.token
+            }
+        }
+
+        return $http(req);
     }
 
     function getTeamById(id) {

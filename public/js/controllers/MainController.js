@@ -39,6 +39,34 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
         return _selectTeamInputValue;
     };
 
+    self.onMyTeamsClick = function () {
+        teamService.getMyTeams()
+            .success(function (data) {
+                if (data.length) {
+                    self.allTeams = data;
+                } else {
+                    // Add default team
+                    self.allTeams.splice(1, self.allTeams.length);
+                }
+
+                self.selectedTeamGetterSetter('');
+            })
+            .error(function (data) {
+                console.log('Error: ' + JSON.stringify(data));
+            });
+    };
+
+    self.onAllTeamsClick = function () {
+        teamService.getAllTeams()
+            .success(function (data) {
+                self.allTeams = data;
+                self.selectedTeamGetterSetter('');
+            })
+            .error(function (data) {
+                console.log('Error: ' + JSON.stringify(data));
+            });
+    };
+
     self.createNewTeam = function () {
         teamService.createTeam(self.newTeam)
             .success(function (data) {

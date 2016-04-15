@@ -17,30 +17,31 @@
                 <i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                 <span>  Team: {{ctrl.selectedTeam.teamName}}</span>
             </uib-accordion-heading>
-
-            <div class="panel-body">
-                <label for="selectedTeam">Select Team:</label>
-                <input type="search" id="selectedTeam" placeholder="Select team" autocomplete="off"
-                    ng-model="ctrl.selectedTeamGetterSetter"
-                    ng-model-options="{ getterSetter: true }"
-                    typeahead-on-select="ctrl.changeSelectedTeam($item)"
-                    uib-typeahead="team as team.teamName for team in ctrl.allTeams | filter:$viewValue | limitTo:8"
-                    typeahead-min-length="0" class="form-control">
-                    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-                    <div ng-show="noResults">
-                        <i class="glyphicon glyphicon-remove"></i>
-                        No Results Found
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#" data-toggle="tab" ng-click="ctrl.onAllTeamsClick()">All teams</a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tab" ng-click="ctrl.onMyTeamsClick()">My teams</a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="home">
+                        <div class="panel-body">
+                            <label for="selectedTeam">Select Team:</label>
+                            <input type="search" id="selectedTeam" placeholder="Select team" autocomplete="off"
+                                ng-model="ctrl.selectedTeamGetterSetter"
+                                ng-model-options="{ getterSetter: true }"
+                                typeahead-on-select="ctrl.changeSelectedTeam($item)"
+                                uib-typeahead="team as team.teamName for team in ctrl.allTeams | filter:$viewValue | limitTo:8"
+                                typeahead-min-length="0" class="form-control">
+                                <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                <div ng-show="noResults">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    No Results Found
+                                </div>
+                        </div>
                     </div>
-                <!-- <div class="select-team-buttons">
-                    <a class="btn btn-default glyphicon glyphicon-floppy-disk" role="button"
-                        tooltip-placement="bottom" uib-tooltip="Update team" ng-click="ctrl.updateTeam()"></a>
-                    <a href="/edit-team" class="btn btn-default glyphicon glyphicon-edit" role="button"
-                        tooltip-placement="bottom" uib-tooltip="Edit team" ng-click="ctrl.onEditTeamClick()"></a>
-                    <a href="/save-as-team" class="btn btn-default glyphicon glyphicon-copy" role="button"
-                        tooltip-placement="bottom" uib-tooltip="Save team as" ng-click="ctrl.onSaveAsTeamClick()"></a>
-                    <a href="/create-new-team" class="btn btn-default glyphicon glyphicon-new-window" role="button"
-                        tooltip-placement="bottom" uib-tooltip="Create new team" ng-click="ctrl.onCreateNewTeamClick()"></a>
-                </div> -->
             </div>
         </uib-accordion-group>
     </uib-accordion>
