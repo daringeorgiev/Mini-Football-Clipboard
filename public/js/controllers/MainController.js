@@ -75,6 +75,8 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
                 self.isSaveAsTeamVisible = false;
                 self.allTeams.push(data);
                 self.changeTeamColors();
+                $location.path('/');
+                $location.search('id', self.selectedTeam._id);
                 notify({message: 'Team: ' + data.teamName + '\n created successful'});
             })
             .error(function (data) {
@@ -125,6 +127,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
                 notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'noty', position: 'center'});
                 self.changeTeamColors();
                 self.isEditTeamVisible = false;
+                $location.path('/');
                 $location.search('id', self.selectedTeam._id);
             })
             .error(function (data) {
