@@ -2,7 +2,8 @@
  * Created by darin on 25/7/2015.
  */
 'use strict';
-app.controller('UserController', ['$scope', '$window', 'userService', 'notify', function ($scope, $window, userService, notify) {
+app.controller('UserController', ['$scope', '$window', '$location', 'userService', 'notify',
+    function ($scope, $window, $location, userService, notify) {
     var self = this;
     var minUserNameLength = 1,
         minPasswordLength = 1;
@@ -29,10 +30,6 @@ app.controller('UserController', ['$scope', '$window', 'userService', 'notify', 
         }
     };
 
-    self.onRegisterClick = function () {
-        self.isRegisterFormVisible = true;
-    };
-
     self.sendRegisterForm = function () {
         if (self.user.userName.length >= minUserNameLength && self.user.password.length >= minPasswordLength) {
             userService.registerUser(self.user.userName, self.user.password)
@@ -40,7 +37,7 @@ app.controller('UserController', ['$scope', '$window', 'userService', 'notify', 
                     notify({message: 'Registration successful'});
                     $window.localStorage.token = data.token;
                     self.isLoggedIn = true;
-                    self.onCloseRegisterClick();
+                    $location.path('#');
                 })
                 .error(function (data) {
                     notify({message: 'Error: ' + data.message});
@@ -48,10 +45,6 @@ app.controller('UserController', ['$scope', '$window', 'userService', 'notify', 
         } else {
             notify({message: 'Error: Please check your user name and password'});
         }
-    };
-
-    self.onCloseRegisterClick = function () {
-        self.isRegisterFormVisible = false;
     };
 
     self.onLogoutClick = function () {
