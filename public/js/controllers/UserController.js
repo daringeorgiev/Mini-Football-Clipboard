@@ -11,7 +11,7 @@ app.controller('UserController', ['$scope', '$window', '$location', 'userService
     self.user.userName = '';
     self.user.password = '';
     self.isRegisterFormVisible = false;
-    self.isLoggedIn = false;
+    self.isLoggedIn = !!$window.localStorage.token;
 
     self.onLoginClick = function () {
         if (self.user.userName.length >= minUserNameLength && self.user.password.length >= minPasswordLength) {
