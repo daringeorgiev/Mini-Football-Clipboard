@@ -1,57 +1,64 @@
 <div class="col-lg-4 col-md-12 col-sm-12" ng-init="ctrl.getAllTeams()">
-
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="btn-group btn-group-justified">
-                <a href="/create-new-team" class="btn btn-primary" title="Create new team" ng-click="ctrl.onCreateNewTeamClick()">New</a>
-                <a href="#" class="btn btn-default" title="Save team" ng-click="ctrl.updateTeam()">Save</a>
-                <a href="/edit-team" class="btn btn-default" title="Edit team" ng-click="ctrl.onEditTeamClick()">Edit</a>
-                <a href="/save-as-team" class="btn btn-default" title="Copy team" ng-click="ctrl.onSaveAsTeamClick()">Copy</a>
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="btn-group btn-group-justified">
+                    <a href="/create-new-team" class="btn btn-primary" title="Create new team" ng-click="ctrl.onCreateNewTeamClick()">New</a>
+                    <a href="#" class="btn btn-default" title="Save team" ng-click="ctrl.updateTeam()">Save</a>
+                    <a href="/edit-team" class="btn btn-default" title="Edit team" ng-click="ctrl.onEditTeamClick()">Edit</a>
+                    <a href="/save-as-team" class="btn btn-default" title="Copy team" ng-click="ctrl.onSaveAsTeamClick()">Copy</a>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <uib-accordion>
-        <uib-accordion-group is-open="status.open" panel-class="panel-primary">
-            <uib-accordion-heading>
-                <i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-                <span>  Team: {{ctrl.selectedTeam.teamName}}</span>
-            </uib-accordion-heading>
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a href="#" data-toggle="tab" ng-click="ctrl.onAllTeamsClick()">All teams</a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="tab" ng-click="ctrl.onMyTeamsClick()">My teams</a>
-                    </li>
-                </ul>
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade active in" id="home">
-                        <div class="panel-body">
-                            <label for="selectedTeam">Select Team:</label>
-                            <input type="search" id="selectedTeam" placeholder="Select team" autocomplete="off"
-                                ng-model="ctrl.selectedTeamGetterSetter"
-                                ng-model-options="{ getterSetter: true }"
-                                typeahead-on-select="ctrl.changeSelectedTeam($item)"
-                                uib-typeahead="team as team.teamName for team in ctrl.allTeams | filter:$viewValue | limitTo:8"
-                                typeahead-min-length="0" class="form-control">
-                                <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-                                <div ng-show="noResults">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                    No Results Found
-                                </div>
+    <section>
+        <uib-accordion>
+            <uib-accordion-group is-open="ctrl.teamsSectionOpen" panel-class="panel-primary">
+                <uib-accordion-heading>
+                    <i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': ctrl.teamsSectionOpen, 'glyphicon-chevron-right': !ctrl.teamsSectionOpen}"></i>
+                    <span>  Team: {{ctrl.selectedTeam.teamName}}</span>
+                </uib-accordion-heading>
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#" data-toggle="tab" ng-click="ctrl.onAllTeamsClick()">All teams</a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tab" ng-click="ctrl.onMyTeamsClick()">My teams</a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="home">
+                            <div class="panel-body">
+                                <label for="selectedTeam">Select Team:</label>
+                                <input type="search" id="selectedTeam" placeholder="Select team" autocomplete="off"
+                                    ng-model="ctrl.selectedTeamGetterSetter"
+                                    ng-model-options="{ getterSetter: true }"
+                                    typeahead-on-select="ctrl.changeSelectedTeam($item)"
+                                    uib-typeahead="team as team.teamName for team in ctrl.allTeams | filter:$viewValue | limitTo:8"
+                                    typeahead-min-length="0" class="form-control">
+                                    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                    <div ng-show="noResults">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                        No Results Found
+                                    </div>
+                            </div>
                         </div>
-                    </div>
-            </div>
-        </uib-accordion-group>
-    </uib-accordion>
-
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Players</h3>
-        </div>
-        <div class="panel-body">
-            <players-list team="ctrl.selectedTeam"></players-list>
-        </div>
-    </div>
+                </div>
+            </uib-accordion-group>
+        </uib-accordion>
+    </section>
+    <section>
+        <uib-accordion>
+            <uib-accordion-group is-open="ctrl.playersSectionOpen" panel-class="panel-primary">
+                <uib-accordion-heading>
+                    <i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': ctrl.playersSectionOpen, 'glyphicon-chevron-right': !ctrl.playersSectionOpen}"></i>
+                    <span>Players</span>
+                </uib-accordion-heading>
+                <div class="panel-body">
+                    <players-list team="ctrl.selectedTeam"></players-list>
+                </div>
+            </uib-accordion-group>
+        </uib-accordion>
+    </section>
 </div>

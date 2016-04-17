@@ -13,6 +13,9 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     self.editTeamName = '';
     self.editPlayersCount = '';
 
+    self.teamsSectionOpen = true;
+    self.playersSectionOpen = true;
+
     self.getAllTeams = function () {
         teamService.getAllTeams()
             .success(function (data) {
@@ -48,10 +51,10 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
                     // Add default team
                     self.allTeams.splice(1, self.allTeams.length);
                 }
-
                 self.selectedTeamGetterSetter('');
             })
             .error(function (data) {
+                self.selectedTeamGetterSetter('');
                 console.log('Error: ' + JSON.stringify(data));
             });
     };
