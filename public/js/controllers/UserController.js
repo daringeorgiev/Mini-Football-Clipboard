@@ -8,7 +8,7 @@ app.controller('UserController', ['$scope', '$window', '$location', 'userService
     var minUserNameLength = 1,
         minPasswordLength = 1;
     self.user = {};
-    self.user.userName = '';
+    self.user.userName = $window.localStorage.userName ? $window.localStorage.userName : '';
     self.user.password = '';
     self.isRegisterFormVisible = false;
     self.isLoggedIn = !!$window.localStorage.token;
@@ -20,10 +20,12 @@ app.controller('UserController', ['$scope', '$window', '$location', 'userService
                     notify({message: 'Login successful'});
                     self.isLoggedIn = true;
                     $window.localStorage.token = data.token;
+                    $window.localStorage.userName = self.user.userName;
                 })
                 .error(function (data) {
                     notify({message: 'Error: ' + data.message});
                     delete $window.localStorage.token;
+                    delete $window.localStorage.userName;
                 });
         } else {
             notify({message: 'Error: Please check your user name and password'});
@@ -36,6 +38,7 @@ app.controller('UserController', ['$scope', '$window', '$location', 'userService
                 .success(function (data) {
                     notify({message: 'Registration successful'});
                     $window.localStorage.token = data.token;
+                    $window.localStorage.userName = self.user.userName;
                     self.isLoggedIn = true;
                     $location.path('#');
                 })
@@ -50,6 +53,7 @@ app.controller('UserController', ['$scope', '$window', '$location', 'userService
     self.onLogoutClick = function () {
         self.isLoggedIn = false;
         delete $window.localStorage.token;
+        delete $window.localStorage.userName;
         self.user.userName = '';
         self.user.password = '';
         notify({message: 'Logout successful'});
