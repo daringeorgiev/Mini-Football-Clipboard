@@ -138,3 +138,30 @@ footer {
 .modal-content{
     padding: 2rem;
 }
+
+.bench {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position:absolute;
+    top: 0;
+    height: 100%;
+    left: calc(19% - #{$player-size});
+    .panel {
+        max-height: 100%;
+    }
+    .panel-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem 0.2rem;
+    }
+    .btn {
+        height: $player-size;
+        width: $player-size;
+        border-radius: 50%;
+        font-size: 3rem;
+        text-align: center;
+        margin-top: 0.2rem;
+    }
+}

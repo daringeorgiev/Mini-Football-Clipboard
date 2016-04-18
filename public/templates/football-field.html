@@ -4,7 +4,20 @@
             <img class="imgField" src="imgs/field.svg"/>
             <div class="draggableArea">
                 <div ng-repeat="player in ctrl.selectedTeam.players | limitTo: 6" class="btn btn-defaul player"
-                    ng-class="{'goalKeeper' : $index === 0}" my-draggable>
+                    ng-class="{'goalKeeper' : $index === 0}" my-draggable uib-tooltip="{{player.playerName}}">
+                    {{player.playerNumber}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bench">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Bench</h3>
+            </div>
+            <div class="panel-body">
+                <div ng-repeat="player in ctrl.selectedTeam.players" ng-if="$index > 5"
+                    class="btn btn-primary disabled" uib-tooltip="{{player.playerName}}">
                     {{player.playerNumber}}
                 </div>
             </div>
