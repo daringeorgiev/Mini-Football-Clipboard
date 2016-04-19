@@ -139,7 +139,7 @@ footer {
     padding: 2rem;
 }
 
-.bench {
+.substitutions {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -149,6 +149,9 @@ footer {
     left: calc(19% - #{$player-size});
     .panel {
         max-height: 100%;
+    }
+    .panel-title{
+        text-align: center;
     }
     .panel-body {
         display: flex;

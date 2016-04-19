@@ -6620,7 +6620,7 @@ footer {
 .modal-content {
   padding: 2rem; }
 
-.bench {
+.substitutions {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6628,14 +6628,16 @@ footer {
   top: 0;
   height: 100%;
   left: calc(19% - 7rem); }
-  .bench .panel {
+  .substitutions .panel {
     max-height: 100%; }
-  .bench .panel-body {
+  .substitutions .panel-title {
+    text-align: center; }
+  .substitutions .panel-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 1rem 0.2rem; }
-  .bench .btn {
+  .substitutions .btn {
     height: 7rem;
     width: 7rem;
     border-radius: 50%;
