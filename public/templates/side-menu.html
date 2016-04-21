@@ -16,43 +16,44 @@
         <uib-accordion>
             <uib-accordion-group is-open="ctrl.teamsSectionOpen" panel-class="panel-primary">
                 <uib-accordion-heading>
-                    <i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': ctrl.teamsSectionOpen, 'glyphicon-chevron-right': !ctrl.teamsSectionOpen}"></i>
+                    <i class="glyphicon" ng-class="{'glyphicon-chevron-down': ctrl.teamsSectionOpen, 'glyphicon-chevron-right': !ctrl.teamsSectionOpen}"></i>
                     <span>  Team: {{ctrl.selectedTeam.teamName}}</span>
                 </uib-accordion-heading>
                     <ul class="nav nav-tabs">
                         <li class="active">
                             <a href="#" data-toggle="tab" ng-click="ctrl.onAllTeamsClick()">All teams</a>
                         </li>
-                        <li>
-                            <a href="#" data-toggle="tab" ng-click="ctrl.onMyTeamsClick()">My teams</a>
+                        <li  ng-class ="{'disabled' : true}">
+                            <a href="#" data-toggle="tab" ng-click="false || ctrl.onMyTeamsClick()" ng-disabled="true">My teams</a>
                         </li>
                     </ul>
-                    <div id="myTabContent" class="tab-content">
-                        <div class="tab-pane fade active in" id="home">
-                            <div class="panel-body">
-                                <label for="selectedTeam">Select Team:</label>
-                                <input type="search" id="selectedTeam" placeholder="Select team" autocomplete="off"
-                                    ng-model="ctrl.selectedTeamGetterSetter"
-                                    ng-model-options="{ getterSetter: true }"
-                                    typeahead-on-select="ctrl.changeSelectedTeam($item)"
-                                    uib-typeahead="team as team.teamName for team in ctrl.allTeams | filter:$viewValue | limitTo:8"
-                                    typeahead-min-length="0" class="form-control">
-                                    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-                                    <div ng-show="noResults">
-                                        <i class="glyphicon glyphicon-remove"></i>
-                                        No Results Found
-                                    </div>
-                            </div>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="home">
+                        <div class="panel-body">
+                            <label for="selectedTeam">Select Team:</label>
+                            <input type="search" id="selectedTeam" placeholder="Select team" autocomplete="off"
+                                ng-model="ctrl.selectedTeamGetterSetter"
+                                ng-model-options="{ getterSetter: true }"
+                                typeahead-on-select="ctrl.changeSelectedTeam($item)"
+                                uib-typeahead="team as team.teamName for team in ctrl.allTeams | filter:$viewValue | limitTo:8"
+                                typeahead-min-length="0" class="form-control">
+                                <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                <div ng-show="noResults">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    No Results Found
+                                </div>
                         </div>
+                    </div>
                 </div>
             </uib-accordion-group>
         </uib-accordion>
     </section>
+
     <section>
         <uib-accordion>
             <uib-accordion-group is-open="ctrl.playersSectionOpen" panel-class="panel-primary">
                 <uib-accordion-heading>
-                    <i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': ctrl.playersSectionOpen, 'glyphicon-chevron-right': !ctrl.playersSectionOpen}"></i>
+                    <i class="glyphicon" ng-class="{'glyphicon-chevron-down': ctrl.playersSectionOpen, 'glyphicon-chevron-right': !ctrl.playersSectionOpen}"></i>
                     <span>Players</span>
                 </uib-accordion-heading>
                 <div class="panel-body">
