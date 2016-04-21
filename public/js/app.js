@@ -10,6 +10,7 @@ var app = angular.module('app', ['cgNotify', 'ui.sortable', 'ngRoute', 'ngAnimat
             })
             .when('/register', {
                 templateUrl: 'templates/register-form.html',
+                controller: 'UserController as userCtrl',
                 reloadOnSearch: false
             })
             .when('/edit-team', {
