@@ -157,7 +157,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
         if (id) {
             self.getTeamById(id);
         }
-    }();
+    };
 
     self.setSelectedTeam = function (team) {
         self.selectedTeam = team;

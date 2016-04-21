@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="libs/ng-sortable/dist/ng-sortable.style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body ng-app="app" ng-controller="MainController as ctrl">
+<body ng-app="app" ng-controller="MainController as ctrl" ng-init="ctrl.getUrlParams()">
     <div class="container-fluid">
         <div ng-view></div>
 
