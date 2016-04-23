@@ -174,3 +174,13 @@ footer {
         color:$gray-lighter;
     }
 }
+
+.panel-body {
+    .nav-tabs{
+        li {
+            width: 50%;
+            text-align: center;
+            font-size: 1.7rem;
+        }
+    }
+}

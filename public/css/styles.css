@@ -6648,4 +6648,9 @@ footer {
 .logged a {
   color: #eeeeee; }
 
+.panel-body .nav-tabs li {
+  width: 50%;
+  text-align: center;
+  font-size: 1.7rem; }
+
 /*# sourceMappingURL=styles.css.map */
