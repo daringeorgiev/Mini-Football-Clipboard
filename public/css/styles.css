@@ -6653,4 +6653,7 @@ footer {
   text-align: center;
   font-size: 1.7rem; }
 
+.modal-footer .btn-danger {
+  float: left; }
+
 /*# sourceMappingURL=styles.css.map */

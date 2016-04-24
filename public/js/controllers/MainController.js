@@ -115,6 +115,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
                 if (self.allTeams) {
                     self.selectedTeam = self.allTeams[0];
                 }
+                $location.path('/');
                 notify({message: 'Team deleted successful'});
             })
             .error(function (data) {
@@ -157,7 +158,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
         if (id) {
             self.getTeamById(id);
         }
-    };
+    }();
 
     self.setSelectedTeam = function (team) {
         self.selectedTeam = team;
