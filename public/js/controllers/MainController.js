@@ -117,6 +117,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
                 }
                 $location.path('/');
                 notify({message: 'Team deleted successful'});
+                self.selectedTeamGetterSetter('');
             })
             .error(function (data) {
                 notify({message: 'Error: ' + data});
