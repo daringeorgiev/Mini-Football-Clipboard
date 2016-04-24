@@ -108,21 +108,23 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     };
 
     self.deleteTeam = function () {
-        teamService.deleteTeam(self.selectedTeam._id)
-            .success(function (data) {
-                console.log("Delete: " + data);
-                self.allTeams = data;
-                if (self.allTeams) {
-                    self.selectedTeam = self.allTeams[0];
-                }
-                $location.path('/');
-                notify({message: 'Team deleted successful'});
-                self.selectedTeamGetterSetter('');
-            })
-            .error(function (data) {
-                notify({message: 'Error: ' + data});
-                console.log('Error: ' + data);
-            });
+        if (confirm('Are you sure you want to delete ' + self.selectedTeam.teamName + ' team?')) {
+            teamService.deleteTeam(self.selectedTeam._id)
+                .success(function (data) {
+                    console.log("Delete: " + data);
+                    self.allTeams = data;
+                    if (self.allTeams) {
+                        self.selectedTeam = self.allTeams[0];
+                    }
+                    $location.path('/');
+                    notify({message: 'Team deleted successful'});
+                    self.selectedTeamGetterSetter('');
+                })
+                .error(function (data) {
+                    notify({message: 'Error: ' + data});
+                    console.log('Error: ' + data);
+                });
+        }
     };
 
     self.updateTeam = function () {
