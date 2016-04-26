@@ -7,9 +7,8 @@ app.controller('UserController', ['$scope', '$window', '$location', 'userService
     var self = this;
     var minUserNameLength = 1,
         minPasswordLength = 1;
-    self.user = {};
+
     self.user = userService.getUser();
-    self.user.password = '';
     self.isRegisterFormVisible = false;
 
     self.onLoginClick = function () {
@@ -46,7 +45,7 @@ app.controller('UserController', ['$scope', '$window', '$location', 'userService
     };
 
     self.onLogoutClick = function () {
-        self.user = userService.logoutUser();
+        userService.logoutUser();
         notify({message: 'Logout successful'});
     };
 }]);
