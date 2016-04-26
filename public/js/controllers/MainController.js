@@ -1,6 +1,6 @@
 
-app.controller('MainController', ['$scope', '$route','$routeParams', '$location', 'teamService', 'notify',
-    function ($scope, $route, $routeParams, $location, teamService, notify) {
+app.controller('MainController', ['$scope', '$route','$routeParams', '$location', 'teamService', 'userService', 'notify',
+    function ($scope, $route, $routeParams, $location, teamService, userService,notify) {
     'use strict';
     var self = this,
         _selectTeamInputValue = '';
@@ -15,6 +15,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
 
     self.teamsSectionOpen = true;
     self.playersSectionOpen = true;
+    self.user = userService.getUser();
 
     self.getAllTeams = function () {
         teamService.getAllTeams()

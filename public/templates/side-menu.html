@@ -19,14 +19,12 @@
                     <i class="glyphicon" ng-class="{'glyphicon-chevron-down': ctrl.teamsSectionOpen, 'glyphicon-chevron-right': !ctrl.teamsSectionOpen}"></i>
                     <span>  Team: {{ctrl.selectedTeam.teamName}}</span>
                 </uib-accordion-heading>
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#" data-toggle="tab" ng-click="ctrl.onAllTeamsClick()">All teams</a>
-                        </li>
-                        <li  ng-class ="{'disabled' : true}">
-                            <a href="#" data-toggle="tab" ng-click="false || ctrl.onMyTeamsClick()" ng-disabled="true">My teams</a>
-                        </li>
-                    </ul>
+
+                <uib-tabset active="active">
+                    <uib-tab index="0" heading="All teams" select="ctrl.onAllTeamsClick()"></uib-tab>
+                    <uib-tab index="1" heading="My teams"  select="ctrl.onMyTeamsClick()" disable="!ctrl.user._id"></uib-tab>
+                </uib-tabset>
+                
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade active in" id="home">
                         <div class="panel-body">
