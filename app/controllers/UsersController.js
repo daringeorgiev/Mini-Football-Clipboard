@@ -37,8 +37,8 @@ module.exports = {
                     // return the information including token as JSON
                     res.status(200)
                         .json({
-                            success: true,
-                            message: 'Enjoy your token!',
+                            userName: user.name,
+                            _id: user._id,
                             token: token
                         });
                 }
@@ -72,8 +72,8 @@ module.exports = {
 
                     res.status(200)
                         .json({
-                            success: true,
-                            message: 'User created successfully',
+                            userName: user.name,
+                            _id: user._id,
                             token: token
                         });
                 });

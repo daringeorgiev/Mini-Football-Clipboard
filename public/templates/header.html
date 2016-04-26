@@ -12,7 +12,7 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form ng-if="!userCtrl.isLoggedIn" class="navbar-form navbar-right" role="loginForm">
+            <form ng-if="!userCtrl.user.loggedIn" class="navbar-form navbar-right" role="loginForm">
                 <div class="form-group">
                     <input class="form-control input-sm" placeholder="Username" type="text"
                            ng-model="userCtrl.user.userName">
@@ -24,7 +24,7 @@
                     Register
                 </a>
             </form>
-            <form ng-if="userCtrl.isLoggedIn" class="navbar-form navbar-right logged" role="logoutForm">
+            <form ng-if="userCtrl.user.loggedIn" class="navbar-form navbar-right logged" role="logoutForm">
                 <a href="#">{{userCtrl.user.userName }}</a>
                 <button type="submit" class="btn btn-default btn-sm" ng-click="userCtrl.onLogoutClick()">Logout</button>
             </form>
