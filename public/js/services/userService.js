@@ -35,8 +35,6 @@ app.factory('userService', ['$http', '$window', function($http, $window) {
         $window.localStorage.setItem('userName', data.userName);
         $window.localStorage.setItem('_id', data._id);
         $window.localStorage.setItem('token', data.token);
-
-        return self.user;
     }
 
     function getUser() {

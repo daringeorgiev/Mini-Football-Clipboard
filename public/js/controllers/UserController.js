@@ -16,7 +16,7 @@ app.controller('UserController', ['$scope', '$window', '$location', 'userService
             self.user.password && self.user.password.length >= minPasswordLength) {
             userService.loginUser(self.user.userName, self.user.password)
                 .success(function (data) {
-                    self.user = userService.setUser(data);
+                    userService.setUser(data);
                     notify({message: 'Login successful'});
                 })
                 .error(function (data) {
@@ -34,7 +34,7 @@ app.controller('UserController', ['$scope', '$window', '$location', 'userService
             userService.registerUser(self.user.userName, self.user.password)
                 .success(function (data) {
                     $location.path('#');
-                    self.user = userService.setUser(data);
+                    userService.setUser(data);
                     notify({message: 'Registration successful'});
                 })
                 .error(function (data) {
