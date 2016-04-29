@@ -15,58 +15,59 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
 
     self.teamsSectionOpen = true;
     self.playersSectionOpen = true;
-    self.user = userService.getUser();
 
-    self.getAllTeams = function () {
+    self.user = userService.getUser();
+    self.selectedTeam = teamService.getSelectedTeam();
+    self.allTeams = teamService.getStoredTeams();
+
+    self.getAllTeams = function() {
         teamService.getAllTeams()
-            .success(function (data) {
-                //console.log("Contr: " + data);
-                //notify({message: 'Update successful', classes: 'alert-danger'});
-                self.allTeams = data;
-                self.selectedTeam = self.allTeams[0];
+            .success(function(data) {
+                teamService.setStoredTeams(data);
+                teamService.setSelectedTeam(data[0]);
             })
-            .error(function (data) {
+            .error(function(data) {
                 console.log('Error: ' + data);
             });
     }();
 
-    self.changeSelectedTeam = function (team) {
-        self.selectedTeam = team;
+    self.changeSelectedTeam = function(team) {
+        teamService.setSelectedTeam(team);
         self.changeTeamColors();
         $location.search('id', self.selectedTeam._id);
     };
 
-    self.selectedTeamGetterSetter = function (newInputValue) {
+    self.selectedTeamGetterSetter = function(newInputValue) {
         if (arguments.length) {
-          _selectTeamInputValue = newInputValue || '';
+            _selectTeamInputValue = newInputValue || '';
         }
         return _selectTeamInputValue;
     };
 
-    self.onMyTeamsClick = function () {
+    self.onMyTeamsClick = function() {
         teamService.getMyTeams()
-            .success(function (data) {
+            .success(function(data) {
                 if (data.length) {
-                    self.allTeams = data;
+                    teamService.setStoredTeams(data);
                 } else {
                     // Add default team
                     self.allTeams.splice(1, self.allTeams.length);
                 }
                 self.selectedTeamGetterSetter('');
             })
-            .error(function (data) {
+            .error(function(data) {
                 self.selectedTeamGetterSetter('');
                 console.log('Error: ' + JSON.stringify(data));
             });
     };
 
-    self.onAllTeamsClick = function () {
+    self.onAllTeamsClick = function() {
         teamService.getAllTeams()
-            .success(function (data) {
-                self.allTeams = data;
+            .success(function(data) {
+                teamService.setStoredTeams(data);
                 self.selectedTeamGetterSetter('');
             })
-            .error(function (data) {
+            .error(function(data) {
                 console.log('Error: ' + JSON.stringify(data));
             });
     };
@@ -147,9 +148,9 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     self.getTeamById = function (id) {
         teamService.getTeamById(id)
             .success(function (data) {
-                self.selectedTeam = data;
-                notify({message: 'Team: ' + data.teamName + '\n loaded successful', classes: 'noty', position: 'center'});
+                teamService.setSelectedTeam(data);
                 self.changeTeamColors();
+                notify({message: 'Team: ' + data.teamName + '\n loaded successful', classes: 'noty', position: 'center'});
             })
             .error(function (data) {
                 notify({message: 'Error: ' + data});
