@@ -5,7 +5,6 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     var self = this,
         _selectTeamInputValue = '';
 
-    self.isCreateNewTeamVisible = false;
     self.isEditTeamVisible = false;
     self.isSaveAsTeamVisible = false;
     //Edit parameters
@@ -19,17 +18,6 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     self.user = userService.getUser();
     self.selectedTeam = teamService.getSelectedTeam();
     self.allTeams = teamService.getStoredTeams();
-
-    self.getAllTeams = function() {
-        teamService.getAllTeams()
-            .success(function(data) {
-                teamService.setStoredTeams(data);
-                teamService.setSelectedTeam(data[0]);
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
-    }();
 
     self.changeSelectedTeam = function(team) {
         teamService.setSelectedTeam(team);
@@ -47,12 +35,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     self.onMyTeamsClick = function() {
         teamService.getMyTeams()
             .success(function(data) {
-                if (data.length) {
-                    teamService.setStoredTeams(data);
-                } else {
-                    // Add default team
-                    self.allTeams.splice(1, self.allTeams.length);
-                }
+                teamService.setStoredTeams(data);
                 self.selectedTeamGetterSetter('');
             })
             .error(function(data) {
@@ -65,6 +48,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
         teamService.getAllTeams()
             .success(function(data) {
                 teamService.setStoredTeams(data);
+                teamService.selectDefaultTeam();
                 self.selectedTeamGetterSetter('');
             })
             .error(function(data) {
@@ -75,8 +59,7 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     self.createNewTeam = function () {
         teamService.createTeam(self.newTeam)
             .success(function (data) {
-                self.selectedTeam = data;
-                self.isCreateNewTeamVisible = false;
+                teamService.setSelectedTeam(data);
                 self.isSaveAsTeamVisible = false;
                 self.allTeams.push(data);
                 self.changeTeamColors();
@@ -114,13 +97,13 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
             teamService.deleteTeam(self.selectedTeam._id)
                 .success(function (data) {
                     console.log("Delete: " + data);
-                    self.allTeams = data;
+                    teamService.setStoredTeams(data);
                     if (self.allTeams) {
-                        self.selectedTeam = self.allTeams[0];
+                        teamService.selectDefaultTeam();
                     }
                     $location.path('/');
-                    notify({message: 'Team deleted successful'});
                     self.selectedTeamGetterSetter('');
+                    notify({message: 'Team deleted successful'});
                 })
                 .error(function (data) {
                     notify({message: 'Error: ' + data});
@@ -132,12 +115,12 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     self.updateTeam = function () {
         teamService.updateTeam(self.selectedTeam)
             .success(function (data) {
-                //self.selectedTeam = data;
-                notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'noty', position: 'center'});
+                teamService.setSelectedTeam(data);
                 self.changeTeamColors();
                 self.isEditTeamVisible = false;
                 $location.path('/');
                 $location.search('id', self.selectedTeam._id);
+                notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'noty', position: 'center'});
             })
             .error(function (data) {
                 notify({message: 'Error: ' + data});
@@ -164,15 +147,6 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
             self.getTeamById(id);
         }
     }();
-
-    self.setSelectedTeam = function (team) {
-        self.selectedTeam = team;
-        //self.changeTeamColors();
-    };
-
-    self.searchTextChange = function (text) {
-        console.log(text);
-    };
 
     //Create New Team
     self.onCreateNewTeamClick = function () {

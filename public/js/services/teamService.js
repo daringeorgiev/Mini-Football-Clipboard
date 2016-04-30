@@ -6,6 +6,7 @@ app.factory('teamService', ['$http', '$window', function($http, $window) {
     var self = this;
     self.allTeams = [];
     self.selectedTeam = {};
+    self.defaultTeam = {};
 
     function getAllTeams() {
         return $http.get('/api/all-teams');
@@ -48,6 +49,7 @@ app.factory('teamService', ['$http', '$window', function($http, $window) {
         data.forEach(function(team) {
             self.allTeams.push(team);
         });
+        self.defaultTeam = data[0];
     }
 
     function getStoredTeams() {
@@ -68,6 +70,10 @@ app.factory('teamService', ['$http', '$window', function($http, $window) {
         return self.selectedTeam;
     }
 
+    function selectDefaultTeam() {
+        this.setSelectedTeam(self.defaultTeam);
+    }
+
     return {
         getAllTeams: getAllTeams,
         getMyTeams: getMyTeams,
@@ -78,6 +84,7 @@ app.factory('teamService', ['$http', '$window', function($http, $window) {
         setStoredTeams: setStoredTeams,
         getStoredTeams: getStoredTeams,
         getSelectedTeam: getSelectedTeam,
-        setSelectedTeam: setSelectedTeam
+        setSelectedTeam: setSelectedTeam,
+        selectDefaultTeam: selectDefaultTeam
     };
 }]);
