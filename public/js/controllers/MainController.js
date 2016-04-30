@@ -8,7 +8,6 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     self.isEditTeamVisible = false;
     self.isSaveAsTeamVisible = false;
     //Edit parameters
-    self.searchText = '';
     self.editTeamName = '';
     self.editPlayersCount = '';
 
@@ -19,17 +18,16 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
     self.selectedTeam = teamService.getSelectedTeam();
     self.allTeams = teamService.getStoredTeams();
 
-    self.changeSelectedTeam = function(team) {
-        teamService.setSelectedTeam(team);
-        self.changeTeamColors();
-        $location.search('id', self.selectedTeam._id);
-    };
-
-    self.selectedTeamGetterSetter = function(newInputValue) {
-        if (arguments.length) {
-            _selectTeamInputValue = newInputValue || '';
-        }
-        return _selectTeamInputValue;
+    self.onAllTeamsClick = function() {
+        teamService.getAllTeams()
+            .success(function(data) {
+                teamService.setStoredTeams(data);
+                teamService.selectDefaultTeam();
+                self.selectedTeamGetterSetter('');
+            })
+            .error(function(data) {
+                console.log('Error: ' + JSON.stringify(data));
+            });
     };
 
     self.onMyTeamsClick = function() {
@@ -40,18 +38,6 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
             })
             .error(function(data) {
                 self.selectedTeamGetterSetter('');
-                console.log('Error: ' + JSON.stringify(data));
-            });
-    };
-
-    self.onAllTeamsClick = function() {
-        teamService.getAllTeams()
-            .success(function(data) {
-                teamService.setStoredTeams(data);
-                teamService.selectDefaultTeam();
-                self.selectedTeamGetterSetter('');
-            })
-            .error(function(data) {
                 console.log('Error: ' + JSON.stringify(data));
             });
     };
@@ -73,23 +59,20 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
             });
     };
 
-    self.addPlayer = function (team) {
-        var count = team.players.length;
-        team.players.push({
-            playerName: 'Player' + (count + 1),
-            playerNumber: count + 1
-        });
-        team.playersCount++;
-    };
-
-    self.removePlayer = function (team) {
-        self.selectedTeam.players.splice(team.players.length - 1, 1);
-        self.selectedTeam.playersCount--;
-    };
-
-    self.removePlayerByIndex = function (team, index){
-        team.players.splice(index, 1);
-        team.playersCount--;
+    self.updateTeam = function () {
+        teamService.updateTeam(self.selectedTeam)
+            .success(function (data) {
+                teamService.setSelectedTeam(data);
+                self.changeTeamColors();
+                self.isEditTeamVisible = false;
+                $location.path('/');
+                $location.search('id', self.selectedTeam._id);
+                notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'noty', position: 'center'});
+            })
+            .error(function (data) {
+                notify({message: 'Error: ' + data});
+                console.log('Error: ' + data);
+            });
     };
 
     self.deleteTeam = function () {
@@ -112,22 +95,6 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
         }
     };
 
-    self.updateTeam = function () {
-        teamService.updateTeam(self.selectedTeam)
-            .success(function (data) {
-                teamService.setSelectedTeam(data);
-                self.changeTeamColors();
-                self.isEditTeamVisible = false;
-                $location.path('/');
-                $location.search('id', self.selectedTeam._id);
-                notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'noty', position: 'center'});
-            })
-            .error(function (data) {
-                notify({message: 'Error: ' + data});
-                console.log('Error: ' + data);
-            });
-    };
-
     self.getTeamById = function (id) {
         teamService.getTeamById(id)
             .success(function (data) {
@@ -141,12 +108,54 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
             });
     };
 
-    self.getUrlParams = function () {
+    self.getUrlParams = function() {
         var id = $location.search().id ? $location.search().id : "";
         if (id) {
             self.getTeamById(id);
         }
     }();
+
+    self.changeSelectedTeam = function(team) {
+        teamService.setSelectedTeam(team);
+        self.changeTeamColors();
+        $location.search('id', self.selectedTeam._id);
+    };
+
+    self.selectedTeamGetterSetter = function(newInputValue) {
+        if (arguments.length) {
+            _selectTeamInputValue = newInputValue || '';
+        }
+        return _selectTeamInputValue;
+    };
+
+    self.changeTeamColors = function () {
+        setTimeout(function () {
+            jQuery('.player').css({
+                'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.mainColor : 'blue',
+                'color' : self.selectedTeam.colors? self.selectedTeam.colors.secondColor : 'yellow'
+            });
+
+            jQuery('.goalKeeper').css({
+                'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.gkMainColor : 'red',
+                'color' : self.selectedTeam.colors ? self.selectedTeam.colors.gkSecondColor : 'white'
+            });
+        }, 1);
+    };
+
+    // Add/Remove player
+    self.addPlayer = function (team) {
+        var count = team.players.length;
+        team.players.push({
+            playerName: 'Player' + (count + 1),
+            playerNumber: count + 1
+        });
+        team.playersCount++;
+    };
+
+    self.removePlayerByIndex = function (team, index){
+        team.players.splice(index, 1);
+        team.playersCount--;
+    };
 
     //Create New Team
     self.onCreateNewTeamClick = function () {
@@ -191,83 +200,4 @@ app.controller('MainController', ['$scope', '$route','$routeParams', '$location'
         self.isEditTeamVisible = false;
         self.isSaveAsTeamVisible = false;
     };
-
-    self.changeTeamColors = function () {
-        setTimeout(function () {
-            jQuery('.player').css({
-                'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.mainColor : 'blue',
-                'color' : self.selectedTeam.colors? self.selectedTeam.colors.secondColor : 'yellow'
-            });
-
-            jQuery('.goalKeeper').css({
-                'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.gkMainColor : 'red',
-                'color' : self.selectedTeam.colors ? self.selectedTeam.colors.gkSecondColor : 'white'
-            });
-        }, 1);
-    };
-
-
-
-    //$scope.demoMessageTemplate = function(){
-    //
-    //    var messageTemplate = '<div class="alert alert-dismissible alert-danger"><button type="button" class="close" data-dismiss="alert">×</button><strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.</div>';
-    //
-    //    notify({
-    //        messageTemplate: messageTemplate,
-    //        classes: 'alert-danger',
-    //        scope:$scope,
-    //        //\templateUrl: $scope.template,
-    //        position: 'left'
-    //    });
-    //
-    //};
-    ////Hack for resizing
-    //self.setDragableAreaWidth = function () {
-    //    $('.draggableArea').width($('.imgField').width() - $('.player').width());
-    //    $('.draggableArea').css({left: $('.imgField').position().left});
-    //    $(window).on('resize', function () {
-    //        $('.draggableArea').width($('.imgField').width() - $('.player').width());
-    //        $('.draggableArea').css({left: $('.imgField').position().left});
-    //    });
-    //}();
-
-    //ng-sortable
-
-    $scope.dragControlListeners = {
-        accept: function (sourceItemHandleScope, destSortableScope) {
-            console.log("accept");
-            return boolean;
-        },
-        //override to determine drag is allowed or not. default is true.
-        itemMoved: function (event) {
-            console.log("move");
-        },
-        //Do what you want},
-        orderChanged: function (event) {
-            console.log("oredr");
-        },
-        //Do what you want},
-        containment: '#board'//optional param.
-    };
-
-    //$scope.sortableOptions = {
-    //
-    //}
-    $scope.dropControlListeners = {
-        accept: function (sourceItemHandleScope, destSortableScope) {
-            console.log("accept");
-            return boolean;
-        },
-        //override to determine drag is allowed or not. default is true.
-        itemMoved: function (event) {
-            console.log("move");
-        },
-        //Do what you want},
-        orderChanged: function (event) {
-            console.log("oredr");
-        },
-        //Do what you want},
-        containment: '#board'//optional param.
-    };
-
 }]);
