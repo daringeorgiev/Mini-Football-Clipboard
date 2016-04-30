@@ -18,11 +18,29 @@
         self.selectedTeam = teamService.getSelectedTeam();
         self.allTeams = teamService.getStoredTeams();
 
+        self.selectTeamOnLoad = function() {
+            teamService.getDefaultTeam()
+                .success(function(data) {
+                    // ToDo Should change how to get default team
+                    teamService.setDefaultTeam(data[0]);
+                    // Check url for team id
+                    if ($location.search().id) {
+                        self.setTeamById($location.search().id);
+                    } else {
+                        teamService.selectDefaultTeam();
+                    }
+                })
+                .error(function(data) {
+                    notify({
+                        message: 'Error: ' + data
+                    });
+                });
+        }();
+
         self.onAllTeamsClick = function() {
             teamService.getAllTeams()
                 .success(function(data) {
                     teamService.setStoredTeams(data);
-                    teamService.selectDefaultTeam();
                     self.selectedTeamGetterSetter('');
                 })
                 .error(function(data) {
@@ -95,7 +113,7 @@
             }
         };
 
-        self.getTeamById = function (id) {
+        self.setTeamById = function (id) {
             teamService.getTeamById(id)
                 .success(function (data) {
                     teamService.setSelectedTeam(data);
@@ -107,13 +125,6 @@
                     console.log('Error: ' + data);
                 });
         };
-
-        self.getUrlParams = function() {
-            var id = $location.search().id ? $location.search().id : "";
-            if (id) {
-                self.getTeamById(id);
-            }
-        }();
 
         self.changeSelectedTeam = function(team) {
             teamService.setSelectedTeam(team);

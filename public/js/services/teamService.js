@@ -26,6 +26,11 @@
             return $http.get('/api/team' + '?id=' + id);
         }
 
+        function getDefaultTeam() {
+            // ToDo Should change how to get default team
+            return $http.get('/api/all-teams');
+        }
+
         function createTeam(team) {
             var req = team;
             req.token = $window.localStorage.token;
@@ -68,6 +73,10 @@
             return self.selectedTeam;
         }
 
+        function setDefaultTeam(data) {
+            self.defaultTeam = data;
+        }
+
         function selectDefaultTeam() {
             this.setSelectedTeam(self.defaultTeam);
         }
@@ -83,6 +92,8 @@
             getStoredTeams: getStoredTeams,
             getSelectedTeam: getSelectedTeam,
             setSelectedTeam: setSelectedTeam,
+            getDefaultTeam: getDefaultTeam,
+            setDefaultTeam: setDefaultTeam,
             selectDefaultTeam: selectDefaultTeam
         };
     }]);
