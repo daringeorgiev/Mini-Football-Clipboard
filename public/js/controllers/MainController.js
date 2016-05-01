@@ -1,7 +1,7 @@
 (function() {
     'use strict';
-    app.controller('MainController', ['$scope', '$route','$routeParams', '$location', 'teamService', 'userService', 'notify',
-        function ($scope, $route, $routeParams, $location, teamService, userService,notify) {
+    app.controller('MainController', ['$scope', '$rootScope', '$route','$routeParams', '$location', 'teamService', 'userService', 'notify',
+        function ($scope, $rootScope, $route, $routeParams, $location, teamService, userService,notify) {
         var self = this,
             _selectTeamInputValue = '';
 
@@ -138,6 +138,13 @@
             }
             return _selectTeamInputValue;
         };
+
+        // Set selected team id as URL parameter
+        $rootScope.$on('$routeChangeStart', function(next, last) {
+            if ($location.path() === '/') {
+                $location.search('id', self.selectedTeam._id);
+            }
+        });
 
         self.changeTeamColors = function () {
             setTimeout(function () {
