@@ -6656,4 +6656,10 @@ footer {
 .modal-footer .btn-danger {
   float: left; }
 
+#searchclear {
+  pointer-events: auto;
+  text-decoration: none;
+  cursor: pointer;
+  color: #666; }
+
 /*# sourceMappingURL=styles.css.map */

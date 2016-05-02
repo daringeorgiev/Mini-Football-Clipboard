@@ -190,3 +190,10 @@ footer {
         float: left;
     }
 }
+
+#searchclear {
+    pointer-events: auto;
+    text-decoration: none;
+    cursor: pointer;
+    color: $gray;
+}

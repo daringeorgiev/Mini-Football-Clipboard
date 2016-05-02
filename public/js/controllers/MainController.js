@@ -2,12 +2,12 @@
     'use strict';
     app.controller('MainController', ['$scope', '$rootScope', '$route','$routeParams', '$location', 'teamService', 'userService', 'notify',
         function ($scope, $rootScope, $route, $routeParams, $location, teamService, userService,notify) {
-        var self = this,
-            _selectTeamInputValue = '';
+        var self = this;
 
         self.isEditTeamVisible = false;
         self.isSaveAsTeamVisible = false;
         //Edit parameters
+        self.selectTeamInputValue = '';
         self.editTeamName = '';
         self.editPlayersCount = '';
 
@@ -134,9 +134,9 @@
 
         self.selectedTeamGetterSetter = function(newInputValue) {
             if (arguments.length) {
-                _selectTeamInputValue = newInputValue || '';
+                self.selectTeamInputValue = newInputValue || '';
             }
-            return _selectTeamInputValue;
+            return self.selectTeamInputValue;
         };
 
         // Set selected team id as URL parameter
