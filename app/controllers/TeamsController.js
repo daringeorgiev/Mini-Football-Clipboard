@@ -4,33 +4,38 @@
 var Team = require('../models/team');
 
 module.exports = {
-    getAllTeams: function (req, res) {
-        Team.find({}, function (err, teams) {
-            if (err) {
-                throw err;
+    getAllTeams: function(req, res) {
+        if (req.query.ownerId) {
+            if (req.decoded) {
+                if ((req.query.ownerId === req.decoded._id || req.decoded.admin)) {
+                    Team.find({
+                        ownerId: req.query.ownerId
+                    }, function(err, teams) {
+                        if (err) {
+                            throw err;
+                        }
+                        res.json(teams);
+                    });
+                } else {
+                    return res.status(403)
+                        .send('You are not authorized to get this teams');
+                }
+            } else {
+                return res.status(401)
+                    .send('You are not authenticated');
             }
-            res.json(teams);
-        });
-    },
-
-    getMyTeams: function (req, res) {
-        if (res.req.decoded) {
-            Team.find({ownerId: res.req.decoded._id}, function (err, teams) {
+        } else {
+            Team.find({}, function(err, teams) {
                 if (err) {
                     throw err;
                 }
                 res.json(teams);
             });
-        } else {
-            res.status(403).send({
-                success: false,
-                message: 'No token provided.'
-            });
         }
     },
 
     getTeamById: function (req, res) {
-        Team.findOne({_id: req.query.id}, function (err, team) {
+        Team.findOne({_id: req.params.id}, function (err, team) {
             if (err) {
                 res.status(404)
                     .json(err.message);
@@ -102,21 +107,39 @@ module.exports = {
         }
     },
 
-    deleteTeam: function (req, res) {
-        //ToDo use authentication to delete team
-        Team.remove({
-            _id: req.params.id
-        }, function (err, team) {
-            if (err) {
-                res.send(err);
-                throw err;
-            }
-            Team.find({}, function (err, teams) {
+    deleteTeam: function(req, res) {
+        if (req.decoded) {
+            Team.findOne({
+                _id: req.params.id
+            }, function(err, team) {
                 if (err) {
-                    throw err;
+                    res.status(404)
+                        .json(err.message);
                 }
-                res.json(teams);
+
+                if (req.decoded._id === team.ownerId || req.decoded.admin) {
+                    Team.remove({
+                        _id: req.params.id
+                    }, function(err, team) {
+                        if (err) {
+                            res.send(err);
+                            throw err;
+                        }
+                        Team.find({}, function(err, teams) {
+                            if (err) {
+                                throw err;
+                            }
+                            res.json(teams);
+                        });
+                    });
+                } else {
+                    return res.status(403)
+                        .send('You are not authorized to delete this team');
+                }
             });
-        });
+        } else {
+            return res.status(401)
+                .send('You are not authenticated');
+        }
     }
 };

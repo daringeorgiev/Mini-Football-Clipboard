@@ -15,12 +15,11 @@ module.exports = function (app) {
     app.get('/api/users', usersCtrl.getAllUsers);
 
     //Teams =================================================
-    app.get('/api/all-teams', teamsCtrl.getAllTeams);
-    app.get('/api/my-teams', auth.isLoggedIn, teamsCtrl.getMyTeams);
-    app.get('/api/team', teamsCtrl.getTeamById);
-    app.post('/api/team', auth.isLoggedIn, teamsCtrl.createTeam);
-    app.put('/api/team', auth.isLoggedIn, teamsCtrl.updateTeam);
-    app.delete('/api/team:id', teamsCtrl.deleteTeam);
+    app.get('/api/teams', auth.isLoggedIn, teamsCtrl.getAllTeams);
+    app.get('/api/teams/:id', teamsCtrl.getTeamById);
+    app.post('/api/teams', auth.isLoggedIn, teamsCtrl.createTeam);
+    app.put('/api/teams/:id', auth.isLoggedIn, teamsCtrl.updateTeam);
+    app.delete('/api/teams/:id', auth.isLoggedIn, teamsCtrl.deleteTeam);
 
     //Angular notify =========================================
     app.get('/angular-notify.html', function (req, res) {

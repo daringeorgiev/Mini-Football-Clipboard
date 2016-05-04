@@ -7,13 +7,13 @@
         self.defaultTeam = {};
 
         function getAllTeams() {
-            return $http.get('/api/all-teams');
+            return $http.get('/api/teams');
         }
 
         function getMyTeams() {
             var req = {
                 method: 'GET',
-                url: '/api/my-teams',
+                url: '/api/teams?ownerId=' + $window.localStorage._id,
                 headers: {
                     'x-access-token': $window.localStorage.token
                 }
@@ -23,28 +23,35 @@
         }
 
         function getTeamById(id) {
-            return $http.get('/api/team' + '?id=' + id);
+            return $http.get('/api/teams/' + id);
         }
 
         function getDefaultTeam() {
             // ToDo Should change how to get default team
-            return $http.get('/api/all-teams');
+            return $http.get('/api/teams');
         }
 
         function createTeam(team) {
             var req = team;
             req.token = $window.localStorage.token;
-            return $http.post('/api/team', req);
+            return $http.post('/api/teams', req);
         }
 
         function deleteTeam(id) {
-            return $http.delete('/api/team' + id);
+            var req = {
+                method: 'DELETE',
+                url: '/api/teams/' + id,
+                headers: {
+                    'x-access-token': $window.localStorage.token
+                }
+            };
+            return $http(req);
         }
 
         function updateTeam(team) {
             var req = team;
             req.token = $window.localStorage.token;
-            return $http.put('/api/team', req);
+            return $http.put('/api/teams/' + team._id, req);
         }
 
         function setStoredTeams(data) {
