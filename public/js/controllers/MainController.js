@@ -148,12 +148,12 @@
 
         self.changeTeamColors = function () {
             setTimeout(function () {
-                jQuery('.player').css({
+                jQuery('.field__player').css({
                     'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.mainColor : 'blue',
                     'color' : self.selectedTeam.colors? self.selectedTeam.colors.secondColor : 'yellow'
                 });
 
-                jQuery('.goalKeeper').css({
+                jQuery('.field__goalkeeper').css({
                     'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.gkMainColor : 'red',
                     'color' : self.selectedTeam.colors ? self.selectedTeam.colors.gkSecondColor : 'white'
                 });

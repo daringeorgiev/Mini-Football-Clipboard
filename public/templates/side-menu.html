@@ -25,18 +25,18 @@
                     <uib-tab index="1" heading="My teams"  select="ctrl.onMyTeamsClick()" disable="!ctrl.user._id"></uib-tab>
                 </uib-tabset>
 
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade active in" id="home">
+                <div class="tab-content">
+                    <div class="tab-pane fade active in">
                         <div class="panel-body">
                             <div class="form-group has-feedback">
-                                <label for="selectedTeam">Select Team:</label>
-                                <input type="search" id="selectedTeam" placeholder="Select team" autocomplete="off"
+                                <label for="team__input--selected-team">Select Team:</label>
+                                <input type="search" id="team__input--selected-team" placeholder="Select team" autocomplete="off"
                                     ng-model="ctrl.selectedTeamGetterSetter"
                                     ng-model-options="{ getterSetter: true }"
                                     typeahead-on-select="ctrl.changeSelectedTeam($item)"
                                     uib-typeahead="team as team.teamName for team in ctrl.allTeams | filter:$viewValue | limitTo:8"
                                     typeahead-min-length="0" class="form-control">
-                                <span id="searchclear" class="glyphicon glyphicon-remove form-control-feedback"
+                                <span class="glyphicon glyphicon-remove form-control-feedback team__input--clear"
                                     ng-show="ctrl.selectTeamInputValue"
                                     ng-click="ctrl.selectedTeamGetterSetter('')">
                                 </span>

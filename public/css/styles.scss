@@ -4,179 +4,131 @@ $icon-font-path: "../libs/bootstrap/fonts/";
 @import "bootswatch";
 
 $player-size: 7rem;
-$button-size: 6rem;
+$button-size: 5rem;
 $panel-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-// $panel-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 
 .panel {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: $panel-shadow;
 }
 
-.fieldOutside {
+// Field section
+.field {
     position: relative;
     width: 80%;
-    margin: auto;
+    margin: auto auto 3rem;
 }
-
-.fieldOutside:before{
-  content: "";
-  display: block;
-  padding-top: 100%;
+.field:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
 }
-
-.field{
-  position: absolute;
-  top: 0;
-  left: 19%;
-  right: 19%;
-  bottom: 0;
-  box-shadow: $panel-shadow;
-  -webkit-box-shadow: $panel-shadow;
+.field__inside {
+    position: absolute;
+    top: 0;
+    left: 19%;
+    right: 19%;
+    bottom: 0;
+    box-shadow: $panel-shadow;
+    -webkit-box-shadow: $panel-shadow;
 }
-
-.imgField {
+.field__img {
     background-color: $brand-success;
     width: 100%;
     height: 100%;
 }
-
-.player {
+.field__draggable-area {
+    position: absolute;
+    top: 1%;
+    height: calc(98% - #{$player-size});
+    width: calc(100% - #{$player-size});
+}
+.field__player {
     height: $player-size;
     width: $player-size;
     position: absolute;
     border-radius: 50%;
     background-color: $brand-primary;
     cursor: move;
-    color:$gray-lighter;
+    color: $gray-lighter;
     font-size: 3rem;
     text-align: center;
 }
-
-.draggableArea {
-    position: absolute;
-    top: 1%;
-    height: calc(98% - #{$player-size});
-    width: calc(100% - #{$player-size});
-}
-
-.goalKeeper {
+.field__goalkeeper {
     background-color: $brand-danger;
 }
 
-#playersList {
+// Substitutions section
+.substitutions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: calc(19% - #{$player-size});
+}
+.substitutions__panel {
+    max-height: 100%;
+}
+.substitutions__title {
+    text-align: center;
+}
+.substitutions__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 0.2rem;
+}
+.substitutions__btn {
+    height: $player-size;
+    width: $player-size;
+    border-radius: 50%;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 0.2rem;
+}
+
+// Players list
+.players-list {
     margin: 0;
     padding: 0;
     li {
         border: 0;
     }
 }
-
-#playerNumberInput {
+#players-list__input--number {
     width: 5rem;
     text-align: center;
 }
-
-#playerNameInput {
+#players-list__input--name {
     width: calc(100% - 7rem);
     margin-left: 1rem;
     margin-right: 1rem;
     padding-left: 1rem;
 }
-
-.addPlayer  {
-    height: 5rem;
-    width: 5rem;
-    border-radius: 50%;
+.players-list__btn--add-player {
     float: right;
-    line-height: 4rem;
-    font-size: 1.5rem;
-}
-
-footer {
-    text-align: center;
-    small {
-        margin: 3rem 0;
+    width: $button-size;
+    height: $button-size;
+    line-height: $button-size;
+    border-radius: 50%;
+    font-size: 2rem;
+    padding: 0;
+    &:hover {
+        @extend .btn-primary;
     }
 }
 
-.modalBackground {
-    display: block;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color:rgba(0,0,0,0.5);
+// Team section
+.team__input--clear {
+    pointer-events: auto;
+    text-decoration: none;
+    cursor: pointer;
+    color: $gray;
 }
-
-.select-team-buttons {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;;
-    align-content: center;
-    a {
-        width: $button-size;
-        height: $button-size;
-        line-height: $button-size;
-        border-radius: 50%;
-        font-size: $button-size / 2;
-        padding:0;
-        &:hover {
-            @extend .btn-primary;
-        }
-    }
-}
-
-.new-team_players_wrapper {
-    max-height: 60vh;
-    overflow-y: auto;
-    padding-right: 20px;
-}
-
-.modal-content{
-    padding: 2rem;
-}
-
-.substitutions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position:absolute;
-    top: 0;
-    height: 100%;
-    left: calc(19% - #{$player-size});
-    .panel {
-        max-height: 100%;
-    }
-    .panel-title{
-        text-align: center;
-    }
-    .panel-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 1rem 0.2rem;
-    }
-    .btn {
-        height: $player-size;
-        width: $player-size;
-        border-radius: 50%;
-        font-size: 3rem;
-        text-align: center;
-        margin-top: 0.2rem;
-    }
-}
-
-.logged {
-    a {
-        color:$gray-lighter;
-    }
-}
-
 .panel-body {
-    .nav-tabs{
+    .nav-tabs {
         li {
             width: 50%;
             text-align: center;
@@ -185,15 +137,39 @@ footer {
     }
 }
 
+// Modal dialogs
+.modal__background {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    padding: 2rem;
+}
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 20px;
+}
 .modal-footer {
     .btn-danger {
         float: left;
     }
 }
 
-#searchclear {
-    pointer-events: auto;
-    text-decoration: none;
-    cursor: pointer;
-    color: $gray;
+// Header
+.header__user-link {
+    color: $gray-lighter;
+}
+
+// Footer
+.footer {
+    text-align: center;
+}
+.footer__small {
+    margin: 3rem 0;
 }

@@ -2942,32 +2942,32 @@ a.btn.disabled, fieldset[disabled] a.btn {
     color: #fff;
     background-color: #444; }
 
-.btn-primary, .select-team-buttons a:hover {
+.btn-primary, .players-list__btn--add-player:hover {
   color: #fff;
   background-color: #2196F3;
   border-color: transparent; }
-  .btn-primary:focus, .select-team-buttons a:focus:hover, .btn-primary.focus, .select-team-buttons a.focus:hover {
+  .btn-primary:focus, .players-list__btn--add-player:focus:hover, .btn-primary.focus, .focus.players-list__btn--add-player:hover {
     color: #fff;
     background-color: #0c7cd5;
     border-color: transparent; }
-  .btn-primary:hover, .select-team-buttons a:hover {
+  .btn-primary:hover, .players-list__btn--add-player:hover {
     color: #fff;
     background-color: #0c7cd5;
     border-color: transparent; }
-  .btn-primary:active, .select-team-buttons a:active:hover, .btn-primary.active, .select-team-buttons a.active:hover, .open > .btn-primary.dropdown-toggle, .select-team-buttons .open > a.dropdown-toggle:hover {
+  .btn-primary:active, .players-list__btn--add-player:active:hover, .btn-primary.active, .active.players-list__btn--add-player:hover, .open > .btn-primary.dropdown-toggle, .open > .dropdown-toggle.players-list__btn--add-player:hover {
     color: #fff;
     background-color: #0c7cd5;
     border-color: transparent; }
-    .btn-primary:active:hover, .select-team-buttons a:active:hover, .btn-primary:active:focus, .select-team-buttons a:active:focus:hover, .btn-primary:active.focus, .select-team-buttons a:active.focus:hover, .btn-primary.active:hover, .select-team-buttons a.active:hover, .btn-primary.active:focus, .select-team-buttons a.active:focus:hover, .btn-primary.active.focus, .select-team-buttons a.active.focus:hover, .open > .btn-primary.dropdown-toggle:hover, .select-team-buttons .open > a.dropdown-toggle:hover, .open > .btn-primary.dropdown-toggle:focus, .select-team-buttons .open > a.dropdown-toggle:focus:hover, .open > .btn-primary.dropdown-toggle.focus, .select-team-buttons .open > a.dropdown-toggle.focus:hover {
+    .btn-primary:active:hover, .players-list__btn--add-player:active:hover, .btn-primary:active:focus, .players-list__btn--add-player:active:focus:hover, .btn-primary:active.focus, .players-list__btn--add-player:active.focus:hover, .btn-primary.active:hover, .active.players-list__btn--add-player:hover, .btn-primary.active:focus, .active.players-list__btn--add-player:focus:hover, .btn-primary.active.focus, .active.focus.players-list__btn--add-player:hover, .open > .btn-primary.dropdown-toggle:hover, .open > .dropdown-toggle.players-list__btn--add-player:hover, .open > .btn-primary.dropdown-toggle:focus, .open > .dropdown-toggle.players-list__btn--add-player:focus:hover, .open > .btn-primary.dropdown-toggle.focus, .open > .dropdown-toggle.focus.players-list__btn--add-player:hover {
       color: #fff;
       background-color: #0a68b4;
       border-color: transparent; }
-  .btn-primary:active, .select-team-buttons a:active:hover, .btn-primary.active, .select-team-buttons a.active:hover, .open > .btn-primary.dropdown-toggle, .select-team-buttons .open > a.dropdown-toggle:hover {
+  .btn-primary:active, .players-list__btn--add-player:active:hover, .btn-primary.active, .active.players-list__btn--add-player:hover, .open > .btn-primary.dropdown-toggle, .open > .dropdown-toggle.players-list__btn--add-player:hover {
     background-image: none; }
-  .btn-primary.disabled:hover, .select-team-buttons a.disabled:hover, .btn-primary.disabled:focus, .select-team-buttons a.disabled:focus:hover, .btn-primary.disabled.focus, .select-team-buttons a.disabled.focus:hover, .btn-primary[disabled]:hover, .select-team-buttons a[disabled]:hover, .btn-primary[disabled]:focus, .select-team-buttons a[disabled]:focus:hover, .btn-primary[disabled].focus, .select-team-buttons a[disabled].focus:hover, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .select-team-buttons a:hover, .select-team-buttons fieldset[disabled] a:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .select-team-buttons a:focus:hover, .select-team-buttons fieldset[disabled] a:focus:hover, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .select-team-buttons a.focus:hover, .select-team-buttons fieldset[disabled] a.focus:hover {
+  .btn-primary.disabled:hover, .disabled.players-list__btn--add-player:hover, .btn-primary.disabled:focus, .disabled.players-list__btn--add-player:focus:hover, .btn-primary.disabled.focus, .disabled.focus.players-list__btn--add-player:hover, .btn-primary[disabled]:hover, [disabled].players-list__btn--add-player:hover, .btn-primary[disabled]:focus, [disabled].players-list__btn--add-player:focus:hover, .btn-primary[disabled].focus, [disabled].focus.players-list__btn--add-player:hover, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .players-list__btn--add-player:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .players-list__btn--add-player:focus:hover, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .focus.players-list__btn--add-player:hover {
     background-color: #2196F3;
     border-color: transparent; }
-  .btn-primary .badge, .select-team-buttons a:hover .badge {
+  .btn-primary .badge, .players-list__btn--add-player:hover .badge {
     color: #2196F3;
     background-color: #fff; }
 
@@ -5852,14 +5852,14 @@ button.close {
     -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); }
 
-.btn-primary, .select-team-buttons a:hover {
+.btn-primary, .players-list__btn--add-player:hover {
   background-size: 200%;
   background-position: 50%; }
-  .btn-primary:focus, .select-team-buttons a:focus:hover {
+  .btn-primary:focus, .players-list__btn--add-player:focus:hover {
     background-color: #2196F3; }
-  .btn-primary:hover, .select-team-buttons a:hover, .btn-primary:active:hover, .select-team-buttons a:active:hover {
+  .btn-primary:hover, .players-list__btn--add-player:hover, .btn-primary:active:hover, .players-list__btn--add-player:active:hover {
     background-color: #0d87e9; }
-  .btn-primary:active, .select-team-buttons a:active:hover {
+  .btn-primary:active, .players-list__btn--add-player:active:hover {
     background-color: #0b76cc;
     background-image: -webkit-radial-gradient(circle, #0b76cc 10%, #2196F3 11%);
     background-image: radial-gradient(circle, #0b76cc 10%, #2196F3 11%);
@@ -6516,17 +6516,17 @@ input[type="checkbox"],
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
 
-.fieldOutside {
+.field {
   position: relative;
   width: 80%;
-  margin: auto; }
+  margin: auto auto 3rem; }
 
-.fieldOutside:before {
+.field:before {
   content: "";
   display: block;
   padding-top: 100%; }
 
-.field {
+.field__inside {
   position: absolute;
   top: 0;
   left: 19%;
@@ -6535,12 +6535,18 @@ input[type="checkbox"],
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
 
-.imgField {
+.field__img {
   background-color: #4CAF50;
   width: 100%;
   height: 100%; }
 
-.player {
+.field__draggable-area {
+  position: absolute;
+  top: 1%;
+  height: calc(98% - 7rem);
+  width: calc(100% - 7rem); }
+
+.field__player {
   height: 7rem;
   width: 7rem;
   position: absolute;
@@ -6551,74 +6557,8 @@ input[type="checkbox"],
   font-size: 3rem;
   text-align: center; }
 
-.draggableArea {
-  position: absolute;
-  top: 1%;
-  height: calc(98% - 7rem);
-  width: calc(100% - 7rem); }
-
-.goalKeeper {
+.field__goalkeeper {
   background-color: #e51c23; }
-
-#playersList {
-  margin: 0;
-  padding: 0; }
-  #playersList li {
-    border: 0; }
-
-#playerNumberInput {
-  width: 5rem;
-  text-align: center; }
-
-#playerNameInput {
-  width: calc(100% - 7rem);
-  margin-left: 1rem;
-  margin-right: 1rem;
-  padding-left: 1rem; }
-
-.addPlayer {
-  height: 5rem;
-  width: 5rem;
-  border-radius: 50%;
-  float: right;
-  line-height: 4rem;
-  font-size: 1.5rem; }
-
-footer {
-  text-align: center; }
-  footer small {
-    margin: 3rem 0; }
-
-.modalBackground {
-  display: block;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5); }
-
-.select-team-buttons {
-  margin-top: 2rem;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-content: center; }
-  .select-team-buttons a {
-    width: 6rem;
-    height: 6rem;
-    line-height: 6rem;
-    border-radius: 50%;
-    font-size: 3rem;
-    padding: 0; }
-
-.new-team_players_wrapper {
-  max-height: 60vh;
-  overflow-y: auto;
-  padding-right: 20px; }
-
-.modal-content {
-  padding: 2rem; }
 
 .substitutions {
   display: flex;
@@ -6628,38 +6568,90 @@ footer {
   top: 0;
   height: 100%;
   left: calc(19% - 7rem); }
-  .substitutions .panel {
-    max-height: 100%; }
-  .substitutions .panel-title {
-    text-align: center; }
-  .substitutions .panel-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem 0.2rem; }
-  .substitutions .btn {
-    height: 7rem;
-    width: 7rem;
-    border-radius: 50%;
-    font-size: 3rem;
-    text-align: center;
-    margin-top: 0.2rem; }
 
-.logged a {
-  color: #eeeeee; }
+.substitutions__panel {
+  max-height: 100%; }
+
+.substitutions__title {
+  text-align: center; }
+
+.substitutions__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0.2rem; }
+
+.substitutions__btn {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 0.2rem; }
+
+.players-list {
+  margin: 0;
+  padding: 0; }
+  .players-list li {
+    border: 0; }
+
+#players-list__input--number {
+  width: 5rem;
+  text-align: center; }
+
+#players-list__input--name {
+  width: calc(100% - 7rem);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-left: 1rem; }
+
+.players-list__btn--add-player {
+  float: right;
+  width: 5rem;
+  height: 5rem;
+  line-height: 5rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  padding: 0; }
+
+.team__input--clear {
+  pointer-events: auto;
+  text-decoration: none;
+  cursor: pointer;
+  color: #666; }
 
 .panel-body .nav-tabs li {
   width: 50%;
   text-align: center;
   font-size: 1.7rem; }
 
+.modal__background {
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.modal-content {
+  padding: 2rem; }
+
+.modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 20px; }
+
 .modal-footer .btn-danger {
   float: left; }
 
-#searchclear {
-  pointer-events: auto;
-  text-decoration: none;
-  cursor: pointer;
-  color: #666; }
+.header__user-link {
+  color: #eeeeee; }
+
+.footer {
+  text-align: center; }
+
+.footer__small {
+  margin: 3rem 0; }
 
 /*# sourceMappingURL=styles.css.map */
