@@ -141,7 +141,7 @@
 
         // Set selected team id as URL parameter
         $rootScope.$on('$routeChangeStart', function(next, last) {
-            if ($location.path() === '/') {
+            if ($location.path() === '/' && self.selectedTeam._id) {
                 $location.search('id', self.selectedTeam._id);
             }
         });
