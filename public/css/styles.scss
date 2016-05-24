@@ -79,6 +79,10 @@ $panel-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     flex-direction: column;
     justify-content: center;
     padding: 1rem 0.2rem;
+    // skip an animation
+    .ng-animate {
+      transition: 0s;
+    }
 }
 .substitutions__btn {
     height: $player-size;

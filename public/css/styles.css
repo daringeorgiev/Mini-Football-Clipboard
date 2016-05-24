@@ -6580,6 +6580,8 @@ input[type="checkbox"],
   flex-direction: column;
   justify-content: center;
   padding: 1rem 0.2rem; }
+  .substitutions__body .ng-animate {
+    transition: 0s; }
 
 .substitutions__btn {
   height: 7rem;
