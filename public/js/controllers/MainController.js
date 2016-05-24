@@ -20,109 +20,102 @@
 
         self.selectTeamOnLoad = function() {
             teamService.getDefaultTeam()
-                .success(function(data) {
-                    // ToDo Should change how to get default team
-                    teamService.setDefaultTeam(data[0]);
+                .then(function successCallback(res) {
+                    // ToDo Should change how to get default teamx
+                    teamService.setDefaultTeam(res.data[0]);
                     // Check url for team id
                     if ($location.search().id) {
                         self.setTeamById($location.search().id);
                     } else {
                         teamService.selectDefaultTeam();
                     }
-                })
-                .error(function(data) {
+                }, function errorCallback(res) {
                     notify({
-                        message: 'Error: ' + data
+                        message: 'Error: ' + res.data
                     });
                 });
         }();
 
         self.onAllTeamsClick = function() {
             teamService.getAllTeams()
-                .success(function(data) {
-                    teamService.setStoredTeams(data);
+                .then(function successCallback(res) {
+                    teamService.setStoredTeams(res.data);
                     self.selectedTeamGetterSetter('');
-                })
-                .error(function(data) {
-                    console.log('Error: ' + JSON.stringify(data));
+                }, function errorCallback(res) {
+                    self.selectedTeamGetterSetter('');
+                    console.log('Error: ' + JSON.stringify(res.data));
                 });
         };
 
         self.onMyTeamsClick = function() {
             teamService.getMyTeams()
-                .success(function(data) {
-                    teamService.setStoredTeams(data);
+                .then(function successCallback(res) {
+                    teamService.setStoredTeams(res.data);
                     self.selectedTeamGetterSetter('');
-                })
-                .error(function(data) {
+                }, function errorCallback(res) {
                     self.selectedTeamGetterSetter('');
-                    console.log('Error: ' + JSON.stringify(data));
+                    console.log('Error: ' + JSON.stringify(res.data));
                 });
         };
 
         self.createNewTeam = function () {
             teamService.createTeam(self.newTeam)
-                .success(function (data) {
-                    teamService.setSelectedTeam(data);
+                .then(function successCallback(res) {
+                    teamService.setSelectedTeam(res.data);
                     self.isSaveAsTeamVisible = false;
-                    self.allTeams.push(data);
+                    self.allTeams.push(res.data);
                     self.changeTeamColors();
                     $location.path('/');
                     $location.search('id', self.selectedTeam._id);
-                    notify({message: 'Team: ' + data.teamName + '\n created successful'});
-                })
-                .error(function (data) {
-                    notify({message: 'Error: ' + data});
-                    console.log("Error: " + data);
+                    notify({message: 'Team: ' + res.data.teamName + '\n created successful'});
+                }, function errorCallback(res) {
+                    notify({message: 'Error: ' + res.data});
+                    console.log("Error: " + res.data);
                 });
         };
 
         self.updateTeam = function () {
             teamService.updateTeam(self.selectedTeam)
-                .success(function (data) {
-                    teamService.setSelectedTeam(data);
+                .then(function successCallback(res) {
+                    teamService.setSelectedTeam(res.data);
                     self.changeTeamColors();
                     self.isEditTeamVisible = false;
                     $location.path('/');
                     $location.search('id', self.selectedTeam._id);
-                    notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'noty', position: 'center'});
-                })
-                .error(function (data) {
-                    notify({message: 'Error: ' + data});
-                    console.log('Error: ' + data);
+                    // notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'noty', position: 'center'});
+                }, function errorCallback(res) {
+                    notify({message: 'Error: ' + res.data});
+                    console.log("Error: " + res.data);
                 });
         };
 
         self.deleteTeam = function () {
             if (confirm('Are you sure you want to delete ' + self.selectedTeam.teamName + ' team?')) {
                 teamService.deleteTeam(self.selectedTeam._id)
-                    .success(function (data) {
-                        console.log("Delete: " + data);
-                        teamService.setStoredTeams(data);
+                    .then(function successCallback(res) {
+                        teamService.setStoredTeams(res.data);
                         if (self.allTeams) {
                             teamService.selectDefaultTeam();
                         }
                         $location.path('/');
                         self.selectedTeamGetterSetter('');
                         notify({message: 'Team deleted successful'});
-                    })
-                    .error(function (data) {
-                        notify({message: 'Error: ' + data});
-                        console.log('Error: ' + data);
+                    }, function errorCallback(res) {
+                        notify({message: 'Error: ' + res.data});
+                        console.log("Error: " + res.data);
                     });
             }
         };
 
         self.setTeamById = function (id) {
             teamService.getTeamById(id)
-                .success(function (data) {
-                    teamService.setSelectedTeam(data);
+                .then(function successCallback(res) {
+                    teamService.setSelectedTeam(res.data);
                     self.changeTeamColors();
-                    notify({message: 'Team: ' + data.teamName + '\n loaded successful', classes: 'noty', position: 'center'});
-                })
-                .error(function (data) {
-                    notify({message: 'Error: ' + data});
-                    console.log('Error: ' + data);
+                    // notify({message: 'Team: ' + res.data.teamName + '\n loaded successful', classes: 'noty', position: 'center'});
+                }, function errorCallback(res) {
+                    notify({message: 'Error: ' + res.data});
+                    console.log("Error: " + res.data);
                 });
         };
 

@@ -13,13 +13,12 @@
             if (self.user.userName && self.user.userName.length >= minUserNameLength &&
                 self.user.password && self.user.password.length >= minPasswordLength) {
                 userService.loginUser(self.user.userName, self.user.password)
-                    .success(function (data) {
-                        userService.setUser(data);
+                    .then(function successCallback(res) {
+                        userService.setUser(res.data);
                         notify({message: 'Login successful'});
-                    })
-                    .error(function (data) {
+                    }, function errorCallback(res) {
                         userService.logoutUser();
-                        notify({message: 'Error: ' + data.message});
+                        notify({message: 'Error: ' + res.data.message});
                     });
             } else {
                 notify({message: 'Error: Please check your user name and password'});
@@ -30,14 +29,13 @@
             if (self.user.userName && self.user.userName.length >= minUserNameLength &&
                 self.user.password && self.user.password.length >= minPasswordLength) {
                 userService.registerUser(self.user.userName, self.user.password)
-                    .success(function (data) {
+                    .then(function successCallback(res) {
                         $location.path('#');
-                        userService.setUser(data);
+                        userService.setUser(res.data);
                         notify({message: 'Registration successful'});
-                    })
-                    .error(function (data) {
+                    }, function errorCallback(res) {
                         userService.logoutUser();
-                        notify({message: 'Error: ' + data.message});
+                        notify({message: 'Error: ' + res.data.message});
                     });
             } else {
                 notify({message: 'Error: Please check your user name and password'});
