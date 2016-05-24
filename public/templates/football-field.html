@@ -1,5 +1,10 @@
 <div class="col-lg-8 col-md-12 col-sm-12">
-    <div class="field">
+    <section class="panel ribbon" uib-tooltip="Team: {{ctrl.selectedTeam.teamName}}">
+        <div class="panel-heading">
+            {{ctrl.selectedTeam.teamName}}
+        </div>
+    </section>
+    <section class="field">
         <div class="field__inside">
             <img class="field__img" src="imgs/field.svg"/>
             <div class="field__draggable-area">
@@ -9,8 +14,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="substitutions">
+    </section>
+    <section class="substitutions">
         <div class="panel panel-warning substitutions__panel">
             <div class="panel-heading">
                 <h3 class="panel-title substitutions__title" uib-tooltip="Substitutions">Sub</h3>
@@ -22,5 +27,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>

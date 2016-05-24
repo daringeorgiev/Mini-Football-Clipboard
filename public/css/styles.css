@@ -6654,4 +6654,15 @@ input[type="checkbox"],
 .footer__small {
   margin: 3rem 0; }
 
+.ribbon {
+  text-align: center;
+  font-size: 2rem;
+  background-color: #2196F3;
+  color: #eeeeee;
+  width: 60%;
+  margin: auto auto 2rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
 /*# sourceMappingURL=styles.css.map */

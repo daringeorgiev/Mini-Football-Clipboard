@@ -150,6 +150,11 @@
                     'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.gkMainColor : 'red',
                     'color' : self.selectedTeam.colors ? self.selectedTeam.colors.gkSecondColor : 'white'
                 });
+
+                jQuery('.ribbon').css({
+                    'background-color': self.selectedTeam.colors ? self.selectedTeam.colors.mainColor : 'blue',
+                    'color' : self.selectedTeam.colors? self.selectedTeam.colors.secondColor : 'yellow'
+                });
             }, 1);
         };
 

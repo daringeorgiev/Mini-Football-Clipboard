@@ -173,3 +173,16 @@ $panel-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 .footer__small {
     margin: 3rem 0;
 }
+
+// ribbon
+.ribbon {
+    text-align: center;
+    font-size: 2rem;
+    background-color: $brand-primary;
+    color: $gray-lighter;
+    width: 60%;
+    margin: auto auto 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
