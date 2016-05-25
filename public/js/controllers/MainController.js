@@ -205,8 +205,7 @@
 
         self.onSaveAsTeamSaveClick = function () {
             self.newTeam = JSON.parse(JSON.stringify(self.selectedTeam));
-            self.newTeam.teamName = self.editTeamName;
-            self.newTeam.playersCount = self.editPlayersCount;
+            self.newTeam.teamName = self.selectedTeam.teamName;
             self.createNewTeam();
         };
 

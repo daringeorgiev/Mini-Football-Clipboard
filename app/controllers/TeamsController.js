@@ -60,7 +60,8 @@ module.exports = {
                         ownerId: res.req.decoded ? res.req.decoded._id : '',
                         isPrivate: req.body.isPrivate ? req.body.isPrivate : false,
                         playersCount: req.body.playersCount,
-                        players: req.body.players
+                        players: req.body.players,
+                        colors: req.body.colors
                     }, function (err, team) {
                         if (err) {
                             res.send(err);
