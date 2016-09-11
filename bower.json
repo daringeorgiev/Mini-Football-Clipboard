@@ -1,5 +1,5 @@
 {
-  "name": "Mini-Football-Clipboard",
+  "name": "mini-football-clipboard",
   "version": "0.0.1",
   "authors": [
     "darinnn <georgiev.darin@gmail.com>"
@@ -25,6 +25,9 @@
     "ng-sortable": "~1.2.2",
     "bootstrap-sass": "~3.3.6",
     "angular-bootstrap": "~1.2.5"
+  },
+  "resolutions": {
+    "angular": "~1.4.x"
   },
   "devDependencies": {}
 }
