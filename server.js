@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var database = require('./config/database');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var configPort = 8080;
+var configPort = process.env.PORT || 8080;
 
 // configuration =================
 mongoose.connect(database.url);
@@ -23,4 +23,3 @@ require('./app/routes')(app);
 // listen (start app with node server.js) ======================================
 app.listen(configPort);
 console.log("Server start on " + configPort + " port!");
-
