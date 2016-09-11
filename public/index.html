@@ -22,9 +22,11 @@
         <div ng-view></div>
 
         <header ng-include="'templates/header.html'"></header>
-        <main class="jumbotron row col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
-            <div ng-include="'templates/football-field.html'"></div>
-            <div ng-include="'templates/side-menu.html'"></div>
+        <main class="jumbotron row">
+            <div class="col-lg-offset-1 col-md-12 col-lg-10 ">
+              <div ng-include="'templates/football-field.html'"></div>
+              <div ng-include="'templates/side-menu.html'"></div>
+            </div>
         </main>
         <footer class="footer" ng-include="'templates/footer.html'"></footer>
     </div>
