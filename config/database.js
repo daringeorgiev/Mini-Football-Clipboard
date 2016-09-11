@@ -2,7 +2,7 @@
  * Created by darin on 23/7/2015.
  */
 module.exports = {
-    'url': 'mongodb://localhost/da4'
+    'url': process.env.DB || 'mongodb://localhost/da4'
 };
 
 var Team = require('../app/models/team');

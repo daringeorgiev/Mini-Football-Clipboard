@@ -3,3 +3,5 @@
 /.idea
 /npm-debug.log
 /*.log
+/*.env
+/*.tags
