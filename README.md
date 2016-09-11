@@ -3,6 +3,8 @@ MEAN stack project
 
 ###### Mini football clipboard web application
 
+You can visit the web-application at: [https://minifootball.herokuapp.com/](https://minifootball.herokuapp.com/)
+
 ### Local Installation
 ```
 git clone https://github.com/daringeorgiev/Mini-Football-Clipboard.git
