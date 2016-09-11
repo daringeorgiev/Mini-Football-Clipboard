@@ -1,9 +1,14 @@
 {
   "name": "mini_football_clipboard",
   "version": "0.0.1",
-  "description": "",
+  "description": "Mini Football Clipboard Web Application",
+  "engines": {
+    "node": "5.9.1"
+  },
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
+    "postinstall": "./node_modules/bower/bin/bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "darinnn",
@@ -14,6 +19,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.12.4",
+    "bower": "^1.7.9",
     "ejs": "^2.3.4",
     "express": "^4.12.3",
     "jsonwebtoken": "^5.0.5",
