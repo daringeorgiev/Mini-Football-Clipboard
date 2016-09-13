@@ -1,13 +1,13 @@
-<div ng-if="ctrl.isEditTeamVisible || ctrl.isSaveAsTeamVisible">
+<div data-ng-if="ctrl.isEditTeamVisible || ctrl.isSaveAsTeamVisible">
     <div class="modal modal__background">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <a href="/" class="close" role="button" data-dismiss="modal" aria-hidden="true"
-                                ng-click="ctrl.onEditTeamCancelClick()">×
+                                data-ng-click="ctrl.onEditTeamCancelClick()">×
                     </a>
-                    <h4 class="modal-title" ng-if="ctrl.isEditTeamVisible">Edit Team</h4>
-                    <h4 class="modal-title" ng-if="ctrl.isSaveAsTeamVisible">Save As Team</h4>
+                    <h4 class="modal-title" data-ng-if="ctrl.isEditTeamVisible">Edit Team</h4>
+                    <h4 class="modal-title" data-ng-if="ctrl.isSaveAsTeamVisible">Save As Team</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal">
@@ -17,11 +17,11 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-danger" role="button" ng-if="ctrl.isEditTeamVisible" ng-click="ctrl.deleteTeam()">Delete</a>
-                    <a class="btn btn-primary" role="button" ng-if="ctrl.isEditTeamVisible" ng-click="ctrl.onEditTeamUpdateClick()">Update</a>
-                    <a class="btn btn-primary" role="button" ng-if="ctrl.isSaveAsTeamVisible" ng-click="ctrl.onSaveAsTeamSaveClick()">Save</a>
+                    <a class="btn btn-danger" role="button" data-ng-if="ctrl.isEditTeamVisible" data-ng-click="ctrl.deleteTeam()">Delete</a>
+                    <a class="btn btn-primary" role="button" data-ng-if="ctrl.isEditTeamVisible" data-ng-click="ctrl.onEditTeamUpdateClick()">Update</a>
+                    <a class="btn btn-primary" role="button" data-ng-if="ctrl.isSaveAsTeamVisible" data-ng-click="ctrl.onSaveAsTeamSaveClick()">Save</a>
                     <a href="/" class="btn btn-default" role="button" data-dismiss="modal"
-                        ng-click="ctrl.onEditTeamCancelClick()">Close
+                        data-ng-click="ctrl.onEditTeamCancelClick()">Close
                     </a>
                 </div>
             </div>

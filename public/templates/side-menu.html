@@ -1,12 +1,12 @@
-<div class="col-lg-4 col-md-12 col-sm-12" ng-init="ctrl.getAllTeams()">
+<div class="col-lg-4 col-md-12 col-sm-12" data-ng-init="ctrl.getAllTeams()">
     <section>
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="btn-group btn-group-justified">
-                    <a href="/create-new-team" class="btn btn-primary" title="Create new team" ng-click="ctrl.onCreateNewTeamClick()">New</a>
-                    <a href="#" class="btn btn-default" title="Save team" ng-click="ctrl.updateTeam()">Save</a>
-                    <a href="/edit-team" class="btn btn-default" title="Edit team" ng-click="ctrl.onEditTeamClick()">Edit</a>
-                    <a href="/save-as-team" class="btn btn-default" title="Copy team" ng-click="ctrl.onSaveAsTeamClick()">Copy</a>
+                    <a href="/create-new-team" class="btn btn-primary" title="Create new team" data-ng-click="ctrl.onCreateNewTeamClick()">New</a>
+                    <a href="#" class="btn btn-default" title="Save team" data-ng-click="ctrl.updateTeam()">Save</a>
+                    <a href="/edit-team" class="btn btn-default" title="Edit team" data-ng-click="ctrl.onEditTeamClick()">Edit</a>
+                    <a href="/save-as-team" class="btn btn-default" title="Copy team" data-ng-click="ctrl.onSaveAsTeamClick()">Copy</a>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
         <uib-accordion>
             <uib-accordion-group is-open="ctrl.teamsSectionOpen" panel-class="panel-primary">
                 <uib-accordion-heading>
-                    <i class="glyphicon" ng-class="{'glyphicon-chevron-down': ctrl.teamsSectionOpen, 'glyphicon-chevron-right': !ctrl.teamsSectionOpen}"></i>
+                    <i class="glyphicon" data-ng-class="{'glyphicon-chevron-down': ctrl.teamsSectionOpen, 'glyphicon-chevron-right': !ctrl.teamsSectionOpen}"></i>
                     <span>  Team: {{ctrl.selectedTeam.teamName}}</span>
                 </uib-accordion-heading>
 
@@ -31,14 +31,14 @@
                             <div class="form-group has-feedback">
                                 <label for="team__input--selected-team">Select Team:</label>
                                 <input type="search" id="team__input--selected-team" placeholder="Select team" autocomplete="off"
-                                    ng-model="ctrl.selectedTeamGetterSetter"
-                                    ng-model-options="{ getterSetter: true }"
+                                    data-ng-model="ctrl.selectedTeamGetterSetter"
+                                    data-ng-model-options="{ getterSetter: true }"
                                     typeahead-on-select="ctrl.changeSelectedTeam($item)"
                                     uib-typeahead="team as team.teamName for team in ctrl.allTeams | filter:$viewValue | limitTo:8"
                                     typeahead-min-length="0" class="form-control">
                                 <span class="glyphicon glyphicon-remove form-control-feedback team__input--clear"
-                                    ng-show="ctrl.selectTeamInputValue"
-                                    ng-click="ctrl.selectedTeamGetterSetter('')">
+                                    data-ng-show="ctrl.selectTeamInputValue"
+                                    data-ng-click="ctrl.selectedTeamGetterSetter('')">
                                 </span>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
         <uib-accordion>
             <uib-accordion-group is-open="ctrl.playersSectionOpen" panel-class="panel-primary">
                 <uib-accordion-heading>
-                    <i class="glyphicon" ng-class="{'glyphicon-chevron-down': ctrl.playersSectionOpen, 'glyphicon-chevron-right': !ctrl.playersSectionOpen}"></i>
+                    <i class="glyphicon" data-ng-class="{'glyphicon-chevron-down': ctrl.playersSectionOpen, 'glyphicon-chevron-right': !ctrl.playersSectionOpen}"></i>
                     <span>Players</span>
                 </uib-accordion-heading>
                 <div class="panel-body">

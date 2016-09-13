@@ -1,5 +1,5 @@
 <div class="navbar navbar-inverse col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
-    <div class="container-fluid" ng-controller="UserController as userCtrl">
+    <div class="container-fluid" data-ng-controller="UserController as userCtrl">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1">
@@ -12,21 +12,21 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form ng-if="!userCtrl.user._id" class="navbar-form navbar-right" role="loginForm">
+            <form data-ng-if="!userCtrl.user._id" class="navbar-form navbar-right" role="loginForm">
                 <div class="form-group">
                     <input class="form-control input-sm" placeholder="Username" type="text"
-                           ng-model="userCtrl.user.userName">
+                           data-ng-model="userCtrl.user.userName">
                     <input class="form-control input-sm" placeholder="Password" type="password"
-                           ng-model="userCtrl.user.password">
+                           data-ng-model="userCtrl.user.password">
                 </div>
-                <a href="/" class="btn btn-default btn-sm" role="button" ng-click="userCtrl.onLoginClick()">Login</a>
-                <a href="/register" class="btn btn-default btn-sm" role="button" ng-click="userCtrl.onRegisterClick()">
+                <a href="/" class="btn btn-default btn-sm" role="button" data-ng-click="userCtrl.onLoginClick()">Login</a>
+                <a href="/register" class="btn btn-default btn-sm" role="button" data-ng-click="userCtrl.onRegisterClick()">
                     Register
                 </a>
             </form>
-            <form ng-if="userCtrl.user._id" class="navbar-form navbar-right" role="logoutForm">
+            <form data-ng-if="userCtrl.user._id" class="navbar-form navbar-right" role="logoutForm">
                 <a class="header__user-link" href="#">{{userCtrl.user.userName }}</a>
-                <button type="submit" class="btn btn-default btn-sm" ng-click="userCtrl.onLogoutClick()">Logout</button>
+                <button type="submit" class="btn btn-default btn-sm" data-ng-click="userCtrl.onLogoutClick()">Logout</button>
             </form>
         </div>
     </div>

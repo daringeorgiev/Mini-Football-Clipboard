@@ -23,18 +23,18 @@
     <link rel="stylesheet" href="libs/ng-sortable/dist/ng-sortable.css">
     <link rel="stylesheet" href="libs/ng-sortable/dist/ng-sortable.style.css">
 </head>
-<body ng-app="app" ng-controller="MainController as ctrl">
+<body data-ng-app="app" data-ng-controller="MainController as ctrl">
     <div class="container-fluid">
-        <div ng-view></div>
+        <div data-ng-view></div>
 
-        <header ng-include="'templates/header.html'"></header>
+        <header data-ng-include="'templates/header.html'"></header>
         <main class="jumbotron row">
             <div class="col-lg-offset-1 col-md-12 col-lg-10 ">
-              <div ng-include="'templates/football-field.html'"></div>
-              <div ng-include="'templates/side-menu.html'"></div>
+              <div data-ng-include="'templates/football-field.html'"></div>
+              <div data-ng-include="'templates/side-menu.html'"></div>
             </div>
         </main>
-        <footer class="footer" ng-include="'templates/footer.html'"></footer>
+        <footer class="footer" data-ng-include="'templates/footer.html'"></footer>
     </div>
 
     <!--Scripts-->

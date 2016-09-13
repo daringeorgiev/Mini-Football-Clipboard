@@ -4,7 +4,7 @@
 
         <div class="col-lg-10">
             <input class="form-control" id="teamName" placeholder="Team Name" type="text"
-                   ng-model="team.teamName">
+                   data-ng-model="team.teamName">
         </div>
     </div>
     <!-- ToDo -->
@@ -13,7 +13,7 @@
 
         <div class="col-lg-10">
             <select class="form-control" id="playersCount"
-                    ng-model="team.playersCount">
+                    data-ng-model="team.playersCount">
                 <option>5</option>
                 <option>6</option>
             </select>
@@ -24,18 +24,18 @@
         <label for="playersCount" class="col-lg-2 control-label">Team Colors:</label>
         <div class="col-lg-10">
             <label for="mainColor">Main color:</label>
-            <input type="color" id = "mainColor" value="#ff0000" ng-model="team.colors.mainColor">
+            <input type="color" id = "mainColor" value="#ff0000" data-ng-model="team.colors.mainColor">
             <label for="secondColor">Second color:</label>
-            <input type="color" id = "secondColor" value="#ff0000" ng-model="team.colors.secondColor">
+            <input type="color" id = "secondColor" value="#ff0000" data-ng-model="team.colors.secondColor">
         </div>
     </div>
     <div class="form-group">
         <label for="playersCount" class="col-lg-2 control-label">Goalkeeper Colors:</label>
         <div class="col-lg-10">
             <label for="gkMainColor">Main color:</label>
-            <input type="color" id = "gkMainColor" value="#ff0000" ng-model="team.colors.gkMainColor">
+            <input type="color" id = "gkMainColor" value="#ff0000" data-ng-model="team.colors.gkMainColor">
             <label for="gkSecondColor">Second color:</label>
-            <input type="color" id = "gkSecondColor" value="#ff0000" ng-model="team.colors.gkSecondColor">
+            <input type="color" id = "gkSecondColor" value="#ff0000" data-ng-model="team.colors.gkSecondColor">
         </div>
     </div>
 </div>

@@ -8,8 +8,8 @@
         <div class="field__inside">
             <img class="field__img" src="imgs/field.svg"/>
             <div class="field__draggable-area">
-                <div ng-repeat="player in ctrl.selectedTeam.players | limitTo: 6" class="btn btn-defaul field__player"
-                    ng-class="{'field__goalkeeper' : $index === 0}" my-draggable uib-tooltip="{{player.playerName}}">
+                <div data-ng-repeat="player in ctrl.selectedTeam.players | limitTo: 6" class="btn btn-defaul field__player"
+                    data-ng-class="{'field__goalkeeper' : $index === 0}" my-draggable uib-tooltip="{{player.playerName}}">
                     {{player.playerNumber}}
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <h3 class="panel-title substitutions__title" uib-tooltip="Substitutions">Sub</h3>
             </div>
             <div class="panel-body substitutions__body">
-                <div ng-repeat="player in ctrl.selectedTeam.players" ng-if="$index > 5"
+                <div data-ng-repeat="player in ctrl.selectedTeam.players" data-ng-if="$index > 5"
                     class="btn btn-primary disabled substitutions__btn" uib-tooltip="{{player.playerName}}">
                     {{player.playerNumber}}
                 </div>
