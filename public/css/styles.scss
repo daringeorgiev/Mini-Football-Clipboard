@@ -1,192 +1,211 @@
-@import "variables";
-$icon-font-path: "../libs/bootstrap/fonts/";
-@import "../libs/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-@import "bootswatch";
-
+@import 'variables';
+$icon-font-path: '../libs/bootstrap/fonts/';
+@import '../libs/bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'bootswatch';
 $player-size: 7rem;
 $button-size: 5rem;
-$panel-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+$box-shadow-color: rgba(0, 0, 0, .3);
+$panel-shadow: 0 3px 10px $box-shadow-color;
 
+.navbar,
 .panel {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: $panel-shadow;
+  box-shadow: $panel-shadow;
 }
-
 // Field section
+
 .field {
-    position: relative;
-    width: 80%;
-    margin: auto auto 3rem;
-}
-.field:before {
-    content: "";
+  margin: auto auto 3rem;
+  position: relative;
+  width: 80%;
+
+  &::before {
+    content: '';
     display: block;
     padding-top: 100%;
+  }
 }
+
 .field__inside {
-    position: absolute;
-    top: 0;
-    left: 19%;
-    right: 19%;
-    bottom: 0;
-    box-shadow: $panel-shadow;
-    -webkit-box-shadow: $panel-shadow;
+  bottom: 0;
+  box-shadow: $panel-shadow;
+  left: 19%;
+  position: absolute;
+  right: 19%;
+  top: 0;
 }
+
 .field__img {
-    background-color: $brand-success;
-    width: 100%;
-    height: 100%;
+  background-color: $brand-success;
+  height: 100%;
+  width: 100%;
 }
+
 .field__draggable-area {
-    position: absolute;
-    top: 1%;
-    height: calc(98% - #{$player-size});
-    width: calc(100% - #{$player-size});
+  height: calc(98% - #{$player-size});
+  position: absolute;
+  top: 1%;
+  width: calc(100% - #{$player-size});
 }
+
 .field__player {
-    height: $player-size;
-    width: $player-size;
-    position: absolute;
-    border-radius: 50%;
-    background-color: $brand-primary;
-    cursor: move;
-    color: $gray-lighter;
-    font-size: 3rem;
-    text-align: center;
+  background-color: $brand-primary;
+  border-radius: 50%;
+  color: $gray-lighter;
+  cursor: move;
+  font-size: 3rem;
+  height: $player-size;
+  position: absolute;
+  text-align: center;
+  width: $player-size;
 }
+
 .field__goalkeeper {
-    background-color: $brand-danger;
+  background-color: $brand-danger;
 }
-
 // Substitutions section
+
 .substitutions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    height: 100%;
-    left: calc(19% - #{$player-size});
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  left: calc(19% - #{$player-size});
+  position: absolute;
+  top: 0;
 }
+
 .substitutions__panel {
-    max-height: 100%;
+  max-height: 100%;
 }
+
 .substitutions__title {
-    text-align: center;
+  text-align: center;
 }
+
 .substitutions__body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem 0.2rem;
-    // skip an animation
-    .ng-animate {
-      transition: 0s;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0.2rem;
+  // skip an animation
+  .ng-animate {
+    transition: 0s;
+  }
 }
+
 .substitutions__btn {
-    height: $player-size;
-    width: $player-size;
-    border-radius: 50%;
-    font-size: 3rem;
-    text-align: center;
-    margin-top: 0.2rem;
+  border-radius: 50%;
+  font-size: 3rem;
+  height: $player-size;
+  margin-top: 0.2rem;
+  text-align: center;
+  width: $player-size;
 }
-
 // Players list
+
 .players-list {
-    margin: 0;
-    padding: 0;
-    li {
-        border: 0;
-    }
+  margin: 0;
+  padding: 0;
+
+  li {
+    border: 0;
+  }
 }
+
 #players-list__input--number {
-    width: 5rem;
-    text-align: center;
+  text-align: center;
+  width: 5rem;
 }
+
 #players-list__input--name {
-    width: calc(100% - 7rem);
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding-left: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-left: 1rem;
+  width: calc(100% - 7rem);
 }
+
 .players-list__btn--add-player {
-    float: right;
-    width: $button-size;
-    height: $button-size;
-    line-height: $button-size;
-    border-radius: 50%;
-    font-size: 2rem;
-    padding: 0;
-    &:hover {
-        @extend .btn-primary;
-    }
-}
+  border-radius: 50%;
+  float: right;
+  font-size: 2rem;
+  height: $button-size;
+  line-height: $button-size;
+  padding: 0;
+  width: $button-size;
 
+  &:hover {
+    @extend .btn-primary;
+  }
+}
 // Team section
+
 .team__input--clear {
-    pointer-events: auto;
-    text-decoration: none;
-    cursor: pointer;
-    color: $gray;
+  color: $gray;
+  cursor: pointer;
+  pointer-events: auto;
+  text-decoration: none;
 }
+
 .panel-body {
-    .nav-tabs {
-        li {
-            width: 50%;
-            text-align: center;
-            font-size: 1.7rem;
-        }
+  .nav-tabs {
+    li {
+      font-size: 1.7rem;
+      text-align: center;
+      width: 50%;
     }
+  }
 }
-
 // Modal dialogs
+
 .modal__background {
-    display: block;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,.5);
+  bottom: 0;
+  display: block;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
 }
+
 .modal-content {
-    padding: 2rem;
+  padding: 2rem;
 }
+
 .modal-body {
-    max-height: 70vh;
-    overflow-y: auto;
-    padding-right: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 20px;
 }
+
 .modal-footer {
-    .btn-danger {
-        float: left;
-    }
+  .btn-danger {
+    float: left;
+  }
 }
-
 // Header
+
 .header__user-link {
-    color: $gray-lighter;
+  color: $gray-lighter;
 }
-
 // Footer
+
 .footer {
-    text-align: center;
-}
-.footer__small {
-    margin: 3rem 0;
+  text-align: center;
 }
 
+.footer__small {
+  margin: 3rem 0;
+}
 // ribbon
+
 .ribbon {
-    text-align: center;
-    font-size: 2rem;
-    background-color: $brand-primary;
-    color: $gray-lighter;
-    width: 60%;
-    margin: auto auto 2rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  background-color: $brand-primary;
+  color: $gray-lighter;
+  font-size: 2rem;
+  margin: auto auto 2rem;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 60%;
 }
