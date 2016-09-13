@@ -3,8 +3,8 @@
     app.controller('UserController', ['$scope', '$window', '$location', 'userService', 'notify',
         function ($scope, $window, $location, userService, notify) {
         var self = this;
-        var minUserNameLength = 1,
-            minPasswordLength = 1;
+        var minUserNameLength = 5,
+            minPasswordLength = 6;
 
         self.user = userService.getUser();
         self.isRegisterFormVisible = false;
