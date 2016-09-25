@@ -209,3 +209,10 @@ $panel-shadow: 0 3px 10px $box-shadow-color;
   white-space: nowrap;
   width: 60%;
 }
+
+.alert-danger {
+  // Add !important, because Angular-Notify overwrites those styles with its own
+  background-color: $state-danger-bg !important;
+  border-color: $state-danger-border !important;
+  color: $state-danger-text !important;
+}

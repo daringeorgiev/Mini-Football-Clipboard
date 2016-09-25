@@ -31,7 +31,8 @@
                     }
                 }, function errorCallback(res) {
                     notify({
-                        message: 'Error: ' + res.data
+                        message: 'Error: ' + res.data,
+                        classes: 'alert-danger'
                     });
                 });
         }();
@@ -69,7 +70,10 @@
                     $location.search('id', self.selectedTeam._id);
                     notify({message: 'Team: ' + res.data.teamName + '\n created successful'});
                 }, function errorCallback(res) {
-                    notify({message: 'Error: ' + res.data});
+                    notify({
+                        message: 'Error: ' + res.data,
+                        classes: 'alert-danger'
+                    });
                     console.log("Error: " + res.data);
                 });
         };
@@ -84,7 +88,10 @@
                     $location.search('id', self.selectedTeam._id);
                     // notify({message: 'Team: ' + data.teamName + '\n Updated successful', classes: 'noty', position: 'center'});
                 }, function errorCallback(res) {
-                    notify({message: 'Error: ' + res.data});
+                    notify({
+                        message: 'Error: ' + res.data,
+                        classes: 'alert-danger'
+                    });
                     console.log("Error: " + res.data);
                 });
         };
@@ -101,7 +108,10 @@
                         self.selectedTeamGetterSetter('');
                         notify({message: 'Team deleted successful'});
                     }, function errorCallback(res) {
-                        notify({message: 'Error: ' + res.data});
+                        notify({
+                            message: 'Error: ' + res.data,
+                            classes: 'alert-danger'
+                        });
                         console.log("Error: " + res.data);
                     });
             }
@@ -114,7 +124,10 @@
                     self.changeTeamColors();
                     // notify({message: 'Team: ' + res.data.teamName + '\n loaded successful', classes: 'noty', position: 'center'});
                 }, function errorCallback(res) {
-                    notify({message: 'Error: ' + res.data});
+                    notify({
+                        message: 'Error: ' + res.data,
+                        classes: 'alert-danger'
+                    });
                     console.log("Error: " + res.data);
                 });
         };

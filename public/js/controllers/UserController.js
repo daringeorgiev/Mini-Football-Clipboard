@@ -18,10 +18,16 @@
                         notify({message: 'Login successful'});
                     }, function errorCallback(res) {
                         userService.logoutUser();
-                        notify({message: 'Error: ' + res.data.message});
+                        notify({
+                            message: 'Error: ' + res.data.message,
+                            classes: 'alert-danger'
+                        });
                     });
             } else {
-                notify({message: 'Error: Please check your user name and password'});
+                notify({
+                    message: 'Error: Please check your user name and password',
+                    classes: 'alert-danger'
+                });
             }
         };
 
@@ -35,10 +41,16 @@
                         notify({message: 'Registration successful'});
                     }, function errorCallback(res) {
                         userService.logoutUser();
-                        notify({message: 'Error: ' + res.data.message});
+                        notify({
+                            message: 'Error: ' + res.data.message,
+                            classes: 'alert-danger'
+                        });
                     });
             } else {
-                notify({message: 'Error: Please check your user name and password'});
+                notify({
+                    message: 'Error: Please check your user name and password',
+                    classes: 'alert-danger'
+                });
             }
         };
 
