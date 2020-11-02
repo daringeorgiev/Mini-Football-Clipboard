@@ -9,7 +9,13 @@ var methodOverride = require('method-override');
 var configPort = process.env.PORT || 8080;
 
 // configuration =================
-mongoose.connect(database.url);
+mongoose.set('useCreateIndex', true);
+mongoose.connect(
+    database.url,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({'extended': 'true'}));
