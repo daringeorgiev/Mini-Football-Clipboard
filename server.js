@@ -9,11 +9,9 @@ var configPort = process.env.PORT || 8080;
 
 // configuration =================
 mongoose.set('useCreateIndex', true);
-mongoose.connect(
-    database.url,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
+mongoose.connect(database.url, { useNewUrlParser: true, useUnifiedTopology: true })
+    .catch(function (error) {
+        console.error("Mongoose connection error", error);
     });
 
 app.use(express.static(__dirname + '/public'));
