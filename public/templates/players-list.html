@@ -2,9 +2,9 @@
     <ul class="players-list" data-as-sortable ui-sortable="{ 'ui-floating': true }" data-ng-model="team.players">
         <li data-ng-repeat="player in team.players" data-as-sortable-item>
             <div class="form-group input-group " data-ng-class="{'has-warning': $index >5, 'has-error': $index === 0 }">
-                <input class="form-control" id="players-list__input--number-{{$index + 1}}" placeholder="#"
+                <input class="form-control players-list__input--number" id="players-list__input--number-{{$index + 1}}" placeholder="#"
                     data-ng-model="team.players[$index].playerNumber" type="text">
-                <input class="form-control" id="players-list__input--name-{{$index + 1}}" placeholder="Player {{$index + 1}}" type="text"
+                <input class="form-control players-list__input--name" id="players-list__input--name-{{$index + 1}}" placeholder="Player {{$index + 1}}" type="text"
                     data-ng-model="team.players[$index].playerName">
                 <span class="input-group-btn">
                     <button class="btn btn-default " type="button" uib-tooltip="Remove {{team.players[$index].playerName}}" data-ng-click="ctrl.removePlayerByIndex(team, $index)">x</button>

@@ -6607,11 +6607,10 @@ input[type="checkbox"],
   .players-list li {
     border: 0; }
 
-#players-list__input--number {
+.input-group .players-list__input--number {
   text-align: center;
   width: 5rem; }
-
-#players-list__input--name {
+.input-group .players-list__input--name {
   margin-left: 1rem;
   margin-right: 1rem;
   padding-left: 1rem;

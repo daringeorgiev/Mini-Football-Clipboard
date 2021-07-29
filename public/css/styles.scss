@@ -128,16 +128,18 @@ $panel-shadow: 0 3px 10px $box-shadow-color;
   }
 }
 
-#players-list__input--number {
-  text-align: center;
-  width: 5rem;
-}
+.input-group {
+  .players-list__input--number {
+    text-align: center;
+    width: 5rem;
+  }
 
-#players-list__input--name {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  padding-left: 1rem;
-  width: calc(100% - 7rem);
+  .players-list__input--name {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: 1rem;
+    width: calc(100% - 7rem);
+  }
 }
 
 .players-list__btn--add-player {
