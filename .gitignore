@@ -1,5 +1,7 @@
 /node_modules
 /public/libs
+/public/css/.sass-cache
+/.sass-cache
 /.idea
 /npm-debug.log
 /*.log

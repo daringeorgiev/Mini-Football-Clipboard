@@ -56,7 +56,21 @@ $panel-shadow: 0 3px 10px $box-shadow-color;
   height: $player-size;
   position: absolute;
   text-align: center;
+  text-transform: none;
   width: $player-size;
+}
+
+.field__player--number {
+  background-color: $gray-lighter;
+  border-radius: 50%;
+  color: $text-color;
+  font-size: 2rem;
+  height: 3rem;
+  line-height: 3rem;
+  position: absolute;
+  right: 0;
+  top: 5rem;
+  width: 3rem;
 }
 
 .field__goalkeeper {
@@ -98,7 +112,9 @@ $panel-shadow: 0 3px 10px $box-shadow-color;
   font-size: 3rem;
   height: $player-size;
   margin-top: 0.2rem;
+  position: relative;
   text-align: center;
+  text-transform: none;
   width: $player-size;
 }
 // Players list
